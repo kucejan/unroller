@@ -1,0 +1,5449 @@
+<?xml version="1.0" encoding="utf-8"?><graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key attr.name="LinkNote" attr.type="string" for="edge" id="d24" />
+  <key attr.name="edge_color" attr.type="string" for="edge" id="d23" />
+  <key attr.name="edge_width" attr.type="double" for="edge" id="d22" />
+  <key attr.name="zorder" attr.type="double" for="edge" id="d21" />
+  <key attr.name="LinkSpeedRaw" attr.type="double" for="edge" id="d20" />
+  <key attr.name="LinkSpeedUnits" attr.type="string" for="edge" id="d19" />
+  <key attr.name="LinkSpeed" attr.type="string" for="edge" id="d18" />
+  <key attr.name="LinkType" attr.type="string" for="edge" id="d17" />
+  <key attr.name="key" attr.type="integer" for="edge" id="d16" />
+  <key attr.name="LinkLabel" attr.type="string" for="edge" id="d15" />
+  <key attr.name="type" attr.type="string" for="node" id="d14" />
+  <key attr.name="hyperedge" attr.type="integer" for="node" id="d13" />
+  <key attr.name="id" attr.type="integer" for="node" id="d12" />
+  <key attr.name="Latitude" attr.type="double" for="node" id="d11" />
+  <key attr.name="Internal" attr.type="integer" for="node" id="d10" />
+  <key attr.name="label" attr.type="string" for="node" id="d9" />
+  <key attr.name="Longitude" attr.type="double" for="node" id="d8" />
+  <key attr.name="NetworkDate" attr.type="string" for="node" id="d7" />
+  <key attr.name="Country" attr.type="string" for="node" id="d6" />
+  <key attr.name="Network" attr.type="string" for="node" id="d5" />
+  <key attr.name="asn" attr.type="string" for="node" id="d4" />
+  <key attr.name="GeoLocation" attr.type="string" for="node" id="d3" />
+  <key attr.name="Network" attr.type="string" for="graph" id="d2" />
+  <key attr.name="GeoLocation" attr.type="string" for="graph" id="d1" />
+  <key attr.name="Date" attr.type="integer" for="graph" id="d0" />
+  <graph edgedefault="undirected">
+    <data key="d0">2011</data>
+    <data key="d1">Europe</data>
+    <data key="d2">European NRENs</data>
+    <node id="0">
+      <data key="d3">Austria</data>
+      <data key="d4">1853</data>
+      <data key="d5">ACOnet</data>
+      <data key="d6">Austria</data>
+      <data key="d7">2009-06</data>
+      <data key="d8">14.28611</data>
+      <data key="d9">Linz</data>
+      <data key="d10">1</data>
+      <data key="d11">48.30639</data>
+      <data key="d12">0</data>
+    </node>
+    <node id="1">
+      <data key="d3">Austria</data>
+      <data key="d4">1853</data>
+      <data key="d5">ACOnet</data>
+      <data key="d6">Austria</data>
+      <data key="d7">2009-06</data>
+      <data key="d8">13.04399</data>
+      <data key="d9">Salzburg</data>
+      <data key="d10">1</data>
+      <data key="d11">47.79941</data>
+      <data key="d12">1</data>
+    </node>
+    <node id="2">
+      <data key="d3">Austria</data>
+      <data key="d4">1853</data>
+      <data key="d5">ACOnet</data>
+      <data key="d6">Austria</data>
+      <data key="d7">2009-06</data>
+      <data key="d8">11.39454</data>
+      <data key="d9">Innsbruck</data>
+      <data key="d10">1</data>
+      <data key="d11">47.26266</data>
+      <data key="d12">2</data>
+    </node>
+    <node id="3">
+      <data key="d3">Austria</data>
+      <data key="d4">1853</data>
+      <data key="d5">ACOnet</data>
+      <data key="d6">Austria</data>
+      <data key="d7">2009-06</data>
+      <data key="d8">9.73306</data>
+      <data key="d9">Dornbirn</data>
+      <data key="d10">1</data>
+      <data key="d11">47.41667</data>
+      <data key="d12">3</data>
+    </node>
+    <node id="4">
+      <data key="d3">Austria</data>
+      <data key="d4">1853</data>
+      <data key="d5">ACOnet</data>
+      <data key="d6">Austria</data>
+      <data key="d7">2009-06</data>
+      <data key="d8">14.30528</data>
+      <data key="d9">Klagenfurt</data>
+      <data key="d10">1</data>
+      <data key="d11">46.62472</data>
+      <data key="d12">4</data>
+    </node>
+    <node id="5">
+      <data key="d3">Austria</data>
+      <data key="d4">1853</data>
+      <data key="d5">ACOnet</data>
+      <data key="d6">Austria</data>
+      <data key="d7">2009-06</data>
+      <data key="d8">15.45</data>
+      <data key="d9">Graz</data>
+      <data key="d10">1</data>
+      <data key="d11">47.06667</data>
+      <data key="d12">5</data>
+    </node>
+    <node id="6">
+      <data key="d3">Austria</data>
+      <data key="d4">1853</data>
+      <data key="d5">ACOnet</data>
+      <data key="d6">Austria</data>
+      <data key="d7">2009-06</data>
+      <data key="d8">15.1</data>
+      <data key="d9">Leoben</data>
+      <data key="d10">1</data>
+      <data key="d11">47.38333</data>
+      <data key="d12">6</data>
+    </node>
+    <node id="7">
+      <data key="d3">Austria</data>
+      <data key="d4">1853</data>
+      <data key="d5">ACOnet</data>
+      <data key="d6">Austria</data>
+      <data key="d7">2009-06</data>
+      <data key="d8">16.51667</data>
+      <data key="d9">Eisenstadt</data>
+      <data key="d10">1</data>
+      <data key="d11">47.85</data>
+      <data key="d12">7</data>
+    </node>
+    <node id="8">
+      <data key="d3">Austria</data>
+      <data key="d4">1853</data>
+      <data key="d5">ACOnet</data>
+      <data key="d6">Austria</data>
+      <data key="d7">2009-06</data>
+      <data key="d8">15.63333</data>
+      <data key="d9">St. Polten</data>
+      <data key="d10">1</data>
+      <data key="d11">48.2</data>
+      <data key="d12">8</data>
+    </node>
+    <node id="9">
+      <data key="d3">Austria</data>
+      <data key="d4">1853</data>
+      <data key="d5">ACOnet</data>
+      <data key="d6">Austria</data>
+      <data key="d7">2009-06</data>
+      <data key="d8">15.61415</data>
+      <data key="d9">Krems</data>
+      <data key="d10">1</data>
+      <data key="d11">48.40921</data>
+      <data key="d12">9</data>
+    </node>
+    <node id="10">
+      <data key="d3">Austria</data>
+      <data key="d4">1853</data>
+      <data key="d5">ACOnet</data>
+      <data key="d6">Austria</data>
+      <data key="d7">2009-06</data>
+      <data key="d8">16.37208</data>
+      <data key="d9">Vienna</data>
+      <data key="d10">1</data>
+      <data key="d11">48.20849</data>
+      <data key="d12">10</data>
+    </node>
+    <node id="11">
+      <data key="d13">1</data>
+      <data key="d3">Austria</data>
+      <data key="d4">1853</data>
+      <data key="d5">ACOnet</data>
+      <data key="d7">2009-06</data>
+      <data key="d9" />
+      <data key="d10">1</data>
+      <data key="d12">11</data>
+    </node>
+    <node id="12">
+      <data key="d3">Slovenia</data>
+      <data key="d4">2107</data>
+      <data key="d5">ARNES</data>
+      <data key="d6">Slovenia</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">15.64667</data>
+      <data key="d9">Maribor</data>
+      <data key="d10">1</data>
+      <data key="d11">46.55472</data>
+      <data key="d14">Large Node</data>
+      <data key="d12">12</data>
+    </node>
+    <node id="13">
+      <data key="d3">Slovenia</data>
+      <data key="d4">2107</data>
+      <data key="d5">ARNES</data>
+      <data key="d6">Slovenia</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">14.50513</data>
+      <data key="d9">Ljubljana</data>
+      <data key="d10">1</data>
+      <data key="d11">46.05108</data>
+      <data key="d14">Large Node</data>
+      <data key="d12">13</data>
+    </node>
+    <node id="14">
+      <data key="d3">Belgium</data>
+      <data key="d4">2611</data>
+      <data key="d5">BELnet</data>
+      <data key="d6">Belgium</data>
+      <data key="d7">2010</data>
+      <data key="d8">3.22424</data>
+      <data key="d9">Brugge</data>
+      <data key="d10">1</data>
+      <data key="d11">51.20892</data>
+      <data key="d14">Small Node</data>
+      <data key="d12">14</data>
+    </node>
+    <node id="15">
+      <data key="d3">Belgium</data>
+      <data key="d4">2611</data>
+      <data key="d5">BELnet</data>
+      <data key="d6">Belgium</data>
+      <data key="d7">2010</data>
+      <data key="d8">3.71667</data>
+      <data key="d9">Gent</data>
+      <data key="d10">1</data>
+      <data key="d11">51.05</data>
+      <data key="d14">One of two small nodes in same city</data>
+      <data key="d12">15</data>
+    </node>
+    <node id="16">
+      <data key="d3">Belgium</data>
+      <data key="d4">2611</data>
+      <data key="d5">BELnet</data>
+      <data key="d6">Belgium</data>
+      <data key="d7">2010</data>
+      <data key="d8">4.41667</data>
+      <data key="d9">Antwerpen</data>
+      <data key="d10">1</data>
+      <data key="d11">51.21667</data>
+      <data key="d14">One of two small nodes in same city</data>
+      <data key="d12">16</data>
+    </node>
+    <node id="17">
+      <data key="d3">Belgium</data>
+      <data key="d4">2611</data>
+      <data key="d5">BELnet</data>
+      <data key="d6">Belgium</data>
+      <data key="d7">2010</data>
+      <data key="d8">3.26487</data>
+      <data key="d9">Korthijk</data>
+      <data key="d10">1</data>
+      <data key="d11">50.82803</data>
+      <data key="d14">Small Node</data>
+      <data key="d12">17</data>
+    </node>
+    <node id="18">
+      <data key="d3">Belgium</data>
+      <data key="d4">2611</data>
+      <data key="d5">BELnet</data>
+      <data key="d6">Belgium</data>
+      <data key="d7">2010</data>
+      <data key="d8">3.95229</data>
+      <data key="d9">Mons</data>
+      <data key="d10">1</data>
+      <data key="d11">50.45413</data>
+      <data key="d14">Small Node</data>
+      <data key="d12">18</data>
+    </node>
+    <node id="19">
+      <data key="d3">Belgium</data>
+      <data key="d4">2611</data>
+      <data key="d5">BELnet</data>
+      <data key="d6">Belgium</data>
+      <data key="d7">2010</data>
+      <data key="d8">4.43333</data>
+      <data key="d9">Charleroi</data>
+      <data key="d10">1</data>
+      <data key="d11">50.41667</data>
+      <data key="d14">Small Node</data>
+      <data key="d12">19</data>
+    </node>
+    <node id="20">
+      <data key="d3">Belgium</data>
+      <data key="d4">2611</data>
+      <data key="d5">BELnet</data>
+      <data key="d6">Belgium</data>
+      <data key="d7">2010</data>
+      <data key="d8">4.61443</data>
+      <data key="d9">Louvain-la-Neuve</data>
+      <data key="d10">1</data>
+      <data key="d11">50.66829</data>
+      <data key="d14">Small Node</data>
+      <data key="d12">20</data>
+    </node>
+    <node id="21">
+      <data key="d3">Belgium</data>
+      <data key="d4">2611</data>
+      <data key="d5">BELnet</data>
+      <data key="d6">Belgium</data>
+      <data key="d7">2010</data>
+      <data key="d8">4.82577</data>
+      <data key="d9">Namur</data>
+      <data key="d10">1</data>
+      <data key="d11">50.46992</data>
+      <data key="d14">Small Node</data>
+      <data key="d12">21</data>
+    </node>
+    <node id="22">
+      <data key="d3">Belgium</data>
+      <data key="d4">2611</data>
+      <data key="d5">BELnet</data>
+      <data key="d6">Belgium</data>
+      <data key="d7">2010</data>
+      <data key="d8">5.81667</data>
+      <data key="d9">Arlon</data>
+      <data key="d10">1</data>
+      <data key="d11">49.68333</data>
+      <data key="d14">Small Node</data>
+      <data key="d12">22</data>
+    </node>
+    <node id="23">
+      <data key="d3">Belgium</data>
+      <data key="d4">2611</data>
+      <data key="d5">BELnet</data>
+      <data key="d6">Belgium</data>
+      <data key="d7">2010</data>
+      <data key="d8">5.57178</data>
+      <data key="d9">Liege</data>
+      <data key="d10">1</data>
+      <data key="d11">50.64119</data>
+      <data key="d14">One of two small nodes in same city</data>
+      <data key="d12">23</data>
+    </node>
+    <node id="24">
+      <data key="d3">Belgium</data>
+      <data key="d4">2611</data>
+      <data key="d5">BELnet</data>
+      <data key="d7">2010</data>
+      <data key="d9">Liege1</data>
+      <data key="d10">1</data>
+      <data key="d14">One of two small nodes in same city</data>
+      <data key="d12">24</data>
+    </node>
+    <node id="25">
+      <data key="d3">Belgium</data>
+      <data key="d4">2611</data>
+      <data key="d5">BELnet</data>
+      <data key="d6">Belgium</data>
+      <data key="d7">2010</data>
+      <data key="d8">4.34878</data>
+      <data key="d9">Brussels Campus</data>
+      <data key="d10">1</data>
+      <data key="d11">50.85045</data>
+      <data key="d14">Small Node</data>
+      <data key="d12">25</data>
+    </node>
+    <node id="26">
+      <data key="d3">Belgium</data>
+      <data key="d4">2611</data>
+      <data key="d5">BELnet</data>
+      <data key="d7">2010</data>
+      <data key="d9">Bruzav</data>
+      <data key="d10">1</data>
+      <data key="d14">Small Node</data>
+      <data key="d12">26</data>
+    </node>
+    <node id="27">
+      <data key="d3">Belgium</data>
+      <data key="d4">2611</data>
+      <data key="d5">BELnet</data>
+      <data key="d6">Belgium</data>
+      <data key="d7">2010</data>
+      <data key="d8">4.4</data>
+      <data key="d9">Evere</data>
+      <data key="d10">1</data>
+      <data key="d11">50.86667</data>
+      <data key="d14">Large Node</data>
+      <data key="d12">27</data>
+    </node>
+    <node id="28">
+      <data key="d3">Belgium</data>
+      <data key="d4">2611</data>
+      <data key="d5">BELnet</data>
+      <data key="d6">Belgium</data>
+      <data key="d7">2010</data>
+      <data key="d8">4.40731</data>
+      <data key="d9">Vilvoorde</data>
+      <data key="d10">1</data>
+      <data key="d11">50.91823</data>
+      <data key="d14">Large Node</data>
+      <data key="d12">28</data>
+    </node>
+    <node id="29">
+      <data key="d3">Belgium</data>
+      <data key="d4">2611</data>
+      <data key="d5">BELnet</data>
+      <data key="d6">Belgium</data>
+      <data key="d7">2010</data>
+      <data key="d8">4.70093</data>
+      <data key="d9">Leuven</data>
+      <data key="d10">1</data>
+      <data key="d11">50.87959</data>
+      <data key="d14">One of two small nodes in same city</data>
+      <data key="d12">29</data>
+    </node>
+    <node id="30">
+      <data key="d3">Belgium</data>
+      <data key="d4">2611</data>
+      <data key="d5">BELnet</data>
+      <data key="d6">Belgium</data>
+      <data key="d7">2010</data>
+      <data key="d8">5.33333</data>
+      <data key="d9">Hasselt</data>
+      <data key="d10">1</data>
+      <data key="d11">50.93333</data>
+      <data key="d14">Small Node</data>
+      <data key="d12">30</data>
+    </node>
+    <node id="31">
+      <data key="d3">Belgium</data>
+      <data key="d4">2611</data>
+      <data key="d5">BELnet</data>
+      <data key="d6">Belgium</data>
+      <data key="d7">2010</data>
+      <data key="d8">5.0</data>
+      <data key="d9">Geel</data>
+      <data key="d10">1</data>
+      <data key="d11">51.16667</data>
+      <data key="d14">Small Node</data>
+      <data key="d12">31</data>
+    </node>
+    <node id="32">
+      <data key="d3">Belgium</data>
+      <data key="d4">2611</data>
+      <data key="d5">BELnet</data>
+      <data key="d7">2010</data>
+      <data key="d9">Brudie</data>
+      <data key="d10">1</data>
+      <data key="d14">Small Node</data>
+      <data key="d12">32</data>
+    </node>
+    <node id="33">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">9.73322</data>
+      <data key="d9">HAN</data>
+      <data key="d10">1</data>
+      <data key="d11">52.37052</data>
+      <data key="d12">33</data>
+    </node>
+    <node id="34">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">8.68333</data>
+      <data key="d9">FRA</data>
+      <data key="d10">1</data>
+      <data key="d11">50.11667</data>
+      <data key="d12">34</data>
+    </node>
+    <node id="35">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">13.06566</data>
+      <data key="d9">POT</data>
+      <data key="d10">1</data>
+      <data key="d11">52.39886</data>
+      <data key="d12">35</data>
+    </node>
+    <node id="36">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">11.00389</data>
+      <data key="d9">ERL</data>
+      <data key="d10">1</data>
+      <data key="d11">49.58972</data>
+      <data key="d12">36</data>
+    </node>
+    <node id="37">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">11.57833</data>
+      <data key="d9">BAY</data>
+      <data key="d10">1</data>
+      <data key="d11">49.94806</data>
+      <data key="d12">37</data>
+    </node>
+    <node id="38">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">14.55062</data>
+      <data key="d9">FFO</data>
+      <data key="d10">1</data>
+      <data key="d11">52.34714</data>
+      <data key="d12">38</data>
+    </node>
+    <node id="39">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">13.41053</data>
+      <data key="d9">ZIB</data>
+      <data key="d10">1</data>
+      <data key="d11">52.52437</data>
+      <data key="d12">39</data>
+    </node>
+    <node id="40">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">13.61667</data>
+      <data key="d9">ZEU</data>
+      <data key="d10">1</data>
+      <data key="d11">52.36667</data>
+      <data key="d12">40</data>
+    </node>
+    <node id="41">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">13.41053</data>
+      <data key="d9">TUB</data>
+      <data key="d10">1</data>
+      <data key="d11">52.52437</data>
+      <data key="d12">41</data>
+    </node>
+    <node id="42">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">13.41053</data>
+      <data key="d9">HUB</data>
+      <data key="d10">1</data>
+      <data key="d11">52.52437</data>
+      <data key="d12">42</data>
+    </node>
+    <node id="43">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">13.41053</data>
+      <data key="d9">ADH</data>
+      <data key="d10">1</data>
+      <data key="d11">52.52437</data>
+      <data key="d12">43</data>
+    </node>
+    <node id="44">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">13.73832</data>
+      <data key="d9">DRE</data>
+      <data key="d10">1</data>
+      <data key="d11">51.05089</data>
+      <data key="d12">44</data>
+    </node>
+    <node id="45">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">12.91667</data>
+      <data key="d9">CHE</data>
+      <data key="d10">1</data>
+      <data key="d11">50.83333</data>
+      <data key="d12">45</data>
+    </node>
+    <node id="46">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">12.37129</data>
+      <data key="d9">LEI</data>
+      <data key="d10">1</data>
+      <data key="d11">51.33962</data>
+      <data key="d12">46</data>
+    </node>
+    <node id="47">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">11.58333</data>
+      <data key="d9">JEN</data>
+      <data key="d10">1</data>
+      <data key="d11">50.93333</data>
+      <data key="d12">47</data>
+    </node>
+    <node id="48">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">10.9</data>
+      <data key="d9">ILM</data>
+      <data key="d10">1</data>
+      <data key="d11">50.68333</data>
+      <data key="d12">48</data>
+    </node>
+    <node id="49">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">8.64944</data>
+      <data key="d9">GSI</data>
+      <data key="d10">1</data>
+      <data key="d11">49.87056</data>
+      <data key="d12">49</data>
+    </node>
+    <node id="50">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">8.69079</data>
+      <data key="d9">HEI</data>
+      <data key="d10">1</data>
+      <data key="d11">49.40768</data>
+      <data key="d12">50</data>
+    </node>
+    <node id="51">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">8.38583</data>
+      <data key="d9">FZK</data>
+      <data key="d10">1</data>
+      <data key="d11">49.00472</data>
+      <data key="d12">51</data>
+    </node>
+    <node id="52">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">9.17702</data>
+      <data key="d9">STU</data>
+      <data key="d10">1</data>
+      <data key="d11">48.78232</data>
+      <data key="d12">52</data>
+    </node>
+    <node id="53">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">11.65</data>
+      <data key="d9">GAR</data>
+      <data key="d10">1</data>
+      <data key="d11">48.25</data>
+      <data key="d12">53</data>
+    </node>
+    <node id="54">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">10.88333</data>
+      <data key="d9">AUG</data>
+      <data key="d10">1</data>
+      <data key="d11">48.36667</data>
+      <data key="d12">54</data>
+    </node>
+    <node id="55">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">12.09556</data>
+      <data key="d9">REG</data>
+      <data key="d10">1</data>
+      <data key="d11">49.015</data>
+      <data key="d12">55</data>
+    </node>
+    <node id="56">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">11.57549</data>
+      <data key="d9">FHM</data>
+      <data key="d10">1</data>
+      <data key="d11">48.13743</data>
+      <data key="d12">56</data>
+    </node>
+    <node id="57">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">9.93611</data>
+      <data key="d9">WUE</data>
+      <data key="d10">1</data>
+      <data key="d11">49.78778</data>
+      <data key="d12">57</data>
+    </node>
+    <node id="58">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">6.08342</data>
+      <data key="d9">AAC</data>
+      <data key="d10">1</data>
+      <data key="d11">50.77664</data>
+      <data key="d12">58</data>
+    </node>
+    <node id="59">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">6.36667</data>
+      <data key="d9">FZJ</data>
+      <data key="d10">1</data>
+      <data key="d11">50.93333</data>
+      <data key="d12">59</data>
+    </node>
+    <node id="60">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">7.01667</data>
+      <data key="d9">DUI</data>
+      <data key="d10">1</data>
+      <data key="d11">51.45</data>
+      <data key="d12">60</data>
+    </node>
+    <node id="61">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">7.21667</data>
+      <data key="d9">BOC</data>
+      <data key="d10">1</data>
+      <data key="d11">51.48333</data>
+      <data key="d12">61</data>
+    </node>
+    <node id="62">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">7.45</data>
+      <data key="d9">DOR</data>
+      <data key="d10">1</data>
+      <data key="d11">51.51667</data>
+      <data key="d12">62</data>
+    </node>
+    <node id="63">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">7.18333</data>
+      <data key="d9">WUP</data>
+      <data key="d10">1</data>
+      <data key="d11">51.26667</data>
+      <data key="d12">63</data>
+    </node>
+    <node id="64">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">6.95</data>
+      <data key="d9">BIR</data>
+      <data key="d10">1</data>
+      <data key="d11">50.93333</data>
+      <data key="d12">64</data>
+    </node>
+    <node id="65">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">7.1</data>
+      <data key="d9">BON</data>
+      <data key="d10">1</data>
+      <data key="d11">50.73333</data>
+      <data key="d12">65</data>
+    </node>
+    <node id="66">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">8.76667</data>
+      <data key="d9">MAR</data>
+      <data key="d10">1</data>
+      <data key="d11">50.81667</data>
+      <data key="d12">66</data>
+    </node>
+    <node id="67">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">8.65</data>
+      <data key="d9">GIE</data>
+      <data key="d10">1</data>
+      <data key="d11">50.58333</data>
+      <data key="d12">67</data>
+    </node>
+    <node id="68">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">9.5</data>
+      <data key="d9">KAS</data>
+      <data key="d10">1</data>
+      <data key="d11">51.31667</data>
+      <data key="d12">68</data>
+    </node>
+    <node id="69">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">8.75439</data>
+      <data key="d9">PAD</data>
+      <data key="d10">1</data>
+      <data key="d11">51.71905</data>
+      <data key="d12">69</data>
+    </node>
+    <node id="70">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">8.2</data>
+      <data key="d9">EWE</data>
+      <data key="d10">1</data>
+      <data key="d11">53.16667</data>
+      <data key="d12">70</data>
+    </node>
+    <node id="71">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">9.93333</data>
+      <data key="d9">GOE</data>
+      <data key="d10">1</data>
+      <data key="d11">51.53333</data>
+      <data key="d12">71</data>
+    </node>
+    <node id="72">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">8.80777</data>
+      <data key="d9">BRE</data>
+      <data key="d10">1</data>
+      <data key="d11">53.07516</data>
+      <data key="d12">72</data>
+    </node>
+    <node id="73">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">10.0</data>
+      <data key="d9">HAM</data>
+      <data key="d10">1</data>
+      <data key="d11">53.55</data>
+      <data key="d12">73</data>
+    </node>
+    <node id="74">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">10.0</data>
+      <data key="d9">DES</data>
+      <data key="d10">1</data>
+      <data key="d11">53.55</data>
+      <data key="d12">74</data>
+    </node>
+    <node id="75">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">12.14049</data>
+      <data key="d9">ROS</data>
+      <data key="d10">1</data>
+      <data key="d11">54.0887</data>
+      <data key="d12">75</data>
+    </node>
+    <node id="76">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">10.13489</data>
+      <data key="d9">KIE</data>
+      <data key="d10">1</data>
+      <data key="d11">54.32133</data>
+      <data key="d12">76</data>
+    </node>
+    <node id="77">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">10.53333</data>
+      <data key="d9">BRA</data>
+      <data key="d10">1</data>
+      <data key="d11">52.26667</data>
+      <data key="d12">77</data>
+    </node>
+    <node id="78">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">11.66667</data>
+      <data key="d9">MAG</data>
+      <data key="d10">1</data>
+      <data key="d11">52.16667</data>
+      <data key="d12">78</data>
+    </node>
+    <node id="79">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">13.38333</data>
+      <data key="d9">GRE</data>
+      <data key="d10">1</data>
+      <data key="d11">54.1</data>
+      <data key="d12">79</data>
+    </node>
+    <node id="80">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">7.75</data>
+      <data key="d9">KAI</data>
+      <data key="d10">1</data>
+      <data key="d11">49.45</data>
+      <data key="d12">80</data>
+    </node>
+    <node id="81">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">7.0</data>
+      <data key="d9">SAA</data>
+      <data key="d10">1</data>
+      <data key="d11">49.23333</data>
+      <data key="d12">81</data>
+    </node>
+    <node id="82">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">7.62571</data>
+      <data key="d9">MUE</data>
+      <data key="d10">1</data>
+      <data key="d11">51.96236</data>
+      <data key="d12">82</data>
+    </node>
+    <node id="83">
+      <data key="d3">Germany</data>
+      <data key="d4">680</data>
+      <data key="d5">DFN</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2011-01</data>
+      <data key="d8">8.53333</data>
+      <data key="d9">BIE</data>
+      <data key="d10">1</data>
+      <data key="d11">52.03333</data>
+      <data key="d12">83</data>
+    </node>
+    <node id="84">
+      <data key="d3">Portugal</data>
+      <data key="d4">1930</data>
+      <data key="d5">FCCN</data>
+      <data key="d6">Portugal</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">-8.61667</data>
+      <data key="d9">Porto</data>
+      <data key="d10">1</data>
+      <data key="d11">41.15</data>
+      <data key="d14">Node with subnodes</data>
+      <data key="d12">84</data>
+    </node>
+    <node id="85">
+      <data key="d3">Portugal</data>
+      <data key="d4">1930</data>
+      <data key="d5">FCCN</data>
+      <data key="d6">Portugal</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">-8.41667</data>
+      <data key="d9">Coimbra</data>
+      <data key="d10">1</data>
+      <data key="d11">40.2</data>
+      <data key="d14">Node with subnodes</data>
+      <data key="d12">85</data>
+    </node>
+    <node id="86">
+      <data key="d3">Portugal</data>
+      <data key="d4">1930</data>
+      <data key="d5">FCCN</data>
+      <data key="d6">Portugal</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">-9.13333</data>
+      <data key="d9">Lisboa</data>
+      <data key="d10">1</data>
+      <data key="d11">38.71667</data>
+      <data key="d14">Node with subnodes</data>
+      <data key="d12">86</data>
+    </node>
+    <node id="87">
+      <data key="d3">Italy</data>
+      <data key="d4">137</data>
+      <data key="d5">GARR</data>
+      <data key="d6">Italy</data>
+      <data key="d7">2010-12</data>
+      <data key="d8">12.4839</data>
+      <data key="d9">RM-2</data>
+      <data key="d10">1</data>
+      <data key="d11">41.89474</data>
+      <data key="d12">87</data>
+    </node>
+    <node id="88">
+      <data key="d3">Italy</data>
+      <data key="d4">137</data>
+      <data key="d5">GARR</data>
+      <data key="d6">Italy</data>
+      <data key="d7">2010-12</data>
+      <data key="d8">9.18951</data>
+      <data key="d9">CO</data>
+      <data key="d10">1</data>
+      <data key="d11">45.46427</data>
+      <data key="d12">88</data>
+    </node>
+    <node id="89">
+      <data key="d3">Italy</data>
+      <data key="d4">137</data>
+      <data key="d5">GARR</data>
+      <data key="d6">Italy</data>
+      <data key="d7">2010-12</data>
+      <data key="d8">10.39659</data>
+      <data key="d9">PI</data>
+      <data key="d10">1</data>
+      <data key="d11">43.71553</data>
+      <data key="d12">89</data>
+    </node>
+    <node id="90">
+      <data key="d3">Italy</data>
+      <data key="d4">137</data>
+      <data key="d5">GARR</data>
+      <data key="d6">Italy</data>
+      <data key="d7">2010-12</data>
+      <data key="d8">9.13462</data>
+      <data key="d9">CA</data>
+      <data key="d10">1</data>
+      <data key="d11">39.20738</data>
+      <data key="d12">90</data>
+    </node>
+    <node id="91">
+      <data key="d3">Italy</data>
+      <data key="d4">137</data>
+      <data key="d5">GARR</data>
+      <data key="d6">Italy</data>
+      <data key="d7">2010-12</data>
+      <data key="d8">9.13462</data>
+      <data key="d9">CA-1</data>
+      <data key="d10">1</data>
+      <data key="d11">39.20738</data>
+      <data key="d12">91</data>
+    </node>
+    <node id="92">
+      <data key="d3">Italy</data>
+      <data key="d4">137</data>
+      <data key="d5">GARR</data>
+      <data key="d6">Italy</data>
+      <data key="d7">2010-12</data>
+      <data key="d8">12.4839</data>
+      <data key="d9">RM-1</data>
+      <data key="d10">1</data>
+      <data key="d11">41.89474</data>
+      <data key="d12">92</data>
+    </node>
+    <node id="93">
+      <data key="d3">Italy</data>
+      <data key="d4">137</data>
+      <data key="d5">GARR</data>
+      <data key="d6">Italy</data>
+      <data key="d7">2010-12</data>
+      <data key="d8">12.66868</data>
+      <data key="d9">FRA</data>
+      <data key="d10">1</data>
+      <data key="d11">41.81632</data>
+      <data key="d12">93</data>
+    </node>
+    <node id="94">
+      <data key="d3">Italy</data>
+      <data key="d4">137</data>
+      <data key="d5">GARR</data>
+      <data key="d6">Italy</data>
+      <data key="d7">2010-12</data>
+      <data key="d8">16.85118</data>
+      <data key="d9">BA</data>
+      <data key="d10">1</data>
+      <data key="d11">41.11773</data>
+      <data key="d12">94</data>
+    </node>
+    <node id="95">
+      <data key="d3">Italy</data>
+      <data key="d4">137</data>
+      <data key="d5">GARR</data>
+      <data key="d6">Italy</data>
+      <data key="d7">2010-12</data>
+      <data key="d8">14.25</data>
+      <data key="d9">NA</data>
+      <data key="d10">1</data>
+      <data key="d11">40.83333</data>
+      <data key="d12">95</data>
+    </node>
+    <node id="96">
+      <data key="d3">Italy</data>
+      <data key="d4">137</data>
+      <data key="d5">GARR</data>
+      <data key="d6">Italy</data>
+      <data key="d7">2010-12</data>
+      <data key="d8">15.08719</data>
+      <data key="d9">CT</data>
+      <data key="d10">1</data>
+      <data key="d11">37.50213</data>
+      <data key="d12">96</data>
+    </node>
+    <node id="97">
+      <data key="d3">Italy</data>
+      <data key="d4">137</data>
+      <data key="d5">GARR</data>
+      <data key="d6">Italy</data>
+      <data key="d7">2010-12</data>
+      <data key="d8">13.78</data>
+      <data key="d9">TS-1</data>
+      <data key="d10">1</data>
+      <data key="d11">45.64861</data>
+      <data key="d12">97</data>
+    </node>
+    <node id="98">
+      <data key="d3">Italy</data>
+      <data key="d4">137</data>
+      <data key="d5">GARR</data>
+      <data key="d6">Italy</data>
+      <data key="d7">2010-12</data>
+      <data key="d8">11.88181</data>
+      <data key="d9">PD</data>
+      <data key="d10">1</data>
+      <data key="d11">45.41519</data>
+      <data key="d12">98</data>
+    </node>
+    <node id="99">
+      <data key="d3">Italy</data>
+      <data key="d4">137</data>
+      <data key="d5">GARR</data>
+      <data key="d6">Italy</data>
+      <data key="d7">2010-12</data>
+      <data key="d8">9.18951</data>
+      <data key="d9">MI-1</data>
+      <data key="d10">1</data>
+      <data key="d11">45.46427</data>
+      <data key="d12">99</data>
+    </node>
+    <node id="100">
+      <data key="d3">Italy</data>
+      <data key="d4">137</data>
+      <data key="d5">GARR</data>
+      <data key="d6">Italy</data>
+      <data key="d7">2010-12</data>
+      <data key="d8">9.18951</data>
+      <data key="d9">MI-4</data>
+      <data key="d10">1</data>
+      <data key="d11">45.46427</data>
+      <data key="d12">100</data>
+    </node>
+    <node id="101">
+      <data key="d3">Italy</data>
+      <data key="d4">137</data>
+      <data key="d5">GARR</data>
+      <data key="d6">Italy</data>
+      <data key="d7">2010-12</data>
+      <data key="d8">9.18951</data>
+      <data key="d9">MI-2</data>
+      <data key="d10">1</data>
+      <data key="d11">45.46427</data>
+      <data key="d12">101</data>
+    </node>
+    <node id="102">
+      <data key="d3">Italy</data>
+      <data key="d4">137</data>
+      <data key="d5">GARR</data>
+      <data key="d6">Italy</data>
+      <data key="d7">2010-12</data>
+      <data key="d8">7.68682</data>
+      <data key="d9">TO</data>
+      <data key="d10">1</data>
+      <data key="d11">45.07049</data>
+      <data key="d12">102</data>
+    </node>
+    <node id="103">
+      <data key="d3">Italy</data>
+      <data key="d4">137</data>
+      <data key="d5">GARR</data>
+      <data key="d6">Italy</data>
+      <data key="d7">2010-12</data>
+      <data key="d8">11.25</data>
+      <data key="d9">FI</data>
+      <data key="d10">1</data>
+      <data key="d11">43.76667</data>
+      <data key="d12">103</data>
+    </node>
+    <node id="104">
+      <data key="d3">Italy</data>
+      <data key="d4">137</data>
+      <data key="d5">GARR</data>
+      <data key="d6">Italy</data>
+      <data key="d7">2010-12</data>
+      <data key="d8">11.33875</data>
+      <data key="d9">BO</data>
+      <data key="d10">1</data>
+      <data key="d11">44.49381</data>
+      <data key="d12">104</data>
+    </node>
+    <node id="105">
+      <data key="d3">Italy</data>
+      <data key="d4">137</data>
+      <data key="d5">GARR</data>
+      <data key="d6">Italy</data>
+      <data key="d7">2010-12</data>
+      <data key="d8">9.18951</data>
+      <data key="d9">MI-3</data>
+      <data key="d10">1</data>
+      <data key="d11">45.46427</data>
+      <data key="d12">105</data>
+    </node>
+    <node id="106">
+      <data key="d3">Europe</data>
+      <data key="d4">20965</data>
+      <data key="d5">GEANT</data>
+      <data key="d6">United Kingdom</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">-0.12574</data>
+      <data key="d9">UK</data>
+      <data key="d10">1</data>
+      <data key="d11">51.50853</data>
+      <data key="d14">Fully Featured</data>
+      <data key="d12">106</data>
+    </node>
+    <node id="107">
+      <data key="d3">Europe</data>
+      <data key="d4">20965</data>
+      <data key="d5">GEANT</data>
+      <data key="d6">Estonia</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">24.75353</data>
+      <data key="d9">EE</data>
+      <data key="d10">1</data>
+      <data key="d11">59.43696</data>
+      <data key="d14">IP/MPLS only</data>
+      <data key="d12">107</data>
+    </node>
+    <node id="108">
+      <data key="d3">Europe</data>
+      <data key="d4">20965</data>
+      <data key="d5">GEANT</data>
+      <data key="d6">Latvia</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">24.10589</data>
+      <data key="d9">LV</data>
+      <data key="d10">1</data>
+      <data key="d11">56.946</data>
+      <data key="d14">IP/MPLS only</data>
+      <data key="d12">108</data>
+    </node>
+    <node id="109">
+      <data key="d3">Europe</data>
+      <data key="d4">20965</data>
+      <data key="d5">GEANT</data>
+      <data key="d6">Lithuania</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">23.9</data>
+      <data key="d9">LT</data>
+      <data key="d10">1</data>
+      <data key="d11">54.9</data>
+      <data key="d14">IP/MPLS only</data>
+      <data key="d12">109</data>
+    </node>
+    <node id="110">
+      <data key="d3">Europe</data>
+      <data key="d4">20965</data>
+      <data key="d5">GEANT</data>
+      <data key="d6">Denmark</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">12.56553</data>
+      <data key="d9">DK</data>
+      <data key="d10">1</data>
+      <data key="d11">55.67594</data>
+      <data key="d14">Fully Featured</data>
+      <data key="d12">110</data>
+    </node>
+    <node id="111">
+      <data key="d3">Europe</data>
+      <data key="d4">20965</data>
+      <data key="d5">GEANT</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">16.96667</data>
+      <data key="d9">PL</data>
+      <data key="d10">1</data>
+      <data key="d11">52.41667</data>
+      <data key="d14">Off fibre net</data>
+      <data key="d12">111</data>
+    </node>
+    <node id="112">
+      <data key="d3">Europe</data>
+      <data key="d4">20965</data>
+      <data key="d5">GEANT</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">4.88969</data>
+      <data key="d9">NL</data>
+      <data key="d10">1</data>
+      <data key="d11">52.37403</data>
+      <data key="d14">Fully Featured</data>
+      <data key="d12">112</data>
+    </node>
+    <node id="113">
+      <data key="d3">Europe</data>
+      <data key="d4">20965</data>
+      <data key="d5">GEANT</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">2.3488</data>
+      <data key="d9">FR</data>
+      <data key="d10">1</data>
+      <data key="d11">48.85341</data>
+      <data key="d14">Fully Featured</data>
+      <data key="d12">113</data>
+    </node>
+    <node id="114">
+      <data key="d3">Europe</data>
+      <data key="d4">20965</data>
+      <data key="d5">GEANT</data>
+      <data key="d6">Germany</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">8.68333</data>
+      <data key="d9">DE</data>
+      <data key="d10">1</data>
+      <data key="d11">50.11667</data>
+      <data key="d14">Fully Featured</data>
+      <data key="d12">114</data>
+    </node>
+    <node id="115">
+      <data key="d3">Europe</data>
+      <data key="d4">20965</data>
+      <data key="d5">GEANT</data>
+      <data key="d6">Czech Republic</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">14.42076</data>
+      <data key="d9">CZ</data>
+      <data key="d10">1</data>
+      <data key="d11">50.08804</data>
+      <data key="d14">Fully Featured</data>
+      <data key="d12">115</data>
+    </node>
+    <node id="116">
+      <data key="d3">Europe</data>
+      <data key="d4">20965</data>
+      <data key="d5">GEANT</data>
+      <data key="d6">Switzerland</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">7.44744</data>
+      <data key="d9">CH</data>
+      <data key="d10">1</data>
+      <data key="d11">46.94809</data>
+      <data key="d14">Fully Featured</data>
+      <data key="d12">116</data>
+    </node>
+    <node id="117">
+      <data key="d3">Europe</data>
+      <data key="d4">20965</data>
+      <data key="d5">GEANT</data>
+      <data key="d6">Italy</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">9.18951</data>
+      <data key="d9">IT</data>
+      <data key="d10">1</data>
+      <data key="d11">45.46427</data>
+      <data key="d14">Fully Featured</data>
+      <data key="d12">117</data>
+    </node>
+    <node id="118">
+      <data key="d3">Europe</data>
+      <data key="d4">20965</data>
+      <data key="d5">GEANT</data>
+      <data key="d6">Spain</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">-3.70256</data>
+      <data key="d9">ES</data>
+      <data key="d10">1</data>
+      <data key="d11">40.4165</data>
+      <data key="d14">Fully Featured</data>
+      <data key="d12">118</data>
+    </node>
+    <node id="119">
+      <data key="d3">Europe</data>
+      <data key="d4">20965</data>
+      <data key="d5">GEANT</data>
+      <data key="d6">Hungary</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">19.03991</data>
+      <data key="d9">HU</data>
+      <data key="d10">1</data>
+      <data key="d11">47.49801</data>
+      <data key="d14">Fully Featured</data>
+      <data key="d12">119</data>
+    </node>
+    <node id="120">
+      <data key="d3">Europe</data>
+      <data key="d4">20965</data>
+      <data key="d5">GEANT</data>
+      <data key="d6">Austria</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">16.37208</data>
+      <data key="d9">AT</data>
+      <data key="d10">1</data>
+      <data key="d11">48.20849</data>
+      <data key="d14">Fully Featured</data>
+      <data key="d12">120</data>
+    </node>
+    <node id="121">
+      <data key="d3">Europe</data>
+      <data key="d4">20965</data>
+      <data key="d5">GEANT</data>
+      <data key="d6">Bulgaria</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">23.32415</data>
+      <data key="d9">BG</data>
+      <data key="d10">1</data>
+      <data key="d11">42.69751</data>
+      <data key="d14">IP/MPLS only</data>
+      <data key="d12">121</data>
+    </node>
+    <node id="122">
+      <data key="d3">Europe</data>
+      <data key="d4">20965</data>
+      <data key="d5">GEANT</data>
+      <data key="d6">Romania</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">26.10626</data>
+      <data key="d9">RO</data>
+      <data key="d10">1</data>
+      <data key="d11">44.43225</data>
+      <data key="d14">IP/MPLS only</data>
+      <data key="d12">122</data>
+    </node>
+    <node id="123">
+      <data key="d3">Europe</data>
+      <data key="d4">20965</data>
+      <data key="d5">GEANT</data>
+      <data key="d6">Greece</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">23.71622</data>
+      <data key="d9">GR</data>
+      <data key="d10">1</data>
+      <data key="d11">37.97945</data>
+      <data key="d14">Off fibre net</data>
+      <data key="d12">123</data>
+    </node>
+    <node id="124">
+      <data key="d3">UK</data>
+      <data key="d4">786</data>
+      <data key="d5">JANET</data>
+      <data key="d6">United Kingdom</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">-4.25763</data>
+      <data key="d9">Glasgow</data>
+      <data key="d10">1</data>
+      <data key="d11">55.86515</data>
+      <data key="d14">Core Node</data>
+      <data key="d12">124</data>
+    </node>
+    <node id="125">
+      <data key="d3">UK</data>
+      <data key="d4">786</data>
+      <data key="d5">JANET</data>
+      <data key="d6">United Kingdom</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">-2.58024</data>
+      <data key="d9">Warrington</data>
+      <data key="d10">1</data>
+      <data key="d11">53.39254</data>
+      <data key="d14">Core Node</data>
+      <data key="d12">125</data>
+    </node>
+    <node id="126">
+      <data key="d3">UK</data>
+      <data key="d4">786</data>
+      <data key="d5">JANET</data>
+      <data key="d6">United Kingdom</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">-1.54785</data>
+      <data key="d9">Leeds</data>
+      <data key="d10">1</data>
+      <data key="d11">53.79648</data>
+      <data key="d14">Core Node</data>
+      <data key="d12">126</data>
+    </node>
+    <node id="127">
+      <data key="d3">UK</data>
+      <data key="d4">786</data>
+      <data key="d5">JANET</data>
+      <data key="d6">United Kingdom</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">-0.97113</data>
+      <data key="d9">Reading</data>
+      <data key="d10">1</data>
+      <data key="d11">51.45625</data>
+      <data key="d14">Core Node</data>
+      <data key="d12">127</data>
+    </node>
+    <node id="128">
+      <data key="d3">UK</data>
+      <data key="d4">786</data>
+      <data key="d5">JANET</data>
+      <data key="d6">United Kingdom</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">-2.58333</data>
+      <data key="d9">Bristol</data>
+      <data key="d10">1</data>
+      <data key="d11">51.45</data>
+      <data key="d14">Core Node</data>
+      <data key="d12">128</data>
+    </node>
+    <node id="129">
+      <data key="d3">UK</data>
+      <data key="d4">786</data>
+      <data key="d5">JANET</data>
+      <data key="d6">United Kingdom</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">-0.12574</data>
+      <data key="d9">London</data>
+      <data key="d10">1</data>
+      <data key="d11">51.50853</data>
+      <data key="d14">Core Node</data>
+      <data key="d12">129</data>
+    </node>
+    <node id="130">
+      <data key="d3">UK</data>
+      <data key="d4">786</data>
+      <data key="d5">JANET</data>
+      <data key="d6">United Kingdom</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">-0.12574</data>
+      <data key="d9">Telecity</data>
+      <data key="d10">1</data>
+      <data key="d11">51.50853</data>
+      <data key="d14">Core Node</data>
+      <data key="d12">130</data>
+    </node>
+    <node id="131">
+      <data key="d3">UK</data>
+      <data key="d4">786</data>
+      <data key="d5">JANET</data>
+      <data key="d6">United Kingdom</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">-0.12574</data>
+      <data key="d9">Telehouse</data>
+      <data key="d10">1</data>
+      <data key="d11">51.50853</data>
+      <data key="d14">Core Node</data>
+      <data key="d12">131</data>
+    </node>
+    <node id="132">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">18.64637</data>
+      <data key="d9">Gdansk</data>
+      <data key="d10">1</data>
+      <data key="d11">54.35205</data>
+      <data key="d12">132</data>
+    </node>
+    <node id="133">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">16.17222</data>
+      <data key="d9">Koszalin</data>
+      <data key="d10">1</data>
+      <data key="d11">54.19438</data>
+      <data key="d12">133</data>
+    </node>
+    <node id="134">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">14.55302</data>
+      <data key="d9">Szczecin</data>
+      <data key="d10">1</data>
+      <data key="d11">53.42894</data>
+      <data key="d12">134</data>
+    </node>
+    <node id="135">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">15.50643</data>
+      <data key="d9">Zielona gora</data>
+      <data key="d10">1</data>
+      <data key="d11">51.93548</data>
+      <data key="d12">135</data>
+    </node>
+    <node id="136">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">16.96667</data>
+      <data key="d9">Poznan</data>
+      <data key="d10">1</data>
+      <data key="d11">52.41667</data>
+      <data key="d12">136</data>
+    </node>
+    <node id="137">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">18.00762</data>
+      <data key="d9">Bydgoszcz</data>
+      <data key="d10">1</data>
+      <data key="d11">53.1235</data>
+      <data key="d12">137</data>
+    </node>
+    <node id="138">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">18.59814</data>
+      <data key="d9">Torun</data>
+      <data key="d10">1</data>
+      <data key="d11">53.01375</data>
+      <data key="d12">138</data>
+    </node>
+    <node id="139">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">20.48333</data>
+      <data key="d9">Olsztyn</data>
+      <data key="d10">1</data>
+      <data key="d11">53.78333</data>
+      <data key="d12">139</data>
+    </node>
+    <node id="140">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">23.15</data>
+      <data key="d9">Bialystok</data>
+      <data key="d10">1</data>
+      <data key="d11">53.13333</data>
+      <data key="d12">140</data>
+    </node>
+    <node id="141">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">21.01178</data>
+      <data key="d9">Warszawa</data>
+      <data key="d10">1</data>
+      <data key="d11">52.22977</data>
+      <data key="d12">141</data>
+    </node>
+    <node id="142">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">21.14714</data>
+      <data key="d9">Radom</data>
+      <data key="d10">1</data>
+      <data key="d11">51.40253</data>
+      <data key="d12">142</data>
+    </node>
+    <node id="143">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">19.46667</data>
+      <data key="d9">Lodz</data>
+      <data key="d10">1</data>
+      <data key="d11">51.75</data>
+      <data key="d12">143</data>
+    </node>
+    <node id="144">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">21.96939</data>
+      <data key="d9">Pulawy</data>
+      <data key="d10">1</data>
+      <data key="d11">51.41655</data>
+      <data key="d12">144</data>
+    </node>
+    <node id="145">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">22.56667</data>
+      <data key="d9">Lublin</data>
+      <data key="d10">1</data>
+      <data key="d11">51.25</data>
+      <data key="d12">145</data>
+    </node>
+    <node id="146">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">21.99901</data>
+      <data key="d9">Rzeszow</data>
+      <data key="d10">1</data>
+      <data key="d11">50.04132</data>
+      <data key="d12">146</data>
+    </node>
+    <node id="147">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">20.62752</data>
+      <data key="d9">Kielce</data>
+      <data key="d10">1</data>
+      <data key="d11">50.87033</data>
+      <data key="d12">147</data>
+    </node>
+    <node id="148">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">19.91667</data>
+      <data key="d9">Krakow</data>
+      <data key="d10">1</data>
+      <data key="d11">50.08333</data>
+      <data key="d12">148</data>
+    </node>
+    <node id="149">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">19.12409</data>
+      <data key="d9">Czechtochowa</data>
+      <data key="d10">1</data>
+      <data key="d11">50.79646</data>
+      <data key="d12">149</data>
+    </node>
+    <node id="150">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">18.66667</data>
+      <data key="d9">Gliwice</data>
+      <data key="d10">1</data>
+      <data key="d11">50.28333</data>
+      <data key="d12">150</data>
+    </node>
+    <node id="151">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">17.95</data>
+      <data key="d9">Opole</data>
+      <data key="d10">1</data>
+      <data key="d11">50.66667</data>
+      <data key="d12">151</data>
+    </node>
+    <node id="152">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">17.03333</data>
+      <data key="d9">Wroclaw</data>
+      <data key="d10">1</data>
+      <data key="d11">51.1</data>
+      <data key="d12">152</data>
+    </node>
+    <node id="153">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">23.25196</data>
+      <data key="d9">Zamosc</data>
+      <data key="d10">1</data>
+      <data key="d11">50.72314</data>
+      <data key="d12">153</data>
+    </node>
+    <node id="154">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">19.04686</data>
+      <data key="d9">Bielsko-Biala</data>
+      <data key="d10">1</data>
+      <data key="d11">49.82245</data>
+      <data key="d12">154</data>
+    </node>
+    <node id="155">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">19.40884</data>
+      <data key="d9">Elblag</data>
+      <data key="d10">1</data>
+      <data key="d11">54.1522</data>
+      <data key="d12">155</data>
+    </node>
+    <node id="156">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">22.93087</data>
+      <data key="d9">Suwalki</data>
+      <data key="d10">1</data>
+      <data key="d11">54.11175</data>
+      <data key="d12">156</data>
+    </node>
+    <node id="157">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">20.23838</data>
+      <data key="d9">Sochaczew</data>
+      <data key="d10">1</data>
+      <data key="d11">52.22944</data>
+      <data key="d12">157</data>
+    </node>
+    <node id="158">
+      <data key="d3">Poland</data>
+      <data key="d4">9112</data>
+      <data key="d5">PSNC</data>
+      <data key="d6">Poland</data>
+      <data key="d7">2011-07</data>
+      <data key="d8">15.22878</data>
+      <data key="d9">Gorzow Wlkp</data>
+      <data key="d10">1</data>
+      <data key="d11">52.73679</data>
+      <data key="d12">158</data>
+    </node>
+    <node id="159">
+      <data key="d3">Spain</data>
+      <data key="d4">766</data>
+      <data key="d5">RedIris</data>
+      <data key="d6">Spain</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">-5.98694</data>
+      <data key="d9">Andalucia</data>
+      <data key="d10">1</data>
+      <data key="d11">37.37722</data>
+      <data key="d12">159</data>
+    </node>
+    <node id="160">
+      <data key="d3">Spain</data>
+      <data key="d4">766</data>
+      <data key="d5">RedIris</data>
+      <data key="d6">Spain</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">-3.70256</data>
+      <data key="d9">Nacional</data>
+      <data key="d10">1</data>
+      <data key="d11">40.4165</data>
+      <data key="d12">160</data>
+    </node>
+    <node id="161">
+      <data key="d3">Spain</data>
+      <data key="d4">766</data>
+      <data key="d5">RedIris</data>
+      <data key="d6">Spain</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">-3.70256</data>
+      <data key="d9">Madrid</data>
+      <data key="d10">1</data>
+      <data key="d11">40.4165</data>
+      <data key="d12">161</data>
+    </node>
+    <node id="162">
+      <data key="d3">Spain</data>
+      <data key="d4">766</data>
+      <data key="d5">RedIris</data>
+      <data key="d6">Spain</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">2.15899</data>
+      <data key="d9">Cataluna</data>
+      <data key="d10">1</data>
+      <data key="d11">41.38879</data>
+      <data key="d12">162</data>
+    </node>
+    <node id="163">
+      <data key="d3">Spain</data>
+      <data key="d4">766</data>
+      <data key="d5">RedIris</data>
+      <data key="d6">Spain</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">-0.37739</data>
+      <data key="d9">Valencia</data>
+      <data key="d10">1</data>
+      <data key="d11">39.46975</data>
+      <data key="d12">163</data>
+    </node>
+    <node id="164">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">7.75</data>
+      <data key="d9">Strasbourg</data>
+      <data key="d10">1</data>
+      <data key="d11">48.58333</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">164</data>
+    </node>
+    <node id="165">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">6.2</data>
+      <data key="d9">Nancy</data>
+      <data key="d10">1</data>
+      <data key="d11">48.68333</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">165</data>
+    </node>
+    <node id="166">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">4.03333</data>
+      <data key="d9">Reims</data>
+      <data key="d10">1</data>
+      <data key="d11">49.25</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">166</data>
+    </node>
+    <node id="167">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">2.82606</data>
+      <data key="d9">Compiegne</data>
+      <data key="d10">1</data>
+      <data key="d11">49.41794</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">167</data>
+    </node>
+    <node id="168">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">3.06667</data>
+      <data key="d9">Lille</data>
+      <data key="d10">1</data>
+      <data key="d11">50.63333</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">168</data>
+    </node>
+    <node id="169">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">1.09932</data>
+      <data key="d9">Rouen</data>
+      <data key="d10">1</data>
+      <data key="d11">49.44313</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">169</data>
+    </node>
+    <node id="170">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">-0.35912</data>
+      <data key="d9">Caen</data>
+      <data key="d10">1</data>
+      <data key="d11">49.18585</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">170</data>
+    </node>
+    <node id="171">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">-1.68333</data>
+      <data key="d9">Rennes</data>
+      <data key="d10">1</data>
+      <data key="d11">48.08333</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">171</data>
+    </node>
+    <node id="172">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">-1.55336</data>
+      <data key="d9">Nantes</data>
+      <data key="d10">1</data>
+      <data key="d11">47.21725</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">172</data>
+    </node>
+    <node id="173">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">0.33333</data>
+      <data key="d9">Poiters</data>
+      <data key="d10">1</data>
+      <data key="d11">46.58333</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">173</data>
+    </node>
+    <node id="174">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">1.9</data>
+      <data key="d9">Orleans</data>
+      <data key="d10">1</data>
+      <data key="d11">47.91667</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">174</data>
+    </node>
+    <node id="175">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">1.2578</data>
+      <data key="d9">Limoges</data>
+      <data key="d10">1</data>
+      <data key="d11">45.83153</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">175</data>
+    </node>
+    <node id="176">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">-0.56667</data>
+      <data key="d9">Bordeaux</data>
+      <data key="d10">1</data>
+      <data key="d11">44.83333</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">176</data>
+    </node>
+    <node id="177">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">-0.36667</data>
+      <data key="d9">Pau</data>
+      <data key="d10">1</data>
+      <data key="d11">43.3</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">177</data>
+    </node>
+    <node id="178">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">1.44367</data>
+      <data key="d9">Toulouse</data>
+      <data key="d10">1</data>
+      <data key="d11">43.60426</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">178</data>
+    </node>
+    <node id="179">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">3.88333</data>
+      <data key="d9">Montpellier</data>
+      <data key="d10">1</data>
+      <data key="d11">43.6</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">179</data>
+    </node>
+    <node id="180">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">3.08333</data>
+      <data key="d9">Clermont-Ferrand</data>
+      <data key="d10">1</data>
+      <data key="d11">45.78333</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">180</data>
+    </node>
+    <node id="181">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">5.01667</data>
+      <data key="d9">Dijon</data>
+      <data key="d10">1</data>
+      <data key="d11">47.31667</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">181</data>
+    </node>
+    <node id="182">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">6.03333</data>
+      <data key="d9">Besancon</data>
+      <data key="d10">1</data>
+      <data key="d11">47.25</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">182</data>
+    </node>
+    <node id="183">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">5.71667</data>
+      <data key="d9">Grenoble</data>
+      <data key="d10">1</data>
+      <data key="d11">45.16667</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">183</data>
+    </node>
+    <node id="184">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">7.26608</data>
+      <data key="d9">Nice</data>
+      <data key="d10">1</data>
+      <data key="d11">43.70313</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">184</data>
+    </node>
+    <node id="185">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">5.4</data>
+      <data key="d9">Marseille</data>
+      <data key="d10">1</data>
+      <data key="d11">43.3</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">185</data>
+    </node>
+    <node id="186">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">5.75</data>
+      <data key="d9">Cadarache</data>
+      <data key="d10">1</data>
+      <data key="d11">43.7</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">186</data>
+    </node>
+    <node id="187">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">9.15</data>
+      <data key="d9">Corte</data>
+      <data key="d10">1</data>
+      <data key="d11">42.3</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">187</data>
+    </node>
+    <node id="188">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">2.3488</data>
+      <data key="d9">Paris</data>
+      <data key="d10">1</data>
+      <data key="d11">48.85341</data>
+      <data key="d14">Noeuds RENATER Internationaux</data>
+      <data key="d12">188</data>
+    </node>
+    <node id="189">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">4.85</data>
+      <data key="d9">Lyon</data>
+      <data key="d10">1</data>
+      <data key="d11">45.75</data>
+      <data key="d14">Noeuds RENATER Internationaux</data>
+      <data key="d12">189</data>
+    </node>
+    <node id="190">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">-0.55</data>
+      <data key="d9">Angers</data>
+      <data key="d10">1</data>
+      <data key="d11">47.46667</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">190</data>
+    </node>
+    <node id="191">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">0.2</data>
+      <data key="d9">Le Mans</data>
+      <data key="d10">1</data>
+      <data key="d11">48.0</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">191</data>
+    </node>
+    <node id="192">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">0.68333</data>
+      <data key="d9">Tours</data>
+      <data key="d10">1</data>
+      <data key="d11">47.38333</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">192</data>
+    </node>
+    <node id="193">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">2.08333</data>
+      <data key="d9">Vierzon</data>
+      <data key="d10">1</data>
+      <data key="d11">47.21667</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">193</data>
+    </node>
+    <node id="194">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">Switzerland</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">6.14569</data>
+      <data key="d9">Geneve</data>
+      <data key="d10">1</data>
+      <data key="d11">46.20222</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">194</data>
+    </node>
+    <node id="195">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">-2.75</data>
+      <data key="d9">Vannes</data>
+      <data key="d10">1</data>
+      <data key="d11">47.66667</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">195</data>
+    </node>
+    <node id="196">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">-3.36667</data>
+      <data key="d9">Loreient</data>
+      <data key="d10">1</data>
+      <data key="d11">47.75</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">196</data>
+    </node>
+    <node id="197">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">-4.1</data>
+      <data key="d9">Quimper</data>
+      <data key="d10">1</data>
+      <data key="d11">48.0</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">197</data>
+    </node>
+    <node id="198">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">-2.78333</data>
+      <data key="d9">Saint-Brieuc</data>
+      <data key="d10">1</data>
+      <data key="d11">48.51667</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">198</data>
+    </node>
+    <node id="199">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">-3.46667</data>
+      <data key="d9">Lannion</data>
+      <data key="d10">1</data>
+      <data key="d11">48.73333</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">199</data>
+    </node>
+    <node id="200">
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d6">France</data>
+      <data key="d7">2010-08</data>
+      <data key="d8">-4.48333</data>
+      <data key="d9">Brest</data>
+      <data key="d10">1</data>
+      <data key="d11">48.4</data>
+      <data key="d14">Noueds RENATER</data>
+      <data key="d12">200</data>
+    </node>
+    <node id="201">
+      <data key="d13">1</data>
+      <data key="d3">France</data>
+      <data key="d4">2200</data>
+      <data key="d5">RENATER</data>
+      <data key="d7">2010-08</data>
+      <data key="d9" />
+      <data key="d10">1</data>
+      <data key="d12">201</data>
+    </node>
+    <node id="202">
+      <data key="d3">Luxembourg</data>
+      <data key="d10">1</data>
+      <data key="d5">RESTENA</data>
+      <data key="d12">202</data>
+      <data key="d9">ADSL (via Tango)</data>
+      <data key="d4">2602</data>
+      <data key="d7">2011-03</data>
+    </node>
+    <node id="203">
+      <data key="d3">Luxembourg</data>
+      <data key="d4">2602</data>
+      <data key="d5">RESTENA</data>
+      <data key="d6">Luxembourg</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">6.12167</data>
+      <data key="d9">UNI.iu</data>
+      <data key="d10">1</data>
+      <data key="d11">49.62083</data>
+      <data key="d12">203</data>
+    </node>
+    <node id="204">
+      <data key="d3">Luxembourg</data>
+      <data key="d4">2602</data>
+      <data key="d5">RESTENA</data>
+      <data key="d6">Luxembourg</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">6.10778</data>
+      <data key="d9">Rollingergrund</data>
+      <data key="d10">1</data>
+      <data key="d11">49.62278</data>
+      <data key="d12">204</data>
+    </node>
+    <node id="205">
+      <data key="d3">Luxembourg</data>
+      <data key="d4">2602</data>
+      <data key="d5">RESTENA</data>
+      <data key="d6">Luxembourg</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">6.12417</data>
+      <data key="d9">Campus Geesseknaeppchen</data>
+      <data key="d10">1</data>
+      <data key="d11">49.6025</data>
+      <data key="d12">205</data>
+    </node>
+    <node id="206">
+      <data key="d3">Luxembourg</data>
+      <data key="d4">2602</data>
+      <data key="d5">RESTENA</data>
+      <data key="d6">Luxembourg</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">5.98056</data>
+      <data key="d9">Esch-sur-Alzette</data>
+      <data key="d10">1</data>
+      <data key="d11">49.49583</data>
+      <data key="d12">206</data>
+    </node>
+    <node id="207">
+      <data key="d3">Luxembourg</data>
+      <data key="d4">2602</data>
+      <data key="d5">RESTENA</data>
+      <data key="d6">Luxembourg</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">6.10278</data>
+      <data key="d9">Bettembourg</data>
+      <data key="d10">1</data>
+      <data key="d11">49.51861</data>
+      <data key="d12">207</data>
+    </node>
+    <node id="208">
+      <data key="d3">Luxembourg</data>
+      <data key="d4">2602</data>
+      <data key="d5">RESTENA</data>
+      <data key="d6">Luxembourg</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">6.13</data>
+      <data key="d9">Luxembourg</data>
+      <data key="d10">1</data>
+      <data key="d11">49.61167</data>
+      <data key="d12">208</data>
+    </node>
+    <node id="209">
+      <data key="d3">Luxembourg</data>
+      <data key="d4">2602</data>
+      <data key="d5">RESTENA</data>
+      <data key="d6">Luxembourg</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">6.12167</data>
+      <data key="d9">Limpertsberg</data>
+      <data key="d10">1</data>
+      <data key="d11">49.62083</data>
+      <data key="d12">209</data>
+    </node>
+    <node id="210">
+      <data key="d3">Luxembourg</data>
+      <data key="d4">2602</data>
+      <data key="d5">RESTENA</data>
+      <data key="d6">Luxembourg</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">6.14944</data>
+      <data key="d9">RESTENA</data>
+      <data key="d10">1</data>
+      <data key="d11">49.62389</data>
+      <data key="d12">210</data>
+    </node>
+    <node id="211">
+      <data key="d3">Luxembourg</data>
+      <data key="d4">2602</data>
+      <data key="d5">RESTENA</data>
+      <data key="d6">Luxembourg</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">6.14944</data>
+      <data key="d9">BCE</data>
+      <data key="d10">1</data>
+      <data key="d11">49.62389</data>
+      <data key="d12">211</data>
+    </node>
+    <node id="212">
+      <data key="d3">Luxembourg</data>
+      <data key="d4">2602</data>
+      <data key="d5">RESTENA</data>
+      <data key="d6">Luxembourg</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">6.10417</data>
+      <data key="d9">Ettelbruck</data>
+      <data key="d10">1</data>
+      <data key="d11">49.8475</data>
+      <data key="d12">212</data>
+    </node>
+    <node id="213">
+      <data key="d3">Luxembourg</data>
+      <data key="d4">2602</data>
+      <data key="d5">RESTENA</data>
+      <data key="d6">Luxembourg</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">6.15583</data>
+      <data key="d9">Diekirch</data>
+      <data key="d10">1</data>
+      <data key="d11">49.86778</data>
+      <data key="d12">213</data>
+    </node>
+    <node id="214">
+      <data key="d3">Luxembourg</data>
+      <data key="d4">2602</data>
+      <data key="d5">RESTENA</data>
+      <data key="d6">Luxembourg</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">6.13722</data>
+      <data key="d9">Walferdange</data>
+      <data key="d10">1</data>
+      <data key="d11">49.65833</data>
+      <data key="d12">214</data>
+    </node>
+    <node id="215">
+      <data key="d3">Luxembourg</data>
+      <data key="d4">2602</data>
+      <data key="d5">RESTENA</data>
+      <data key="d6">Luxembourg</data>
+      <data key="d7">2011-03</data>
+      <data key="d8">6.13</data>
+      <data key="d9">CCRN</data>
+      <data key="d10">1</data>
+      <data key="d11">49.61167</data>
+      <data key="d12">215</data>
+    </node>
+    <node id="216">
+      <data key="d3">Luxembourg</data>
+      <data key="d10">1</data>
+      <data key="d5">RESTENA</data>
+      <data key="d12">216</data>
+      <data key="d9">ADSL (via EPT)</data>
+      <data key="d4">2602</data>
+      <data key="d7">2011-03</data>
+    </node>
+    <node id="217">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">5.91111</data>
+      <data key="d9">Arnhem</data>
+      <data key="d10">1</data>
+      <data key="d11">51.98</data>
+      <data key="d14">Node with blue background text</data>
+      <data key="d12">217</data>
+    </node>
+    <node id="218">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">5.96944</data>
+      <data key="d9">Apeldoorn</data>
+      <data key="d10">1</data>
+      <data key="d11">52.21</data>
+      <data key="d14">Node</data>
+      <data key="d12">218</data>
+    </node>
+    <node id="219">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">6.20139</data>
+      <data key="d9">Zutphen</data>
+      <data key="d10">1</data>
+      <data key="d11">52.13833</data>
+      <data key="d14">Node</data>
+      <data key="d12">219</data>
+    </node>
+    <node id="220">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">6.89583</data>
+      <data key="d9">Enschede</data>
+      <data key="d10">1</data>
+      <data key="d11">52.21833</data>
+      <data key="d14">Node</data>
+      <data key="d12">220</data>
+    </node>
+    <node id="221">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">6.16389</data>
+      <data key="d9">Deventer</data>
+      <data key="d10">1</data>
+      <data key="d11">52.255</data>
+      <data key="d14">Node</data>
+      <data key="d12">221</data>
+    </node>
+    <node id="222">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">6.09444</data>
+      <data key="d9">Zwolle</data>
+      <data key="d10">1</data>
+      <data key="d11">52.5125</data>
+      <data key="d14">Node</data>
+      <data key="d12">222</data>
+    </node>
+    <node id="223">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">6.19444</data>
+      <data key="d9">Meppel</data>
+      <data key="d10">1</data>
+      <data key="d11">52.69583</data>
+      <data key="d14">Node</data>
+      <data key="d12">223</data>
+    </node>
+    <node id="224">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">6.47639</data>
+      <data key="d9">Hoogeveen</data>
+      <data key="d10">1</data>
+      <data key="d11">52.7225</data>
+      <data key="d14">Node</data>
+      <data key="d12">224</data>
+    </node>
+    <node id="225">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">6.90694</data>
+      <data key="d9">Emmen</data>
+      <data key="d10">1</data>
+      <data key="d11">52.77917</data>
+      <data key="d14">Node</data>
+      <data key="d12">225</data>
+    </node>
+    <node id="226">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">7.03472</data>
+      <data key="d9">Winschoten</data>
+      <data key="d10">1</data>
+      <data key="d11">53.14417</data>
+      <data key="d14">Node</data>
+      <data key="d12">226</data>
+    </node>
+    <node id="227">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">6.56667</data>
+      <data key="d9">Groningen</data>
+      <data key="d10">1</data>
+      <data key="d11">53.21917</data>
+      <data key="d14">Node</data>
+      <data key="d12">227</data>
+    </node>
+    <node id="228">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">6.5625</data>
+      <data key="d9">Assen</data>
+      <data key="d10">1</data>
+      <data key="d11">52.99667</data>
+      <data key="d14">Node</data>
+      <data key="d12">228</data>
+    </node>
+    <node id="229">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">6.60833</data>
+      <data key="d9">Westerbork</data>
+      <data key="d10">1</data>
+      <data key="d11">52.85</data>
+      <data key="d14">Node</data>
+      <data key="d12">229</data>
+    </node>
+    <node id="230">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">6.36944</data>
+      <data key="d9">Dwingeloo</data>
+      <data key="d10">1</data>
+      <data key="d11">52.83417</data>
+      <data key="d14">Node</data>
+      <data key="d12">230</data>
+    </node>
+    <node id="231">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">5.80859</data>
+      <data key="d9">Leeuwarden</data>
+      <data key="d10">1</data>
+      <data key="d11">53.20139</data>
+      <data key="d14">Node with blue background text</data>
+      <data key="d12">231</data>
+    </node>
+    <node id="232">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">4.75933</data>
+      <data key="d9">Den Helder</data>
+      <data key="d10">1</data>
+      <data key="d11">52.95988</data>
+      <data key="d14">Node</data>
+      <data key="d12">232</data>
+    </node>
+    <node id="233">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">4.74861</data>
+      <data key="d9">Alkmaar</data>
+      <data key="d10">1</data>
+      <data key="d11">52.63167</data>
+      <data key="d14">Node</data>
+      <data key="d12">233</data>
+    </node>
+    <node id="234">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">5.475</data>
+      <data key="d9">Lelystad</data>
+      <data key="d10">1</data>
+      <data key="d11">52.50833</data>
+      <data key="d14">Node</data>
+      <data key="d12">234</data>
+    </node>
+    <node id="235">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">4.88969</data>
+      <data key="d9">Amsterdam</data>
+      <data key="d10">1</data>
+      <data key="d11">52.37403</data>
+      <data key="d14">Node with blue background text</data>
+      <data key="d12">235</data>
+    </node>
+    <node id="236">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">4.63683</data>
+      <data key="d9">Haarlem</data>
+      <data key="d10">1</data>
+      <data key="d11">52.38084</data>
+      <data key="d14">Node</data>
+      <data key="d12">236</data>
+    </node>
+    <node id="237">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">4.75</data>
+      <data key="d9">Schiphol-Rijk</data>
+      <data key="d10">1</data>
+      <data key="d11">52.3</data>
+      <data key="d14">Node</data>
+      <data key="d12">237</data>
+    </node>
+    <node id="238">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">4.55694</data>
+      <data key="d9">Lisse</data>
+      <data key="d10">1</data>
+      <data key="d11">52.26</data>
+      <data key="d14">Node</data>
+      <data key="d12">238</data>
+    </node>
+    <node id="239">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">4.46944</data>
+      <data key="d9">Oegstgeest</data>
+      <data key="d10">1</data>
+      <data key="d11">52.18</data>
+      <data key="d14">Node</data>
+      <data key="d12">239</data>
+    </node>
+    <node id="240">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">4.49306</data>
+      <data key="d9">Leiden</data>
+      <data key="d10">1</data>
+      <data key="d11">52.15833</data>
+      <data key="d14">Node</data>
+      <data key="d12">240</data>
+    </node>
+    <node id="241">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">4.29861</data>
+      <data key="d9">Den Haag</data>
+      <data key="d10">1</data>
+      <data key="d11">52.07667</data>
+      <data key="d14">Node with blue background text</data>
+      <data key="d12">241</data>
+    </node>
+    <node id="242">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">4.35556</data>
+      <data key="d9">Delft</data>
+      <data key="d10">1</data>
+      <data key="d11">52.00667</data>
+      <data key="d14">Node</data>
+      <data key="d12">242</data>
+    </node>
+    <node id="243">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">4.47917</data>
+      <data key="d9">Rotterdam</data>
+      <data key="d10">1</data>
+      <data key="d11">51.9225</data>
+      <data key="d14">Node with blue background text</data>
+      <data key="d12">243</data>
+    </node>
+    <node id="244">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">5.17639</data>
+      <data key="d9">Hilversum</data>
+      <data key="d10">1</data>
+      <data key="d11">52.22333</data>
+      <data key="d14">Node</data>
+      <data key="d12">244</data>
+    </node>
+    <node id="245">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">5.00139</data>
+      <data key="d9">Breukelen</data>
+      <data key="d10">1</data>
+      <data key="d11">52.17417</data>
+      <data key="d14">Node</data>
+      <data key="d12">245</data>
+    </node>
+    <node id="246">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">5.12222</data>
+      <data key="d9">Utrecht</data>
+      <data key="d10">1</data>
+      <data key="d11">52.09083</data>
+      <data key="d14">Node</data>
+      <data key="d12">246</data>
+    </node>
+    <node id="247">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">5.16806</data>
+      <data key="d9">Houten</data>
+      <data key="d10">1</data>
+      <data key="d11">52.02833</data>
+      <data key="d14">Node</data>
+      <data key="d12">247</data>
+    </node>
+    <node id="248">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">5.66667</data>
+      <data key="d9">Wageningen</data>
+      <data key="d10">1</data>
+      <data key="d11">51.97</data>
+      <data key="d14">Node</data>
+      <data key="d12">248</data>
+    </node>
+    <node id="249">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">5.85278</data>
+      <data key="d9">Nijmegen</data>
+      <data key="d10">1</data>
+      <data key="d11">51.8425</data>
+      <data key="d14">Node with blue background text</data>
+      <data key="d12">249</data>
+    </node>
+    <node id="250">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">6.16806</data>
+      <data key="d9">Venlo</data>
+      <data key="d10">1</data>
+      <data key="d11">51.37</data>
+      <data key="d14">Node</data>
+      <data key="d12">250</data>
+    </node>
+    <node id="251">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">5.98154</data>
+      <data key="d9">Heerlen</data>
+      <data key="d10">1</data>
+      <data key="d11">50.88365</data>
+      <data key="d14">Node</data>
+      <data key="d12">251</data>
+    </node>
+    <node id="252">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">5.68889</data>
+      <data key="d9">Maastricht</data>
+      <data key="d10">1</data>
+      <data key="d11">50.84833</data>
+      <data key="d14">Node</data>
+      <data key="d12">252</data>
+    </node>
+    <node id="253">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">5.88627</data>
+      <data key="d9">Maasbracht</data>
+      <data key="d10">1</data>
+      <data key="d11">51.13929</data>
+      <data key="d14">Node</data>
+      <data key="d12">253</data>
+    </node>
+    <node id="254">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">5.47778</data>
+      <data key="d9">Eindhoven</data>
+      <data key="d10">1</data>
+      <data key="d11">51.44083</data>
+      <data key="d14">Node</data>
+      <data key="d12">254</data>
+    </node>
+    <node id="255">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">5.51806</data>
+      <data key="d9">Oss</data>
+      <data key="d10">1</data>
+      <data key="d11">51.765</data>
+      <data key="d14">Node</data>
+      <data key="d12">255</data>
+    </node>
+    <node id="256">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">5.30417</data>
+      <data key="d9">Den Bosch</data>
+      <data key="d10">1</data>
+      <data key="d11">51.69917</data>
+      <data key="d14">Node</data>
+      <data key="d12">256</data>
+    </node>
+    <node id="257">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">5.08056</data>
+      <data key="d9">Nieuwegen</data>
+      <data key="d10">1</data>
+      <data key="d11">52.02917</data>
+      <data key="d14">Node</data>
+      <data key="d12">257</data>
+    </node>
+    <node id="258">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">4.70833</data>
+      <data key="d9">Gouda</data>
+      <data key="d10">1</data>
+      <data key="d11">52.01667</data>
+      <data key="d14">Node</data>
+      <data key="d12">258</data>
+    </node>
+    <node id="259">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">4.67361</data>
+      <data key="d9">Dordrecht</data>
+      <data key="d10">1</data>
+      <data key="d11">51.81</data>
+      <data key="d14">Node</data>
+      <data key="d12">259</data>
+    </node>
+    <node id="260">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">5.0913</data>
+      <data key="d9">Tilburg</data>
+      <data key="d10">1</data>
+      <data key="d11">51.55551</data>
+      <data key="d14">Node</data>
+      <data key="d12">260</data>
+    </node>
+    <node id="261">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">4.77596</data>
+      <data key="d9">Breda</data>
+      <data key="d10">1</data>
+      <data key="d11">51.58656</data>
+      <data key="d14">Node</data>
+      <data key="d12">261</data>
+    </node>
+    <node id="262">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">4.29167</data>
+      <data key="d9">Bergen op Zoom</data>
+      <data key="d10">1</data>
+      <data key="d11">51.495</data>
+      <data key="d14">Node</data>
+      <data key="d12">262</data>
+    </node>
+    <node id="263">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">3.91944</data>
+      <data key="d9">Zierikzee</data>
+      <data key="d10">1</data>
+      <data key="d11">51.65</data>
+      <data key="d14">Node</data>
+      <data key="d12">263</data>
+    </node>
+    <node id="264">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">3.61389</data>
+      <data key="d9">Middelburg</data>
+      <data key="d10">1</data>
+      <data key="d11">51.5</data>
+      <data key="d14">Node</data>
+      <data key="d12">264</data>
+    </node>
+    <node id="265">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">3.57361</data>
+      <data key="d9">Vlissingen</data>
+      <data key="d10">1</data>
+      <data key="d11">51.4425</data>
+      <data key="d14">Node</data>
+      <data key="d12">265</data>
+    </node>
+    <node id="266">
+      <data key="d3">Netherlands</data>
+      <data key="d4">1103</data>
+      <data key="d5">SURFnet</data>
+      <data key="d6">Netherlands</data>
+      <data key="d7">2010-10</data>
+      <data key="d8">4.05</data>
+      <data key="d9">Yerseke</data>
+      <data key="d10">1</data>
+      <data key="d11">51.4925</data>
+      <data key="d14">Node</data>
+      <data key="d12">266</data>
+    </node>
+    <node id="267">
+      <data key="d3">Switzerland</data>
+      <data key="d4">559</data>
+      <data key="d5">SWITCH</data>
+      <data key="d6">Switzerland</data>
+      <data key="d7">2011</data>
+      <data key="d8">6.14569</data>
+      <data key="d9">CERN</data>
+      <data key="d10">1</data>
+      <data key="d11">46.20222</data>
+      <data key="d12">267</data>
+    </node>
+    <node id="268">
+      <data key="d3">Switzerland</data>
+      <data key="d4">559</data>
+      <data key="d5">SWITCH</data>
+      <data key="d6">Switzerland</data>
+      <data key="d7">2011</data>
+      <data key="d8">6.63282</data>
+      <data key="d9">Lausanne (University)</data>
+      <data key="d10">1</data>
+      <data key="d11">46.516</data>
+      <data key="d12">268</data>
+    </node>
+    <node id="269">
+      <data key="d3">Switzerland</data>
+      <data key="d4">559</data>
+      <data key="d5">SWITCH</data>
+      <data key="d6">Switzerland</data>
+      <data key="d7">2011</data>
+      <data key="d8">6.14569</data>
+      <data key="d9">Geneva</data>
+      <data key="d10">1</data>
+      <data key="d11">46.20222</data>
+      <data key="d12">269</data>
+    </node>
+    <node id="270">
+      <data key="d3">Switzerland</data>
+      <data key="d4">559</data>
+      <data key="d5">SWITCH</data>
+      <data key="d6">Switzerland</data>
+      <data key="d7">2011</data>
+      <data key="d8">6.63282</data>
+      <data key="d9">Lausanne (EPFL)</data>
+      <data key="d10">1</data>
+      <data key="d11">46.516</data>
+      <data key="d12">270</data>
+    </node>
+    <node id="271">
+      <data key="d3">Switzerland</data>
+      <data key="d4">559</data>
+      <data key="d5">SWITCH</data>
+      <data key="d6">Switzerland</data>
+      <data key="d7">2011</data>
+      <data key="d8">7.44744</data>
+      <data key="d9">Bern</data>
+      <data key="d10">1</data>
+      <data key="d11">46.94809</data>
+      <data key="d12">271</data>
+    </node>
+    <node id="272">
+      <data key="d3">Switzerland</data>
+      <data key="d4">559</data>
+      <data key="d5">SWITCH</data>
+      <data key="d6">Switzerland</data>
+      <data key="d7">2011</data>
+      <data key="d8">7.57327</data>
+      <data key="d9">Basel</data>
+      <data key="d10">1</data>
+      <data key="d11">47.5584</data>
+      <data key="d12">272</data>
+    </node>
+    <node id="273">
+      <data key="d3">Switzerland</data>
+      <data key="d4">559</data>
+      <data key="d5">SWITCH</data>
+      <data key="d6">Switzerland</data>
+      <data key="d7">2011</data>
+      <data key="d8">8.55</data>
+      <data key="d9">Zurich (ETH)</data>
+      <data key="d10">1</data>
+      <data key="d11">47.36667</data>
+      <data key="d12">273</data>
+    </node>
+    <node id="274">
+      <data key="d3">Switzerland</data>
+      <data key="d4">559</data>
+      <data key="d5">SWITCH</data>
+      <data key="d6">Switzerland</data>
+      <data key="d7">2011</data>
+      <data key="d8">9.18333</data>
+      <data key="d9">Kreuzlingen</data>
+      <data key="d10">1</data>
+      <data key="d11">47.65</data>
+      <data key="d12">274</data>
+    </node>
+    <node id="275">
+      <data key="d3">Switzerland</data>
+      <data key="d4">559</data>
+      <data key="d5">SWITCH</data>
+      <data key="d6">Switzerland</data>
+      <data key="d7">2011</data>
+      <data key="d8">8.55</data>
+      <data key="d9">Zurich (University)</data>
+      <data key="d10">1</data>
+      <data key="d11">47.36667</data>
+      <data key="d12">275</data>
+    </node>
+    <node id="276">
+      <data key="d3">Switzerland</data>
+      <data key="d4">559</data>
+      <data key="d5">SWITCH</data>
+      <data key="d6">Switzerland</data>
+      <data key="d7">2011</data>
+      <data key="d8">8.91892</data>
+      <data key="d9">Manno</data>
+      <data key="d10">1</data>
+      <data key="d11">46.03475</data>
+      <data key="d12">276</data>
+    </node>
+    <node id="277">
+      <data key="d3">Switzerland</data>
+      <data key="d4">559</data>
+      <data key="d5">SWITCH</data>
+      <data key="d6">Switzerland</data>
+      <data key="d7">2011</data>
+      <data key="d8">8.55</data>
+      <data key="d9">IXEurope Zurich</data>
+      <data key="d10">1</data>
+      <data key="d11">47.36667</data>
+      <data key="d12">277</data>
+    </node>
+    <edge source="0" target="10">
+      <data key="d15">DWDM</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="1" target="10">
+      <data key="d15">DWDM</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="2" target="10">
+      <data key="d15">DWDM</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="2" target="3">
+      <data key="d15">DWDM</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="4" target="10">
+      <data key="d15">DWDM</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="5" target="10">
+      <data key="d15">DWDM</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="5" target="6">
+      <data key="d15">DWDM</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="7" target="10">
+      <data key="d15">DWDM</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="8" target="9">
+      <data key="d17">Ethernet</data>
+      <data key="d18">1</data>
+      <data key="d15">1G Ethernet</data>
+      <data key="d19">G</data>
+      <data key="d20">1000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="8" target="10">
+      <data key="d17">Ethernet</data>
+      <data key="d18">1</data>
+      <data key="d15">1G Ethernet</data>
+      <data key="d19">G</data>
+      <data key="d20">1000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="9" target="10">
+      <data key="d17">Ethernet</data>
+      <data key="d18">1</data>
+      <data key="d15">1G Ethernet</data>
+      <data key="d19">G</data>
+      <data key="d20">1000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="10" target="11">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="10" target="120">
+      <data key="d21">1.3</data>
+      <data key="d22">4.5</data>
+      <data key="d23">#333333</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="12" target="13">
+      <data key="d15">10 GB/s - redundantno</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="13" target="120">
+      <data key="d21">1.3</data>
+      <data key="d22">4.5</data>
+      <data key="d23">#333333</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="14" target="17">
+      <data key="d15">Blue</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="14" target="15">
+      <data key="d15">Blue</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="15" target="16">
+      <data key="d15">Blue</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="16" target="28">
+      <data key="d15">Blue</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="17" target="27">
+      <data key="d15">Blue</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="18" target="27">
+      <data key="d15">Green</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="18" target="19">
+      <data key="d15">Green</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="19" target="20">
+      <data key="d15">Green</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="20" target="21">
+      <data key="d15">Green</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="21" target="22">
+      <data key="d15">Green</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="22" target="23">
+      <data key="d15">Green</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="23" target="24">
+      <data key="d15">Green</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="24" target="28">
+      <data key="d15">Green</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="25" target="26">
+      <data key="d15">Red</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="25" target="27">
+      <data key="d15">Red</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="26" target="32">
+      <data key="d15">Red</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="27" target="106">
+      <data key="d21">1.3</data>
+      <data key="d22">4.5</data>
+      <data key="d23">#333333</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="27" target="112">
+      <data key="d21">1.3</data>
+      <data key="d22">4.5</data>
+      <data key="d23">#333333</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="27" target="28">
+      <data key="d15">Grey</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="27" target="29">
+      <data key="d15">Grey</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="28" target="31">
+      <data key="d15">Grey</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="28" target="32">
+      <data key="d15">Red</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="29" target="30">
+      <data key="d15">Grey</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="30" target="31">
+      <data key="d15">Grey</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="33" target="34">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="33" target="35">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="33" target="36">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="33" target="38">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="33" target="71">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="33" target="72">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="33" target="75">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="33" target="76">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="33" target="77">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="33" target="83">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="33" target="60">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="34" target="64">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="34" target="67">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="34" target="36">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="34" target="35">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="34" target="49">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="34" target="80">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="34" target="81">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="34" target="114">
+      <data key="d21">1.3</data>
+      <data key="d22">4.5</data>
+      <data key="d23">#333333</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="34" target="51">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="34" target="53">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="34" target="57">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="34" target="58">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="35" target="36">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="35" target="37">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="35" target="38">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="35" target="39">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="35" target="41">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="35" target="44">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="35" target="78">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="35" target="79">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="36" target="37">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="36" target="44">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="36" target="46">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="36" target="48">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="36" target="54">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="36" target="55">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="36" target="57">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="38" target="39">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="39" target="40">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="39" target="41">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="39" target="43">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="40" target="41">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="41" target="74">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="41" target="42">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="42" target="43">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="44" target="45">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="45" target="46">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="46" target="47">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="47" target="48">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="49" target="50">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="50" target="51">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="51" target="80">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="51" target="52">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="52" target="53">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="53" target="56">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="53" target="54">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="55" target="56">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="58" target="65">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="58" target="59">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="59" target="60">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="60" target="82">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="60" target="61">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="61" target="62">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="62" target="63">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="63" target="64">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="64" target="65">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="66" target="67">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="66" target="68">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="68" target="69">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="68" target="71">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="69" target="83">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="70" target="72">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="70" target="82">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="72" target="73">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="73" target="74">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="75" target="76">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="75" target="79">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="77" target="78">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="80" target="81">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="82" target="83">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="84" target="85">
+      <data key="d15">Lambda</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="85" target="86">
+      <data key="d15">Lambda</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="86" target="106">
+      <data key="d21">1.3</data>
+      <data key="d22">4.5</data>
+      <data key="d23">#333333</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="86" target="118">
+      <data key="d21">1.3</data>
+      <data key="d22">4.5</data>
+      <data key="d23">#333333</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="87" target="101">
+      <data key="d18">10</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="87" target="104">
+      <data key="d18">10</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="87" target="89">
+      <data key="d18">2.5</data>
+      <data key="d15">2.5 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">2500000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="87" target="91">
+      <data key="d18">2.5</data>
+      <data key="d15">2.5 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">2500000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="87" target="92">
+      <data key="d15">Fibre ottica spenta (Dark Fibre)</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="87" target="93">
+      <data key="d18">2.5</data>
+      <data key="d15">2.5 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">2500000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="87" target="95">
+      <data key="d18">2.5</data>
+      <data key="d15">2.5 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">2500000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="88" target="97">
+      <data key="d18">2.5</data>
+      <data key="d15">2.5 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">2500000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="88" target="99">
+      <data key="d15">Fibre ottica spenta (Dark Fibre)</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="88" target="100">
+      <data key="d15">Fibre ottica spenta (Dark Fibre)</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="88" target="101">
+      <data key="d18">2.5</data>
+      <data key="d15">2.5 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">2500000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="89" target="103">
+      <data key="d18">2.5</data>
+      <data key="d15">2.5 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">2500000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="89" target="102">
+      <data key="d18">2.5</data>
+      <data key="d15">2.5 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">2500000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="90" target="91">
+      <data key="d15">Fibre ottica spenta (Dark Fibre)</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="91" target="92">
+      <data key="d18">2.5</data>
+      <data key="d15">2.5 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">2500000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="92" target="96">
+      <data key="d18">2.5</data>
+      <data key="d15">2.5 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">2500000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="92" target="93">
+      <data key="d18">2.5</data>
+      <data key="d15">2.5 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">2500000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="94" target="104">
+      <data key="d18">2.5</data>
+      <data key="d15">2.5 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">2500000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="94" target="95">
+      <data key="d18">2.5</data>
+      <data key="d15">2.5 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">2500000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="95" target="96">
+      <data key="d18">2.5</data>
+      <data key="d15">2.5 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">2500000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="97" target="98">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="98" target="104">
+      <data key="d18">2.5</data>
+      <data key="d15">2.5 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">2500000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="98" target="99">
+      <data key="d18">2.5</data>
+      <data key="d15">2.5 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">2500000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="99" target="101">
+      <data key="d18">10</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="99" target="104">
+      <data key="d18">10</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="99" target="105">
+      <data key="d15">Fibre ottica spenta (Dark Fibre)</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="99" target="117">
+      <data key="d21">1.3</data>
+      <data key="d22">4.5</data>
+      <data key="d23">#333333</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="100" target="101">
+      <data key="d15">Fibre ottica spenta (Dark Fibre)</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="101" target="102">
+      <data key="d18">2.5</data>
+      <data key="d15">2.5 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">2500000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="101" target="105">
+      <data key="d15">Fibre ottica spenta (Dark Fibre)</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="101" target="117">
+      <data key="d21">1.3</data>
+      <data key="d22">4.5</data>
+      <data key="d23">#333333</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="103" target="104">
+      <data key="d18">2.5</data>
+      <data key="d15">2.5 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">2500000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="106" target="129">
+      <data key="d21">1.3</data>
+      <data key="d22">4.5</data>
+      <data key="d23">#333333</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="106" target="118">
+      <data key="d21">1.5</data>
+      <data key="d22">4.5</data>
+      <data key="d23">#333333</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="106" target="110">
+      <data key="d21">1.5</data>
+      <data key="d22">4.5</data>
+      <data key="d23">#333333</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="106" target="112">
+      <data key="d21">1.5</data>
+      <data key="d22">4.5</data>
+      <data key="d23">#333333</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="106" target="113">
+      <data key="d17">Fibre</data>
+      <data key="d23">#333333</data>
+      <data key="d15">Lit Fibre</data>
+      <data key="d21">1.5</data>
+      <data key="d22">4.5</data>
+      <data key="d24">Lit </data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="106" target="114">
+      <data key="d21">1.5</data>
+      <data key="d22">4.5</data>
+      <data key="d23">#333333</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="107" target="108">
+      <data key="d18">10</data>
+      <data key="d23">#333333</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d21">1.5</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d22">4.5</data>
+      <data key="d19">G</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="107" target="110">
+      <data key="d18">10</data>
+      <data key="d23">#333333</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d21">1.5</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d22">4.5</data>
+      <data key="d19">G</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="108" target="109">
+      <data key="d18">10</data>
+      <data key="d23">#333333</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d21">1.5</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d22">4.5</data>
+      <data key="d19">G</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="109" target="111">
+      <data key="d18">10</data>
+      <data key="d23">#333333</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d21">1.5</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d22">4.5</data>
+      <data key="d19">G</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="110" target="112">
+      <data key="d17">Fibre</data>
+      <data key="d23">#333333</data>
+      <data key="d15">Lit Fibre</data>
+      <data key="d21">1.5</data>
+      <data key="d22">4.5</data>
+      <data key="d24">Lit </data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="110" target="114">
+      <data key="d17">Fibre</data>
+      <data key="d23">#333333</data>
+      <data key="d15">Lit Fibre</data>
+      <data key="d21">1.5</data>
+      <data key="d22">4.5</data>
+      <data key="d24">Lit </data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="111" target="136">
+      <data key="d21">1.3</data>
+      <data key="d22">4.5</data>
+      <data key="d23">#333333</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="111" target="114">
+      <data key="d18">10</data>
+      <data key="d23">#333333</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d21">1.5</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d22">4.5</data>
+      <data key="d19">G</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="111" target="115">
+      <data key="d18">10</data>
+      <data key="d23">#333333</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d21">1.5</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d22">4.5</data>
+      <data key="d19">G</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="112" target="114">
+      <data key="d17">Fibre</data>
+      <data key="d23">#333333</data>
+      <data key="d15">Lit Fibre</data>
+      <data key="d21">1.5</data>
+      <data key="d22">4.5</data>
+      <data key="d24">Lit </data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="112" target="235">
+      <data key="d21">1.3</data>
+      <data key="d22">4.5</data>
+      <data key="d23">#333333</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="113" target="114">
+      <data key="d21">1.5</data>
+      <data key="d22">4.5</data>
+      <data key="d23">#333333</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="113" target="211">
+      <data key="d21">1.3</data>
+      <data key="d22">4.5</data>
+      <data key="d23">#333333</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="113" target="116">
+      <data key="d17">Fibre</data>
+      <data key="d23">#333333</data>
+      <data key="d15">Lit Fibre</data>
+      <data key="d21">1.5</data>
+      <data key="d22">4.5</data>
+      <data key="d24">Lit </data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="113" target="118">
+      <data key="d18">10</data>
+      <data key="d23">#333333</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d21">1.5</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d22">4.5</data>
+      <data key="d19">G</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="113" target="188">
+      <data key="d21">1.3</data>
+      <data key="d22">4.5</data>
+      <data key="d23">#333333</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="114" target="211">
+      <data key="d21">1.3</data>
+      <data key="d22">4.5</data>
+      <data key="d23">#333333</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="114" target="115">
+      <data key="d17">Fibre</data>
+      <data key="d23">#333333</data>
+      <data key="d15">Lit Fibre</data>
+      <data key="d21">1.5</data>
+      <data key="d22">4.5</data>
+      <data key="d24">Lit </data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="114" target="116">
+      <data key="d17">Fibre</data>
+      <data key="d23">#333333</data>
+      <data key="d15">Lit Fibre</data>
+      <data key="d21">1.5</data>
+      <data key="d22">4.5</data>
+      <data key="d24">Lit </data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="114" target="120">
+      <data key="d18">10</data>
+      <data key="d23">#333333</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d21">1.5</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d22">4.5</data>
+      <data key="d19">G</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="115" target="120">
+      <data key="d21">1.5</data>
+      <data key="d22">4.5</data>
+      <data key="d23">#333333</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="115" target="119">
+      <data key="d21">1.5</data>
+      <data key="d22">4.5</data>
+      <data key="d23">#333333</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="116" target="267">
+      <data key="d21">1.3</data>
+      <data key="d22">4.5</data>
+      <data key="d23">#333333</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="116" target="117">
+      <data key="d17">Fibre</data>
+      <data key="d23">#333333</data>
+      <data key="d15">Lit Fibre</data>
+      <data key="d21">1.5</data>
+      <data key="d22">4.5</data>
+      <data key="d24">Lit </data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="116" target="118">
+      <data key="d17">Fibre</data>
+      <data key="d23">#333333</data>
+      <data key="d15">Lit Fibre</data>
+      <data key="d21">1.5</data>
+      <data key="d22">4.5</data>
+      <data key="d24">Lit </data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="117" target="118">
+      <data key="d18">10</data>
+      <data key="d23">#333333</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d21">1.5</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d22">4.5</data>
+      <data key="d19">G</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="117" target="120">
+      <data key="d17">Fibre</data>
+      <data key="d23">#333333</data>
+      <data key="d15">Lit Fibre</data>
+      <data key="d21">1.5</data>
+      <data key="d22">4.5</data>
+      <data key="d24">Lit </data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="117" target="123">
+      <data key="d18">10</data>
+      <data key="d23">#333333</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d21">1.5</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d22">4.5</data>
+      <data key="d19">G</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="118" target="160">
+      <data key="d21">1.3</data>
+      <data key="d22">4.5</data>
+      <data key="d23">#333333</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="119" target="120">
+      <data key="d21">1.5</data>
+      <data key="d22">4.5</data>
+      <data key="d23">#333333</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="119" target="121">
+      <data key="d18">10</data>
+      <data key="d23">#333333</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d21">1.5</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d22">4.5</data>
+      <data key="d19">G</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="119" target="122">
+      <data key="d18">10</data>
+      <data key="d23">#333333</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d21">1.5</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d22">4.5</data>
+      <data key="d19">G</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="120" target="123">
+      <data key="d18">10</data>
+      <data key="d23">#333333</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d21">1.5</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d22">4.5</data>
+      <data key="d19">G</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="121" target="122">
+      <data key="d18">10</data>
+      <data key="d23">#333333</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d21">1.5</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d22">4.5</data>
+      <data key="d19">G</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="121" target="123">
+      <data key="d18">10</data>
+      <data key="d23">#333333</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d21">1.5</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d22">4.5</data>
+      <data key="d19">G</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="124" target="125">
+      <data key="d15">Red Link</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="125" target="126">
+      <data key="d15">Red Link</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="125" target="127">
+      <data key="d15">Red Link</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="126" target="129">
+      <data key="d15">Red Link</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="127" target="128">
+      <data key="d15">Red Link</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="127" target="130">
+      <data key="d15">Red Link</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="128" target="129">
+      <data key="d15">Red Link</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="129" target="131">
+      <data key="d15">Red Link</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="130" target="131">
+      <data key="d15">Red Link</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="132" target="138">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="132" target="155">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="132" target="133">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="133" target="134">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="134" target="158">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="135" target="152">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="136" target="137">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="136" target="141">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="136" target="143">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="136" target="157">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="136" target="158">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="137" target="138">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="139" target="155">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="139" target="156">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="140" target="156">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="140" target="141">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="141" target="142">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="141" target="143">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="142" target="144">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="142" target="147">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="143" target="157">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="143" target="149">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="144" target="145">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="145" target="153">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="146" target="153">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="146" target="148">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="147" target="148">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="148" target="154">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="149" target="150">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="150" target="154">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="150" target="151">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="151" target="152">
+      <data key="d15">2x10Gb/s</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="159" target="160">
+      <data key="d18">10</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="159" target="163">
+      <data key="d18">2.5</data>
+      <data key="d15">2.5 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">2500000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="160" target="161">
+      <data key="d18">10</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="160" target="162">
+      <data key="d18">10</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="160" target="163">
+      <data key="d18">10</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="162" target="163">
+      <data key="d18">10</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="164" target="165">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="164" target="182">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="165" target="166">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="166" target="188">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="167" target="168">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="167" target="188">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="168" target="188">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="169" target="170">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="169" target="188">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="170" target="171">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="171" target="172">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="171" target="198">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="172" target="176">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="172" target="190">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="172" target="195">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="173" target="176">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="173" target="174">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="173" target="175">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="174" target="192">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="174" target="193">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="174" target="188">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="175" target="180">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="176" target="180">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="176" target="178">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="176" target="177">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="177" target="178">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="178" target="179">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="179" target="185">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="180" target="189">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="181" target="189">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="181" target="182">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="183" target="186">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="183" target="194">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="183" target="189">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="184" target="185">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="184" target="186">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="185" target="186">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="185" target="187">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="185" target="189">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="188" target="201">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="188" target="189">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="189" target="194">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="190" target="191">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="191" target="192">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="195" target="196">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="196" target="197">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="197" target="200">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="198" target="199">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="199" target="200">
+      <data key="d18">155</data>
+      <data key="d15">155 Mbps</data>
+      <data key="d19">M</data>
+      <data key="d20">155000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="202" target="211">
+      <data key="d17">Fiber</data>
+      <data key="d15">Managed Fiber (10Gbps, 100Mbps)</data>
+      <data key="d24">Managed  (10Gbps, 100Mbps)</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="203" target="209">
+      <data key="d17">Fiber</data>
+      <data key="d18">1</data>
+      <data key="d15">Dark Fiber (1Gbps)</data>
+      <data key="d20">1000000000.0</data>
+      <data key="d19">G</data>
+      <data key="d24">Dark  ()</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="203" target="205">
+      <data key="d17">Fiber</data>
+      <data key="d18">1</data>
+      <data key="d15">Dark Fiber (1Gbps)</data>
+      <data key="d20">1000000000.0</data>
+      <data key="d19">G</data>
+      <data key="d24">Dark  ()</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="204" target="205">
+      <data key="d17">Fiber</data>
+      <data key="d18">1</data>
+      <data key="d15">Dark Fiber (1Gbps)</data>
+      <data key="d20">1000000000.0</data>
+      <data key="d19">G</data>
+      <data key="d24">Dark  ()</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="205" target="208">
+      <data key="d17">Fiber</data>
+      <data key="d15">Dark Fiber (1-10Gbps)</data>
+      <data key="d24">Dark  (1-10Gbps)</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="205" target="206">
+      <data key="d17">Fiber</data>
+      <data key="d15">Dark Fiber (1-10Gbps)</data>
+      <data key="d24">Dark  (1-10Gbps)</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="206" target="207">
+      <data key="d17">Fiber</data>
+      <data key="d15">Dark Fiber (1-10Gbps)</data>
+      <data key="d24">Dark  (1-10Gbps)</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="207" target="210">
+      <data key="d17">Fiber</data>
+      <data key="d15">Dark Fiber (1-10Gbps)</data>
+      <data key="d24">Dark  (1-10Gbps)</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="208" target="210">
+      <data key="d17">Fiber</data>
+      <data key="d15">Dark Fiber (1-10Gbps)</data>
+      <data key="d24">Dark  (1-10Gbps)</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="209" target="211">
+      <data key="d17">Fiber</data>
+      <data key="d18">1</data>
+      <data key="d15">Dark Fiber (1Gbps)</data>
+      <data key="d20">1000000000.0</data>
+      <data key="d19">G</data>
+      <data key="d24">Dark  ()</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="210" target="211">
+      <data key="d17">Fiber</data>
+      <data key="d15">Dark Fiber (1-10Gbps)</data>
+      <data key="d24">Dark  (1-10Gbps)</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="210" target="213">
+      <data key="d17">Fiber</data>
+      <data key="d15">Managed Fiber (10Gbps, 100Mbps)</data>
+      <data key="d24">Managed  (10Gbps, 100Mbps)</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="210" target="214">
+      <data key="d17">Fiber</data>
+      <data key="d15">Managed Fiber (10Gbps, 100Mbps)</data>
+      <data key="d24">Managed  (10Gbps, 100Mbps)</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="210" target="215">
+      <data key="d17">Fiber</data>
+      <data key="d15">Managed Fiber (10Gbps, 100Mbps)</data>
+      <data key="d24">Managed  (10Gbps, 100Mbps)</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="210" target="216">
+      <data key="d17">Fiber</data>
+      <data key="d15">Managed Fiber (10Gbps, 100Mbps)</data>
+      <data key="d24">Managed  (10Gbps, 100Mbps)</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="211" target="212">
+      <data key="d17">Fiber</data>
+      <data key="d18">1</data>
+      <data key="d15">Dark Fiber (1Gbps)</data>
+      <data key="d20">1000000000.0</data>
+      <data key="d19">G</data>
+      <data key="d24">Dark  ()</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="212" target="213">
+      <data key="d17">Fiber</data>
+      <data key="d18">1</data>
+      <data key="d15">Dark Fiber (1Gbps)</data>
+      <data key="d20">1000000000.0</data>
+      <data key="d19">G</data>
+      <data key="d24">Dark  ()</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="217" target="249">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="217" target="219">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="217" target="221">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="218" target="219">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="218" target="221">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="220" target="249">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="220" target="222">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="221" target="222">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="222" target="234">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="222" target="235">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="222" target="223">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="223" target="224">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="224" target="225">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="224" target="228">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="225" target="226">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="226" target="227">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="227" target="228">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="227" target="231">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="228" target="230">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="229" target="230">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="230" target="235">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="231" target="232">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="232" target="233">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="233" target="235">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="233" target="236">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="234" target="235">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="235" target="240">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="235" target="237">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="235" target="242">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="235" target="244">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="235" target="245">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="235" target="246">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="236" target="240">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="237" target="238">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="238" target="239">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="239" target="240">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="240" target="241">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="240" target="242">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="241" target="242">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="242" target="246">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="242" target="243">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="243" target="259">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="243" target="258">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="244" target="246">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="245" target="246">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="246" target="257">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="246" target="258">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="246" target="247">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="246" target="248">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="246" target="254">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="248" target="249">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="249" target="250">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="250" target="251">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="251" target="252">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="252" target="253">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="253" target="254">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="254" target="256">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="254" target="260">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="255" target="256">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="256" target="257">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="259" target="261">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="260" target="261">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="261" target="262">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="262" target="266">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="262" target="263">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="263" target="264">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="264" target="265">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="265" target="266">
+      <data key="d16">0</data>
+    </edge>
+    <edge source="267" target="268">
+      <data key="d18">10</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="267" target="275">
+      <data key="d18">10</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="267" target="269">
+      <data key="d18">10</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="267" target="270">
+      <data key="d18">10</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="268" target="273">
+      <data key="d18">10</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="268" target="270">
+      <data key="d18">10</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="268" target="271">
+      <data key="d18">10</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="269" target="270">
+      <data key="d18">10</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="270" target="275">
+      <data key="d18">1</data>
+      <data key="d15">1 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">1000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="270" target="276">
+      <data key="d18">10</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="271" target="272">
+      <data key="d18">10</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="271" target="276">
+      <data key="d18">10</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="272" target="273">
+      <data key="d18">10</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="273" target="276">
+      <data key="d18">10</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="273" target="277">
+      <data key="d18">10</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+    <edge source="274" target="275">
+      <data key="d18">10</data>
+      <data key="d15">10 Gbps</data>
+      <data key="d19">G</data>
+      <data key="d20">10000000000.0</data>
+      <data key="d16">0</data>
+    </edge>
+  </graph>
+</graphml>
