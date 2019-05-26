@@ -1,0 +1,3 @@
+https://research.cs.washington.edu/networking/rocketfuel/maps/policy-dist.tar.gz
+https://research.cs.washington.edu/networking/rocketfuel/maps/weights-dist.tar.gz
+https://research.cs.washington.edu/networking/rocketfuel/maps/rocketfuel_maps_cch.tar.gz
