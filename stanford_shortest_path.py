@@ -1,8 +1,17 @@
+import struct
+import socket
+import random
 import networkx as nx
 import matplotlib.pyplot as plt
 
 PORT_TYPE_MULTIPLIER = 10000
 SWITCH_ID_MULTIPLIER = 100000
+
+def ip2int(addr):
+    return struct.unpack("!I", socket.inet_aton(addr))[0]
+
+def int2ip(addr):
+    return socket.inet_ntoa(struct.pack("!I", addr))
 
 def load_ports(filename):
     ports = {}
@@ -118,7 +127,7 @@ def get_shortest_paths_routing(topo):
                 # print u, v, paths[v]
     return routing
 
-def find_all_cycles(G, source=None):
+def find_all_cycles(G, source = None):
     """forked from networkx dfs_edges function. Assumes nodes are integers, or at least
     types which work with min() and > ."""
     if source is None:
@@ -167,17 +176,92 @@ def find_all_cycles(G, source=None):
 
     return [list(i) for i in output_cycles]
 
-def find_all_n_cycles(G, N, source=None):
+def find_all_n_cycles(G, N, source = None):
     return [c for c in find_all_cycles(G, source) if len(c) == N]
+
+def hash_node(node, seed = None):
+    if seed is not None:
+        random.seed(seed)
+    mask = random.getrandbits(32)
+    return hash(node) ^ mask
+
+def power2(num):
+    return num != 0 and ((num & (num-1)) == 0)
+
+def sketchloop(node, path, data, seed):
+    node_hash = hash_node(node, seed)
+
+    if (node_hash == data):
+        return None
+
+    if power2(len(path)):
+        data = node_hash
+    else:
+        data = min(node_hash, data)
+
+    return data
+
+def process_loops(topo, traffic, loops = 0, seed = 65137):
+    spaths = get_shortest_paths(topo)
+    routing = get_shortest_paths_routing(topo)
+
+    # inject 1 loops
+    if loops == 1:
+        for src in routing:
+            for dst in routing[src]:
+                routing[src][dst] = src
+
+    # inject 2 loops
+    elif loops == 2:
+        pass
+
+    # inject 2+ loops
+    elif loops > 2:
+        print find_all_n_cycles(topo, loops)
+        print
+
+    edge_nodes = [n for n in topo.nodes() if topo.node[n]["isHost"]]
+    egde_count = len(edge_nodes)
+
+    prng = random.Random(seed)
+
+    ip2node = {}
+    for record in traffic:
+        for ip in record:
+            if ip not in ip2node:
+                ip2node[ip] = edge_nodes[prng.randint(0, egde_count-1)]
+
+    for i, (srcip, dstip) in enumerate(traffic):
+        src_node = ip2node[srcip]
+        dst_node = ip2node[dstip]
+
+        #print src_node, "->", dst_node
+        print spaths[src_node][dst_node]
+
+        path = []
+        data = None
+        while (src_node != dst_node):
+            path.append(src_node)
+            data = sketchloop(src_node, path, data, seed)
+            if data is None:
+                print " ", "loop detected!"
+                break
+
+            next_node = routing[src_node][dst_node]
+            print " ", src_node, "->", next_node, "(%d)" % data
+            src_node = next_node
+
+        print
 
 if __name__ == "__main__":
     port_file = "stanford-backbone/port_map.txt"
     topo_file = "stanford-backbone/backbone_topology.tf"
 
     topo, _ = get_topology(port_file, topo_file)
-    routing = get_shortest_paths_routing(topo)
 
-    print routing
-    print
+    traffic = [
+        [ip2int('192.168.1.1'), ip2int('10.1.0.1')],
+        [ip2int('192.168.1.1'), ip2int('10.1.0.2')],
+    ]
 
-    print find_all_n_cycles(topo, 7)
+    process_loops(topo, traffic, 3)
