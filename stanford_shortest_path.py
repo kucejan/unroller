@@ -7,53 +7,78 @@ import matplotlib.pyplot as plt
 PORT_TYPE_MULTIPLIER = 10000
 SWITCH_ID_MULTIPLIER = 100000
 
+# no false positives
+# no false negatives
+# implement bloom filter option
+# generate larger topology, random
+
+
 def ip2int(addr):
     return struct.unpack("!I", socket.inet_aton(addr))[0]
 
 def int2ip(addr):
     return socket.inet_ntoa(struct.pack("!I", addr))
 
-def load_ports(filename):
-    ports = {}
-    names = {}
-    f = open(filename, 'r')
-    for line in f:
-        if line.startswith("$"):
-            tokens = line.strip().split("$")
-            switch_name = tokens[1]
+def get_zoo_topology(gml_file):
+    topo = nx.read_gml(gml_file)
+    topo = nx.Graph(topo.to_undirected())
 
-        if not line.startswith("$") and line != "":
-            tokens = line.strip().split(":")
-            port_flat = int(tokens[1])
+    # Relabel nodes to integeres, names available as 'name' attribute
+    topo = nx.relabel.convert_node_labels_to_integers(topo, first_label=1, label_attribute='name')
 
-            dpid = port_flat / SWITCH_ID_MULTIPLIER
-            port = port_flat % PORT_TYPE_MULTIPLIER
+    # Mark all nodes as internal (non host)
+    for n in topo.nodes():
+        topo.nodes[n]['isHost'] = False
 
-            if dpid not in names.keys():
-                names[dpid] = switch_name
-            if dpid not in ports.keys():
-                ports[dpid] = set()
-            if port not in ports[dpid]:
-                ports[dpid].add(port)
-    f.close()
-    return ports, names
+    # Add and wire up hosts
+    offset = len(topo.nodes)
+    for i in range(1, len(topo.nodes) + 1):
+        topo.add_node(offset + i, isHost = True)
+        topo.add_edge(offset + i, i)
 
-def load_topology(filename):
-    links = set()
-    f = open(filename, 'r')
-    for line in f:
-        if line.startswith("link"):
-            tokens = line.split('$')
-            src_port_flat = int(tokens[1].strip('[]').split(', ')[0])
-            dst_port_flat = int(tokens[7].strip('[]').split(', ')[0])
-            links.add((src_port_flat, dst_port_flat))
-    f.close()
-    return links
+    return topo
 
-def get_topology(port_file, topo_file):
+def get_stanford_topology(port_file, topo_file):
 
     topo = nx.Graph()
     link_port_map = {}
+
+    def load_ports(filename):
+        ports = {}
+        names = {}
+        f = open(filename, 'r')
+        for line in f:
+            if line.startswith("$"):
+                tokens = line.strip().split("$")
+                switch_name = tokens[1]
+
+            if not line.startswith("$") and line != "":
+                tokens = line.strip().split(":")
+                port_flat = int(tokens[1])
+
+                dpid = port_flat / SWITCH_ID_MULTIPLIER
+                port = port_flat % PORT_TYPE_MULTIPLIER
+
+                if dpid not in names.keys():
+                    names[dpid] = switch_name
+                if dpid not in ports.keys():
+                    ports[dpid] = set()
+                if port not in ports[dpid]:
+                    ports[dpid].add(port)
+        f.close()
+        return ports, names
+
+    def load_topology(filename):
+        links = set()
+        f = open(filename, 'r')
+        for line in f:
+            if line.startswith("link"):
+                tokens = line.split('$')
+                src_port_flat = int(tokens[1].strip('[]').split(', ')[0])
+                dst_port_flat = int(tokens[7].strip('[]').split(', ')[0])
+                links.add((src_port_flat, dst_port_flat))
+        f.close()
+        return links
 
     # Read topology info
     ports, names = load_ports(port_file)
@@ -91,7 +116,7 @@ def get_topology(port_file, topo_file):
             link_set.add((src_dpid, dst_dpid))
             link_set.add((dst_dpid, src_dpid))
 
-    # Wire up hosts
+    # Add and wire up hosts
     host_id = len(switches) + 1
     for s in switches:
         # Edge ports
@@ -132,10 +157,10 @@ def find_all_cycles(G, source = None):
     types which work with min() and > ."""
     if source is None:
         # produce edges for all components
-        nodes=G.nodes()
+        nodes = G.nodes()
     else:
         # produce edges for components with source
-        nodes=[source]
+        nodes = [source]
     # extra variables for cycle detection:
     cycle_stack = []
     output_cycles = set()
@@ -202,7 +227,7 @@ def sketchloop(node, path, data, seed):
     return data
 
 def process_loops(topo, traffic, loops = 0, seed = 65137):
-    spaths = get_shortest_paths(topo)
+    stpaths = get_shortest_paths(topo)
     routing = get_shortest_paths_routing(topo)
 
     # inject 1 loops
@@ -236,7 +261,7 @@ def process_loops(topo, traffic, loops = 0, seed = 65137):
         dst_node = ip2node[dstip]
 
         #print src_node, "->", dst_node
-        print spaths[src_node][dst_node]
+        print stpaths[src_node][dst_node]
 
         path = []
         data = None
@@ -256,8 +281,10 @@ def process_loops(topo, traffic, loops = 0, seed = 65137):
 if __name__ == "__main__":
     port_file = "stanford-backbone/port_map.txt"
     topo_file = "stanford-backbone/backbone_topology.tf"
+    topo, _ = get_stanford_topology(port_file, topo_file)
 
-    topo, _ = get_topology(port_file, topo_file)
+    #gml_file = 'topology-zoo/archive/Cesnet201006.gml'
+    #topo = get_zoo_topology(gml_files)
 
     traffic = [
         [ip2int('192.168.1.1'), ip2int('10.1.0.1')],
