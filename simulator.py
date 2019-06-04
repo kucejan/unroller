@@ -2,12 +2,15 @@
 # -*- coding: utf-8 -*-
 
 import sys
+sys.path.insert(0, 'python-bloomfilter/')
+
 import struct
 import socket
 import random
 import itertools
 import networkx as nx
 import matplotlib.pyplot as plt
+import pybloom as pb
 
 
 
@@ -26,6 +29,9 @@ class PacketStruct():
 
 	def process_loops(self, node, context):
 		return False
+
+	def report(self):
+		pass
 
 
 class PacketMinSketch(PacketStruct):
@@ -55,8 +61,6 @@ class PacketMinSketch(PacketStruct):
 			except ValueError:
 				pass
 
-		context["path"].append(node)
-
 		node_hash = self.hash_node(node, self.seed)
 
 		if (node_hash == context["minsketch"]):
@@ -67,6 +71,8 @@ class PacketMinSketch(PacketStruct):
 			])
 
 			return False
+
+		context["path"].append(node)
 
 		if power2(len(context["path"])) or "minsketch" not in context:
 			context["minsketch"] = node_hash
@@ -88,28 +94,73 @@ class PacketMinSketch(PacketStruct):
 			maxa = max(maxa, time)
 			suma += time
 
-		print "Num: ", len(self.log)
-		print "Min: ", mina, "X"
-		print "Max: ", maxa, "X"
-		print "Avg: ", suma / len(self.log), "X"
-		print "Mem: ", self.size, "bits"
+		print "Num:", len(self.log)
+		print "Min:", mina, "X"
+		print "Max:", maxa, "X"
+		print "Avg:", suma / len(self.log), "X"
+		print "Mem:", self.size, "bits"
 
 
 class PacketBloomFilter(PacketStruct):
 
+	def __init__(self, capacity, error_rate):
+		self.capacity = capacity
+		self.error_rate = error_rate
+		self.log = []
+
 	def process_loops(self, node, context):
-		node_hash = self.hash_node(node, self._seed)
+		if "path" not in context:
+			context["path"] = []
 
-		if (node_hash == data):
-			return None
+		if "bf" not in context:
+			context["bf"] = pb.BloomFilter(self.capacity, self.error_rate)
 
-		if power2(len(path)):
-			data = node_hash
-		else:
-			data = min(node_hash, data)
+		if "loopstart" not in context:
+			try:
+				context["loopstart"] = context["path"].index(node)
+				context["loopsize"] = len(context["path"]) - context["loopstart"]
+			except ValueError:
+				pass
 
-		return data
+		if (node in context["bf"]):
+			self.log.append([
+				context["loopstart"] if "loopstart" in context else -1,	# B
+				context["loopsize"] if "loopstart" in context else -1,	# L
+				len(context["path"]),	# hops
+			])
 
+			return False
+
+		context["path"].append(node)
+		context["bf"].add(node)
+
+		return True
+
+	def report(self):
+		suma = 0
+		mina = float("inf")
+		maxa = 0
+		fpos = 0
+
+		for record in self.log:
+			B, L, hops = record
+			X = B + L
+			if L <= 0:
+				fpos += 1
+				continue
+			time = float(hops) / X
+			mina = min(mina, time)
+			maxa = max(maxa, time)
+			suma += time
+
+		bf = pb.BloomFilter(self.capacity, self.error_rate)
+
+		print "Num:", len(self.log)
+		print "Fp%:", float(fpos) / len(self.log) * 100, "({})".format(fpos)
+		print "Min:", mina, "X"
+		print "Max:", maxa, "X"
+		print "Avg:", suma / (len(self.log)-fpos) if len(self.log)-fpos != 0 else "--", "X"
+		print "Mem:", bf.num_bits, "bits"
 
 
 class Traffic:
@@ -124,13 +175,13 @@ class Traffic:
 
 class RandomTraffic(Traffic):
 
-	def __init__(self, topo, count = 1000, seed = 65137):
+	def __init__(self, topo, packets = 1000, seed = 65137):
 		self.prng = random.Random(seed)
 		self.edges = topo.edge_nodes()
-		self.count = count
+		self.packets = packets
 
 	def next(self):
-		if self.n < self.count:
+		if self.n < self.packets:
 			self.n += 1
 			return (
 				self.edges[self.prng.randint(0, len(self.edges)-1)],
@@ -424,14 +475,22 @@ if __name__ == "__main__":
 	print "nodes = {} ({} bits)".format(nodes_count, nodes_log2)
 	print
 
-	traffic = RandomTraffic(topo, 100)
+	packets = 10000
+	traffic = RandomTraffic(topo, packets)
 
 	#traffic = RandomMappedTraffic(topo, [
 	#    [ip2int('192.168.1.1'), ip2int('10.1.0.1')],
 	#    [ip2int('192.168.1.1'), ip2int('10.1.0.2')],
 	#])
 
-	pstruct = PacketMinSketch(size=nodes_log2)
-	topo.process_loops(pstruct, traffic, looplen=10, loopnum=10)
+	#ms_size = nodes_log2
+	#pstruct = PacketMinSketch(size=nodes_log2)
 
+	bf_capacity = 20 # nodes_count
+	bf_error_rate = 0.05
+	pstruct = PacketBloomFilter(capacity=bf_capacity, error_rate=bf_error_rate)
+
+	looplen = 10
+	loopnum = 10
+	topo.process_loops(pstruct, traffic, looplen=looplen, loopnum=loopnum)
 	pstruct.report()

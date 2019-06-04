@@ -188,8 +188,8 @@ class BloomFilter(object):
         bits_per_slice = self.bits_per_slice
         hashes = self.make_hashes(key)
         found_all_bits = True
-        if self.count > self.capacity:
-            raise IndexError("BloomFilter is at capacity")
+#jk        if self.count > self.capacity:
+#jk            raise IndexError("BloomFilter is at capacity")
         offset = 0
         for k in hashes:
             if not skip_check and found_all_bits and not bitarray[offset + k]:
