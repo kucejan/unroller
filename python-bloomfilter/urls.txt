@@ -1,0 +1,1 @@
+https://github.com/jaybaird/python-bloomfilter/archive/master.zip
