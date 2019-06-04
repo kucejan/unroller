@@ -360,11 +360,11 @@ class Topology(nx.Graph):
 				loops = self.nodes()
 
 			for i, src in enumerate(loops, 1):
-				print i, [src]
+				#print i, [src]
 				for dst in self.nodes():
 					routing[src][dst] = src
 				#print src, src
-			print
+			#print
 
 		# inject 2+ loops
 		elif looplen > 1:
@@ -372,7 +372,7 @@ class Topology(nx.Graph):
 			iteri = 0
 			for cycle in cycles:
 				if len(cycle) != looplen: continue
-				print iteri+1, cycle
+				#print iteri+1, cycle
 				for src, new in zip(cycle, cycle[1:] + cycle[:1]):
 					for dst in self.nodes():
 						routing[src][dst] = new
@@ -381,28 +381,28 @@ class Topology(nx.Graph):
 				if iteri == loopnum: break
 			if iteri != loopnum:
 				raise Exception('Specfied number (loopnum={}) of length-defined loops (looplen={}) not found!'.format(loopnum, looplen))
-			print
+			#print
 
 		#sys.exit(1)
 
 		# iterate traffic
 		for i, (src_node, dst_node) in enumerate(traffic):
-			print stpaths[src_node][dst_node]
-			print [self.nodes[node]['label'] for node in stpaths[src_node][dst_node]]
+			#print stpaths[src_node][dst_node]
+			#print [self.nodes[node]['label'] for node in stpaths[src_node][dst_node]]
 
 			context = {}
 			while (src_node != dst_node):
 				ret = pstruct.process_loops(src_node, context)
 				if not ret:
-					print " ", "loop detected!"
+					#print " ", "loop detected!"
 					break
 
 				next_node = routing[src_node][dst_node]
-				print " ", src_node, "->", next_node, context
-				print " ", self.nodes[src_node]['label'], "->", self.nodes[next_node]['label'], context
+				#print " ", src_node, "->", next_node, context
+				#print " ", self.nodes[src_node]['label'], "->", self.nodes[next_node]['label'], context
 				src_node = next_node
 
-			print
+			#print
 
 
 
