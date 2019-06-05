@@ -30,15 +30,16 @@ class PacketStruct():
 	def process_loops(self, node, target, context):
 		return False
 
-	def report(self):
+	def report(self, oneline = False):
 		pass
 
 
 class PacketMinSketch(PacketStruct):
 
-	def __init__(self, size = 32, seed = 65137):
+	def __init__(self, size = 32, count = 1, seed = 65137):
 		self.size = size # in bits
 		self.seed = seed
+		self.count = count
 		self.log = []
 
 	def hash_node(self, node, seed = None):
@@ -83,7 +84,9 @@ class PacketMinSketch(PacketStruct):
 
 		return True
 
-	def report(self):
+	def report(self, oneline = False):
+		nl = ";" if oneline else "\n"
+
 		suma = 0
 		mina = float("inf")
 		maxa = 0
@@ -96,12 +99,12 @@ class PacketMinSketch(PacketStruct):
 			maxa = max(maxa, time)
 			suma += time
 
-		print self.__class__.__name__
-		print "Num:", len(self.log)
-		print "Min:", mina, "X"
-		print "Max:", maxa, "X"
-		print "Avg:", suma / len(self.log), "X"
-		print "Mem:", self.size, "bits"
+		print self.__class__.__name__, self.size, self.count, nl,
+		print "Num:", len(self.log), nl,
+		print "Min:", mina, "X", nl,
+		print "Max:", maxa, "X", nl,
+		print "Avg:", suma / len(self.log), "X", nl,
+		print "Mem:", self.size * self.count, "bits", nl,
 		print
 
 
@@ -140,7 +143,9 @@ class PacketBloomFilter(PacketStruct):
 
 		return True
 
-	def report(self):
+	def report(self, oneline = False):
+		nl = ";" if oneline else "\n"
+
 		suma = 0
 		mina = float("inf")
 		maxa = 0
@@ -159,13 +164,13 @@ class PacketBloomFilter(PacketStruct):
 
 		bf = pb.BloomFilter(self.capacity, self.error_rate)
 
-		print self.__class__.__name__
-		print "Num:", len(self.log)
-		print "Fp%:", float(fpos) / len(self.log) * 100, "({})".format(fpos)
-		print "Min:", mina, "X"
-		print "Max:", maxa, "X"
-		print "Avg:", suma / (len(self.log)-fpos) if len(self.log)-fpos != 0 else "--", "X"
-		print "Mem:", bf.num_bits, "bits"
+		print self.__class__.__name__, self.capacity, self.error_rate, nl,
+		print "Num:", len(self.log), nl,
+		print "Fp%:", float(fpos) / len(self.log) * 100, "({})".format(fpos), nl,
+		print "Min:", mina, "X", nl,
+		print "Max:", maxa, "X", nl,
+		print "Avg:", suma / (len(self.log)-fpos) if len(self.log)-fpos != 0 else "--", "X", nl,
+		print "Mem:", bf.num_bits, "bits", nl,
 		print
 
 
@@ -193,6 +198,28 @@ class RandomTraffic(Traffic):
 				self.edges[self.prng.randint(0, len(self.edges)-1)],
 				self.edges[self.prng.randint(0, len(self.edges)-1)],
 			)
+		else:
+			raise StopIteration
+
+
+class RandomGeneratedTraffic(Traffic):
+
+	def __init__(self, topo, packets = 1000, seed = 65137):
+		self.prng = random.Random(seed)
+		self.edges = topo.edge_nodes()
+		self.packets = []
+
+		for i in range(0, packets):
+			self.packets.append((
+				self.edges[self.prng.randint(0, len(self.edges)-1)],
+				self.edges[self.prng.randint(0, len(self.edges)-1)],
+			))
+
+	def next(self):
+		if self.n < len(self.packets):
+			ret = self.packets[self.n]
+			self.n += 1
+			return ret
 		else:
 			raise StopIteration
 
@@ -497,21 +524,27 @@ if __name__ == "__main__":
 	looplen = range(5, 10) # 10
 	topo.inject_loops(loopnum, looplen)
 
-	packets = 1000
-	traffic = RandomTraffic(topo, packets)
+	packets = 10000
+	traffic = RandomGeneratedTraffic(topo, packets)
 
 	#traffic = RandomMappedTraffic(topo, [
 	#    [ip2int('192.168.1.1'), ip2int('10.1.0.1')],
 	#    [ip2int('192.168.1.1'), ip2int('10.1.0.2')],
 	#])
 
+	oneline = True
+
 	ms_size = nodes_log2
-	pstruct = PacketMinSketch(size=nodes_log2)
+	pstruct = PacketMinSketch(size=nodes_log2, count=1)
 	topo.process_loops(pstruct, traffic)
-	pstruct.report()
+	pstruct.report(oneline)
+
+	pstruct = PacketMinSketch(size=nodes_log2, count=2)
+	topo.process_loops(pstruct, traffic)
+	pstruct.report(oneline)
 
 	bf_capacity = 20 # nodes_count
 	bf_error_rate = 0.05
 	pstruct = PacketBloomFilter(bf_capacity, bf_error_rate)
 	topo.process_loops(pstruct, traffic)
-	pstruct.report()
+	pstruct.report(oneline)
