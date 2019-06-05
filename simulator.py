@@ -38,13 +38,13 @@ class PacketMinSketch(PacketStruct):
 
 	def __init__(self, size = 32, count = 1, seed = 65137):
 		self.size = size # in bits
-		self.seed = seed
+		random.seed(seed)
+		self.seeds = [ random.getrandbits(32) for _ in range(count) ]
 		self.count = count
 		self.log = []
 
-	def hash_node(self, node, seed = None):
-		if self.seed is not None:
-			random.seed(self.seed)
+	def hash_node(self, node, seed):
+		random.seed(seed)
 		mask = random.getrandbits(32)
 		return (hash(node) ^ mask) & (2**self.size-1)
 
@@ -52,10 +52,8 @@ class PacketMinSketch(PacketStruct):
 		if "path" not in context:
 			context["path"] = []
 
-		# TODO: multisketch support
-
 		if "minsketch" not in context:
-			context["minsketch"] = None
+			context["minsketch"] = [ None for _ in range(self.count) ]
 
 		if "loopstart" not in context:
 			try:
@@ -64,23 +62,27 @@ class PacketMinSketch(PacketStruct):
 			except ValueError:
 				pass
 
-		node_hash = self.hash_node(node, self.seed)
+		node_hashes = [ self.hash_node(node, self.seeds[i]) for i in range(self.count) ]
+		for i in range(self.count):
+			if (node_hashes[i] == context["minsketch"][i]):
+				self.log.append([
+					context["loopstart"],	# B
+					context["loopsize"],	# L
+					len(context["path"]),	# hops
+				])
 
-		if (node_hash == context["minsketch"]):
-			self.log.append([
-				context["loopstart"],	# B
-				context["loopsize"],	# L
-				len(context["path"]),	# hops
-			])
-
-			return False
+				return False
 
 		context["path"].append(node)
 
+		# TODO: generic reseting, not using power2
+		# TODO: asynchronous reseting?
+
 		if power2(len(context["path"])) or "minsketch" not in context:
-			context["minsketch"] = node_hash	# reseting, TODO generic
+			context["minsketch"] = node_hashes
 		else:
-			context["minsketch"] = min(node_hash, context["minsketch"])
+			for i in range(self.count):
+				context["minsketch"][i] = min(node_hashes[i], context["minsketch"][i])
 
 		return True
 
@@ -520,8 +522,8 @@ if __name__ == "__main__":
 	print "nodes = {} ({} bits)".format(nodes_count, nodes_log2)
 	print
 
-	loopnum = 10
-	looplen = range(5, 10) # 10
+	loopnum = 40
+	looplen = range(3, 20) # 10
 	topo.inject_loops(loopnum, looplen)
 
 	packets = 10000
@@ -534,17 +536,17 @@ if __name__ == "__main__":
 
 	oneline = True
 
-	ms_size = nodes_log2
-	pstruct = PacketMinSketch(size=nodes_log2, count=1)
-	topo.process_loops(pstruct, traffic)
-	pstruct.report(oneline)
-
-	pstruct = PacketMinSketch(size=nodes_log2, count=2)
-	topo.process_loops(pstruct, traffic)
-	pstruct.report(oneline)
-
 	bf_capacity = 20 # nodes_count
 	bf_error_rate = 0.05
 	pstruct = PacketBloomFilter(bf_capacity, bf_error_rate)
 	topo.process_loops(pstruct, traffic)
 	pstruct.report(oneline)
+	print
+
+	ms_size = nodes_log2
+	ms_counts = range(1, 13+1)
+	for ms_count in ms_counts:
+		pstruct = PacketMinSketch(size=nodes_log2, count=ms_count)
+		topo.process_loops(pstruct, traffic)
+		pstruct.report(oneline)
+	print
