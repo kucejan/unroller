@@ -399,7 +399,7 @@ class Topology(nx.Graph):
 	def edge_nodes(self):
 		return [n for n in self.nodes() if self.node[n]["edge"]]
 
-	def process_loops(self, pstruct, traffic, looplen = 0, loopnum = 0, seed = 65137):
+	def process_loops(self, pstruct, traffic, looplen = 0, loopnum = 0):
 		stpaths = self.get_stpaths()
 		routing = self.get_stpaths_routing()
 
@@ -418,11 +418,14 @@ class Topology(nx.Graph):
 			#print
 
 		# inject 2+ loops
-		elif looplen > 1:
+		elif type(looplen) == list or looplen > 1:
 			cycles = self.find_all_cycles()
 			iteri = 0
 			for cycle in cycles:
-				if len(cycle) != looplen: continue
+				if type(looplen) == list:
+					if len(cycle) not in looplen: continue
+				else:
+					if len(cycle) != looplen: continue
 				#print iteri+1, cycle
 				for src, new in zip(cycle, cycle[1:] + cycle[:1]):
 					for dst in self.nodes():
@@ -475,7 +478,7 @@ if __name__ == "__main__":
 	print "nodes = {} ({} bits)".format(nodes_count, nodes_log2)
 	print
 
-	packets = 10000
+	packets = 1000
 	traffic = RandomTraffic(topo, packets)
 
 	#traffic = RandomMappedTraffic(topo, [
@@ -490,7 +493,7 @@ if __name__ == "__main__":
 	bf_error_rate = 0.05
 	pstruct = PacketBloomFilter(capacity=bf_capacity, error_rate=bf_error_rate)
 
-	looplen = 10
+	looplen = range(5, 10) # 10
 	loopnum = 10
 	topo.process_loops(pstruct, traffic, looplen=looplen, loopnum=loopnum)
 	pstruct.report()
