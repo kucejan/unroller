@@ -27,7 +27,7 @@ def power2(num):
 
 class PacketStruct():
 
-	def process_loops(self, node, context):
+	def process_loops(self, node, target, context):
 		return False
 
 	def report(self):
@@ -47,9 +47,11 @@ class PacketMinSketch(PacketStruct):
 		mask = random.getrandbits(32)
 		return (hash(node) ^ mask) & (2**self.size-1)
 
-	def process_loops(self, node, context):
+	def process_loops(self, node, target, context):
 		if "path" not in context:
 			context["path"] = []
+
+		# TODO: multisketch support
 
 		if "minsketch" not in context:
 			context["minsketch"] = None
@@ -75,7 +77,7 @@ class PacketMinSketch(PacketStruct):
 		context["path"].append(node)
 
 		if power2(len(context["path"])) or "minsketch" not in context:
-			context["minsketch"] = node_hash
+			context["minsketch"] = node_hash	# reseting, TODO generic
 		else:
 			context["minsketch"] = min(node_hash, context["minsketch"])
 
@@ -94,11 +96,13 @@ class PacketMinSketch(PacketStruct):
 			maxa = max(maxa, time)
 			suma += time
 
+		print self.__class__.__name__
 		print "Num:", len(self.log)
 		print "Min:", mina, "X"
 		print "Max:", maxa, "X"
 		print "Avg:", suma / len(self.log), "X"
 		print "Mem:", self.size, "bits"
+		print
 
 
 class PacketBloomFilter(PacketStruct):
@@ -108,7 +112,7 @@ class PacketBloomFilter(PacketStruct):
 		self.error_rate = error_rate
 		self.log = []
 
-	def process_loops(self, node, context):
+	def process_loops(self, node, target, context):
 		if "path" not in context:
 			context["path"] = []
 
@@ -155,12 +159,14 @@ class PacketBloomFilter(PacketStruct):
 
 		bf = pb.BloomFilter(self.capacity, self.error_rate)
 
+		print self.__class__.__name__
 		print "Num:", len(self.log)
 		print "Fp%:", float(fpos) / len(self.log) * 100, "({})".format(fpos)
 		print "Min:", mina, "X"
 		print "Max:", maxa, "X"
 		print "Avg:", suma / (len(self.log)-fpos) if len(self.log)-fpos != 0 else "--", "X"
 		print "Mem:", bf.num_bits, "bits"
+		print
 
 
 class Traffic:
@@ -399,9 +405,9 @@ class Topology(nx.Graph):
 	def edge_nodes(self):
 		return [n for n in self.nodes() if self.node[n]["edge"]]
 
-	def process_loops(self, pstruct, traffic, looplen = 0, loopnum = 0):
-		stpaths = self.get_stpaths()
-		routing = self.get_stpaths_routing()
+	def inject_loops(self, loopnum = 0, looplen = 0):
+		if not hasattr(self, 'routing'):
+			self.routing = self.get_stpaths_routing()
 
 		# inject 1 loops
 		if looplen == 1:
@@ -413,7 +419,7 @@ class Topology(nx.Graph):
 			for i, src in enumerate(loops, 1):
 				#print i, [src]
 				for dst in self.nodes():
-					routing[src][dst] = src
+					self.routing[src][dst] = src
 				#print src, src
 			#print
 
@@ -429,7 +435,7 @@ class Topology(nx.Graph):
 				#print iteri+1, cycle
 				for src, new in zip(cycle, cycle[1:] + cycle[:1]):
 					for dst in self.nodes():
-						routing[src][dst] = new
+						self.routing[src][dst] = new
 					#print src, new
 				iteri = iteri + 1
 				if iteri == loopnum: break
@@ -437,7 +443,12 @@ class Topology(nx.Graph):
 				raise Exception('Specfied number (loopnum={}) of length-defined loops (looplen={}) not found!'.format(loopnum, looplen))
 			#print
 
-		#sys.exit(1)
+
+	def process_loops(self, pstruct, traffic):
+		stpaths = self.get_stpaths()
+
+		if not hasattr(self, 'routing'):
+			self.routing = self.get_stpaths_routing()
 
 		# iterate traffic
 		for i, (src_node, dst_node) in enumerate(traffic):
@@ -445,13 +456,17 @@ class Topology(nx.Graph):
 			#print [self.nodes[node]['label'] for node in stpaths[src_node][dst_node]]
 
 			context = {}
-			while (src_node != dst_node):
-				ret = pstruct.process_loops(src_node, context)
+			while True:
+				ret = pstruct.process_loops(src_node, dst_node, context)
 				if not ret:
 					#print " ", "loop detected!"
 					break
 
-				next_node = routing[src_node][dst_node]
+				if src_node == dst_node:
+					#print " ", "packet delivered"
+					break
+
+				next_node = self.routing[src_node][dst_node]
 				#print " ", src_node, "->", next_node, context
 				#print " ", self.nodes[src_node]['label'], "->", self.nodes[next_node]['label'], context
 				src_node = next_node
@@ -478,6 +493,10 @@ if __name__ == "__main__":
 	print "nodes = {} ({} bits)".format(nodes_count, nodes_log2)
 	print
 
+	loopnum = 10
+	looplen = range(5, 10) # 10
+	topo.inject_loops(loopnum, looplen)
+
 	packets = 1000
 	traffic = RandomTraffic(topo, packets)
 
@@ -486,14 +505,13 @@ if __name__ == "__main__":
 	#    [ip2int('192.168.1.1'), ip2int('10.1.0.2')],
 	#])
 
-	#ms_size = nodes_log2
-	#pstruct = PacketMinSketch(size=nodes_log2)
+	ms_size = nodes_log2
+	pstruct = PacketMinSketch(size=nodes_log2)
+	topo.process_loops(pstruct, traffic)
+	pstruct.report()
 
 	bf_capacity = 20 # nodes_count
 	bf_error_rate = 0.05
-	pstruct = PacketBloomFilter(capacity=bf_capacity, error_rate=bf_error_rate)
-
-	looplen = range(5, 10) # 10
-	loopnum = 10
-	topo.process_loops(pstruct, traffic, looplen=looplen, loopnum=loopnum)
+	pstruct = PacketBloomFilter(bf_capacity, bf_error_rate)
+	topo.process_loops(pstruct, traffic)
 	pstruct.report()
