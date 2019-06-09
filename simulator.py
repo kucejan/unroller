@@ -25,23 +25,75 @@ def power2(num):
 
 
 
-class PacketStruct():
+class PacketStruct(object):
 
 	def process_loops(self, node, target, context):
 		return False
 
 	def report(self, oneline = False):
-		pass
+		nl = ";" if oneline else "\n"
+
+		sumt = 0
+		mint = float("inf")
+		maxt = 0
+
+		sumb = 0
+		minb = sys.maxint
+		maxb = 0
+
+		suml = 0
+		minl = sys.maxint
+		maxl = 0
+
+		fpos = 0
+
+		for record in self.log:
+			B, L, hops = record
+			X = B + L
+			if L <= 0:
+				fpos += 1
+				continue
+
+			time = float(hops) / X
+
+			sumt += time
+			mint = min(mint, time)
+			maxt = max(maxt, time)
+
+			sumb += B
+			minb = min(minb, B)
+			maxb = max(maxb, B)
+
+			suml += L
+			minl = min(minl, L)
+			maxl = max(maxl, L)
+
+		print "Num:", len(self.log), nl,
+		print "Fp%:", float(fpos) / len(self.log) * 100, "({})".format(fpos), nl,
+		print "MinB:", minb, "hops", nl,
+		print "MaxB:", maxb, "hops", nl,
+		print "AvgB:", float(sumb) / (len(self.log)-fpos) if len(self.log)-fpos != 0 else "--", "hops", nl,
+		print "MinL:", minl, "hops", nl,
+		print "MaxL:", maxl, "hops", nl,
+		print "AvgL:", float(suml) / (len(self.log)-fpos) if len(self.log)-fpos != 0 else "--", "hops", nl,
+		print "MinTime:", mint, "X", nl,
+		print "MaxTime:", maxt, "X", nl,
+		print "AvgTime:", float(sumt) / (len(self.log)-fpos) if len(self.log)-fpos != 0 else "--", "X", nl,
+		print
 
 
 class PacketMinSketch(PacketStruct):
 
-	def __init__(self, size = 32, count = 1, seed = 65137):
-		self.size = size # in bits
-		random.seed(seed)
-		self.seeds = [ random.getrandbits(32) for _ in range(count) ]
-		self.count = count
+	def __init__(self, b = 4, c = 1, H = 0, size = 32, seed = 65137):
 		self.log = []
+		self.hash = size < 32
+		self.b = b # reseting
+		self.c = c # chunks
+
+		random.seed(seed)
+		self.seeds = [ random.getrandbits(32) for _ in range(H) ]
+		self.size = size # in bits
+		self.H = H # number of hashes
 
 	def hash_node(self, node, seed):
 		random.seed(seed)
@@ -52,62 +104,69 @@ class PacketMinSketch(PacketStruct):
 		if "path" not in context:
 			context["path"] = []
 
+		if "psize" not in context:
+			context["psize"] = 1 # phase size
+			context["csize"] = 1 # chunk size
+			context["phop"] = 0  # phase hop
+
 		if "minsketch" not in context:
-			context["minsketch"] = [ None for _ in range(self.count) ]
+			context["minsketch"] = [ None for _ in range(self.c) ]
+			if self.H > 0:
+				for j in range(self.c):
+					context["minsketch"][j] = [ None for _ in range(self.H) ]
 
 		if "loopstart" not in context:
 			try:
 				context["loopstart"] = context["path"].index(node)
-				context["loopsize"] = len(context["path"]) - context["loopstart"]
+				context["loopsize"] = len(context["path"]) - context["loopstart"];
 			except ValueError:
 				pass
 
-		node_hashes = [ self.hash_node(node, self.seeds[i]) for i in range(self.count) ]
-		for i in range(self.count):
-			if (node_hashes[i] == context["minsketch"][i]):
+		# Compute hashes
+		hashes = [ self.hash_node(node, self.seeds[i]) for i in range(self.H) ]
+
+		# Detect loops, compare node id/hashes
+		for j in range(self.c):
+			if (node == context["minsketch"][j]):
 				self.log.append([
-					context["loopstart"],	# B
-					context["loopsize"],	# L
+					context["loopstart"] if "loopstart" in context else -1,	# B
+					context["loopsize"] if "loopstart" in context else -1,	# L
 					len(context["path"]),	# hops
 				])
 
 				return False
 
+		# Add node into path
 		context["path"].append(node)
 
-		# TODO: generic reseting, not using power2
-		# TODO: asynchronous reseting?
+		# Update sketch
+		for j in range(self.c):
+			lower = context["csize"] * j
+			upper = context["csize"] * (j+1)
 
-		if power2(len(context["path"])) or "minsketch" not in context:
-			context["minsketch"] = node_hashes
-		else:
-			for i in range(self.count):
-				context["minsketch"][i] = min(node_hashes[i], context["minsketch"][i])
+			# Reseting id/hash
+			if context["phop"] == lower:
+				context["minsketch"][j] = node
+			elif context["phop"] > lower and context["phop"] < upper:
+				context["minsketch"][j] = min(context["minsketch"][j], node)
+
+		# Increment phase hop
+		context["phop"]	+= 1
+
+		# Entering new phase?
+		if context["phop"] == context["psize"]:
+			context["psize"] *= self.b
+			context["csize"] = (context["psize"] + self.c - 1) // self.c
+			context["phop"]	= 0
 
 		return True
 
 	def report(self, oneline = False):
 		nl = ";" if oneline else "\n"
 
-		suma = 0
-		mina = float("inf")
-		maxa = 0
-
-		for record in self.log:
-			B, L, hops = record
-			X = B + L
-			time = float(hops) / X
-			mina = min(mina, time)
-			maxa = max(maxa, time)
-			suma += time
-
-		print self.__class__.__name__, self.size, self.count, nl,
-		print "Num:", len(self.log), nl,
-		print "Min:", mina, "X", nl,
-		print "Max:", maxa, "X", nl,
-		print "Avg:", suma / len(self.log), "X", nl,
-		print "Mem:", self.size * self.count, "bits", nl,
-		print
+		print self.__class__.__name__, self.size, self.b, self.c, self.H, nl,
+		print "Mem:", self.size * self.c, "bits", nl,
+		super(self.__class__, self).report(oneline)
 
 
 class PacketBloomFilter(PacketStruct):
@@ -146,37 +205,20 @@ class PacketBloomFilter(PacketStruct):
 		return True
 
 	def report(self, oneline = False):
-		nl = ";" if oneline else "\n"
+	 	nl = ";" if oneline else "\n"
 
-		suma = 0
-		mina = float("inf")
-		maxa = 0
-		fpos = 0
-
-		for record in self.log:
-			B, L, hops = record
-			X = B + L
-			if L <= 0:
-				fpos += 1
-				continue
-			time = float(hops) / X
-			mina = min(mina, time)
-			maxa = max(maxa, time)
-			suma += time
-
-		bf = pb.BloomFilter(self.capacity, self.error_rate)
-
-		print self.__class__.__name__, self.capacity, self.error_rate, nl,
-		print "Num:", len(self.log), nl,
-		print "Fp%:", float(fpos) / len(self.log) * 100, "({})".format(fpos), nl,
-		print "Min:", mina, "X", nl,
-		print "Max:", maxa, "X", nl,
-		print "Avg:", suma / (len(self.log)-fpos) if len(self.log)-fpos != 0 else "--", "X", nl,
+	 	bf = pb.BloomFilter(self.capacity, self.error_rate)
+	 	print self.__class__.__name__, self.capacity, self.error_rate, nl,
 		print "Mem:", bf.num_bits, "bits", nl,
-		print
+	 	super(self.__class__, self).report(oneline)
+
 
 
 class Traffic:
+
+	def __init__(self):
+		self.length = 0
+		__metaclass__ = TrafficLength
 
 	def __iter__(self):
 		self.n = 0
@@ -185,16 +227,24 @@ class Traffic:
 	def __next__(self):
 		raise StopIteration
 
+	def __len__(self):
+		return self.length
+
+class TrafficLength(type):
+
+	def __len__(self):
+		return self.length
+
 
 class RandomTraffic(Traffic):
 
 	def __init__(self, topo, packets = 1000, seed = 65137):
 		self.prng = random.Random(seed)
 		self.edges = topo.edge_nodes()
-		self.packets = packets
+		self.length = packets
 
 	def next(self):
-		if self.n < self.packets:
+		if self.n < self.length:
 			self.n += 1
 			return (
 				self.edges[self.prng.randint(0, len(self.edges)-1)],
@@ -209,6 +259,7 @@ class RandomGeneratedTraffic(Traffic):
 	def __init__(self, topo, packets = 1000, seed = 65137):
 		self.prng = random.Random(seed)
 		self.edges = topo.edge_nodes()
+		self.length = packets
 		self.packets = []
 
 		for i in range(0, packets):
@@ -254,7 +305,7 @@ class RandomMappedTraffic(Traffic):
 
 class Topology(nx.Graph):
 
-	def __init__(self, topox, create_hosts):
+	def __init__(self, topox, create_hosts, seed = 65137):
 		super(self.__class__, self).__init__(topox)
 
 		# Mark all nodes as internal/edge and label them
@@ -268,8 +319,15 @@ class Topology(nx.Graph):
 				self.add_node(offset + i, edge = True, label = self.nodes[i]['label'] + '-' + 'host')
 				self.add_edge(offset + i, i)
 
+		# Generate node IDs
+		prng = random.Random(seed)
+		ids = prng.sample(xrange(2**32), len(self.nodes))
+		for i, n in enumerate(self.nodes()):
+			self.nodes[n]['id'] = ids[i]
+
+
 	@staticmethod
-	def load_zoo(gml_file, create_hosts = True):
+	def load_zoo(gml_file, create_hosts = True, seed = 65137):
 
 		# Load topology from file
 		topox = nx.read_gml(gml_file, label = 'id')
@@ -283,10 +341,10 @@ class Topology(nx.Graph):
 		# Relabel nodes to integeres, names available as 'name' attribute
 		topox = nx.relabel.convert_node_labels_to_integers(topox, first_label = 1)
 
-		return Topology(topox, create_hosts)
+		return Topology(topox, create_hosts, seed)
 
 	@staticmethod
-	def load_stanford(port_file, topo_file, create_hosts = True):
+	def load_stanford(port_file, topo_file, create_hosts = True, seed = 65137):
 
 		PORT_TYPE_MULTIPLIER = 10000
 		SWITCH_ID_MULTIPLIER = 100000
@@ -344,7 +402,7 @@ class Topology(nx.Graph):
 			dst_dpid = dst_port_flat / SWITCH_ID_MULTIPLIER
 			topox.add_edge(src_dpid, dst_dpid)
 
-		return Topology(topox, create_hosts)
+		return Topology(topox, create_hosts, seed)
 
 
 	def get_stpaths(self):
@@ -434,7 +492,7 @@ class Topology(nx.Graph):
 	def edge_nodes(self):
 		return [n for n in self.nodes() if self.node[n]["edge"]]
 
-	def inject_loops(self, loopnum = 0, looplen = 0):
+	def inject_loops(self, loopnum = 0, looplen = 0, debug = False):
 		if not hasattr(self, 'routing'):
 			self.routing = self.get_stpaths_routing()
 
@@ -446,11 +504,11 @@ class Topology(nx.Graph):
 				loops = self.nodes()
 
 			for i, src in enumerate(loops, 1):
-				#print i, [src]
+				if debug: print i, [src]
 				for dst in self.nodes():
 					self.routing[src][dst] = src
 				#print src, src
-			#print
+			if debug: print
 
 		# inject 2+ loops
 		elif type(looplen) == list or looplen > 1:
@@ -461,7 +519,7 @@ class Topology(nx.Graph):
 					if len(cycle) not in looplen: continue
 				else:
 					if len(cycle) != looplen: continue
-				#print iteri+1, cycle
+				if debug: print iteri+1, cycle
 				for src, new in zip(cycle, cycle[1:] + cycle[:1]):
 					for dst in self.nodes():
 						self.routing[src][dst] = new
@@ -470,23 +528,33 @@ class Topology(nx.Graph):
 				if iteri == loopnum: break
 			if iteri != loopnum:
 				raise Exception('Specfied number (loopnum={}) of length-defined loops (looplen={}) not found!'.format(loopnum, looplen))
-			#print
+			if debug: print
 
 
-	def process_loops(self, pstruct, traffic):
+	def process_loops(self, pstruct, traffic, debug = False):
 		stpaths = self.get_stpaths()
 
 		if not hasattr(self, 'routing'):
 			self.routing = self.get_stpaths_routing()
+
+		sump = 0
+		minp = sys.maxint
+		maxp = 0
 
 		# iterate traffic
 		for i, (src_node, dst_node) in enumerate(traffic):
 			#print stpaths[src_node][dst_node]
 			#print [self.nodes[node]['label'] for node in stpaths[src_node][dst_node]]
 
+			if debug:
+				length = len(stpaths[src_node][dst_node])
+				sump += length
+				minp = min(minp, length)
+				maxp = max(maxp, length)
+
 			context = {}
 			while True:
-				ret = pstruct.process_loops(src_node, dst_node, context)
+				ret = pstruct.process_loops(self.nodes[src_node]['id'], self.nodes[dst_node]['id'], context)
 				if not ret:
 					#print " ", "loop detected!"
 					break
@@ -501,6 +569,12 @@ class Topology(nx.Graph):
 				src_node = next_node
 
 			#print
+
+		if debug:
+			print "MinPath:", minp, "hops"
+			print "MaxPath:", maxp, "hops"
+			print "AvgPath:", float(sump) / len(traffic) if len(traffic) != 0 else "--", "hops"
+			print
 
 
 
@@ -522,26 +596,44 @@ if __name__ == "__main__":
 	print "nodes = {} ({} bits)".format(nodes_count, nodes_log2)
 	print
 
-	loopnum = 40
+	loopnum = 30
 	looplen = range(3, 20) # 10
 	topo.inject_loops(loopnum, looplen)
 
+#	for i in range(37, 38):
+#		print i,
+#		topo.inject_loops(100, i, True)
+#
+#	sys.exit(1)
+#
 	packets = 10000
 	traffic = RandomGeneratedTraffic(topo, packets)
 
-	#traffic = RandomMappedTraffic(topo, [
-	#    [ip2int('192.168.1.1'), ip2int('10.1.0.1')],
-	#    [ip2int('192.168.1.1'), ip2int('10.1.0.2')],
-	#])
+#	#traffic = RandomMappedTraffic(topo, [
+#	#    [ip2int('192.168.1.1'), ip2int('10.1.0.1')],
+#	#    [ip2int('192.168.1.1'), ip2int('10.1.0.2')],
+#	#])
 
 	oneline = True
 
-	bf_capacity = 20 # nodes_count
-	bf_error_rate = 0.05
-	pstruct = PacketBloomFilter(bf_capacity, bf_error_rate)
-	topo.process_loops(pstruct, traffic)
-	pstruct.report(oneline)
-	print
+	# bf_capacity = 20 # nodes_count
+	# bf_error_rate = 0.05
+	# pstruct = PacketBloomFilter(bf_capacity, bf_error_rate)
+	# topo.process_loops(pstruct, traffic)
+	# pstruct.report(oneline)
+	# print
+
+	brange = xrange(2, 5)
+	crange = xrange(1, 5)
+
+	for b in brange:
+		for c in crange:
+			pstruct = PacketMinSketch(b = b, c = c)
+			topo.process_loops(pstruct, traffic)
+			pstruct.report(oneline)
+			print
+
+	sys.exit(1)
 
 	ms_size = nodes_log2
 	ms_counts = range(1, 13+1)
