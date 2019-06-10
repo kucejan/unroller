@@ -27,8 +27,20 @@ def power2(num):
 
 class PacketStruct(object):
 
+	def __init(self):
+		self.csv = False
+
 	def process_loops(self, node, target, context):
 		return False
+
+	def pcsv(self, value):
+		if not self.csv:
+			return value
+		return ""
+
+	def csvrep(self):
+		self.csv = True
+		self.report(True)
 
 	def report(self, oneline = False):
 		nl = ";" if oneline else "\n"
@@ -68,36 +80,37 @@ class PacketStruct(object):
 			minl = min(minl, L)
 			maxl = max(maxl, L)
 
-		print "Num:", len(self.log), nl,
-		print "Fp%:", float(fpos) / len(self.log) * 100, "({})".format(fpos), nl,
-		print "MinB:", minb, "hops", nl,
-		print "MaxB:", maxb, "hops", nl,
-		print "AvgB:", float(sumb) / (len(self.log)-fpos) if len(self.log)-fpos != 0 else "--", "hops", nl,
-		print "MinL:", minl, "hops", nl,
-		print "MaxL:", maxl, "hops", nl,
-		print "AvgL:", float(suml) / (len(self.log)-fpos) if len(self.log)-fpos != 0 else "--", "hops", nl,
-		print "MinTime:", mint, "X", nl,
-		print "MaxTime:", maxt, "X", nl,
-		print "AvgTime:", float(sumt) / (len(self.log)-fpos) if len(self.log)-fpos != 0 else "--", "X", nl,
+		print self.pcsv("Num:"), len(self.log), nl,
+		print self.pcsv("Fp%:"), float(fpos) / len(self.log) * 100, self.pcsv("({})".format(fpos)), nl,
+		print self.pcsv("MinB:"), minb, self.pcsv("hops"), nl,
+		print self.pcsv("MaxB:"), maxb, self.pcsv("hops"), nl,
+		print self.pcsv("AvgB:"), float(sumb) / (len(self.log)-fpos) if len(self.log)-fpos != 0 else "--", self.pcsv("hops"), nl,
+		print self.pcsv("MinL:"), minl, self.pcsv("hops"), nl,
+		print self.pcsv("MaxL:"), maxl, self.pcsv("hops"), nl,
+		print self.pcsv("AvgL:"), float(suml) / (len(self.log)-fpos) if len(self.log)-fpos != 0 else "--", self.pcsv("hops"), nl,
+		print self.pcsv("MinTime:"), mint, self.pcsv("X"), nl,
+		print self.pcsv("MaxTime:"), maxt, self.pcsv("X"), nl,
+		print self.pcsv("AvgTime:"), float(sumt) / (len(self.log)-fpos) if len(self.log)-fpos != 0 else "--", self.pcsv("X"), nl,
 		print
 
 
 class PacketMinSketch(PacketStruct):
 
-	def __init__(self, b = 4, c = 1, H = 0, size = 32, seed = 65137):
+	def __init__(self, b = 4, c = 1, H = 1, size = 32, seed = 65137):
 		self.log = []
-		self.hash = size < 32
+		self.hash = size < 32 or H > 1
 		self.b = b # reseting
 		self.c = c # chunks
 
-		random.seed(seed)
-		self.seeds = [ random.getrandbits(32) for _ in range(H) ]
-		self.size = size # in bits
+		prgn = random.Random(seed)
+		self.seeds = [ prgn.getrandbits(32) for _ in range(H) ]
+		self.size = size # z (in bits)
 		self.H = H # number of hashes
 
 	def hash_node(self, node, seed):
-		random.seed(seed)
-		mask = random.getrandbits(32)
+		if not self.hash: return node
+		prgn = random.Random(seed)
+		mask = prgn.getrandbits(32)
 		return (hash(node) ^ mask) & (2**self.size-1)
 
 	def process_loops(self, node, target, context):
@@ -126,15 +139,23 @@ class PacketMinSketch(PacketStruct):
 		hashes = [ self.hash_node(node, self.seeds[i]) for i in range(self.H) ]
 
 		# Detect loops, compare node id/hashes
+		loop = False
 		for j in range(self.c):
-			if (node == context["minsketch"][j]):
-				self.log.append([
-					context["loopstart"] if "loopstart" in context else -1,	# B
-					context["loopsize"] if "loopstart" in context else -1,	# L
-					len(context["path"]),	# hops
-				])
+			for i in range(self.H):
+				if (hashes[i] == context["minsketch"][j][i]):
+					loop = True
+					break
+			if loop: break
 
-				return False
+		# Loop detected, report it
+		if loop:
+			self.log.append([
+				context["loopstart"] if "loopstart" in context else -1,	# B
+				context["loopsize"] if "loopstart" in context else -1,	# L
+				len(context["path"]),	# hops
+			])
+
+			return False
 
 		# Add node into path
 		context["path"].append(node)
@@ -146,9 +167,10 @@ class PacketMinSketch(PacketStruct):
 
 			# Reseting id/hash
 			if context["phop"] == lower:
-				context["minsketch"][j] = node
+				context["minsketch"][j] = hashes
 			elif context["phop"] > lower and context["phop"] < upper:
-				context["minsketch"][j] = min(context["minsketch"][j], node)
+				for i in range(self.H):
+					context["minsketch"][j][i] = min(context["minsketch"][j][i], hashes[i])
 
 		# Increment phase hop
 		context["phop"]	+= 1
@@ -164,8 +186,12 @@ class PacketMinSketch(PacketStruct):
 	def report(self, oneline = False):
 		nl = ";" if oneline else "\n"
 
-		print self.__class__.__name__, self.size, self.b, self.c, self.H, nl,
-		print "Mem:", self.size * self.c, "bits", nl,
+		print self.__class__.__name__, nl,
+		print self.pcsv("Size:"), self.size, nl,
+		print self.pcsv("b:"), self.b, nl,
+		print self.pcsv("c:"), self.c, nl,
+		print self.pcsv("H:"), self.H, nl,
+		print self.pcsv("Mem:"), self.size * self.c * self.H, self.pcsv("bits"), nl,
 		super(self.__class__, self).report(oneline)
 
 
@@ -204,12 +230,14 @@ class PacketBloomFilter(PacketStruct):
 
 		return True
 
-	def report(self, oneline = False):
+	def report(self, csv = True, oneline = False):
 	 	nl = ";" if oneline else "\n"
 
 	 	bf = pb.BloomFilter(self.capacity, self.error_rate)
-	 	print self.__class__.__name__, self.capacity, self.error_rate, nl,
-		print "Mem:", bf.num_bits, "bits", nl,
+	 	print self.__class__.__name__, nl,
+	 	print self.pcsv("Cap:"), self.capacity, nl,
+	 	print self.pcsv("Rate:"), self.error_rate, nl,
+		print self.pcsv("Mem:"), bf.num_bits, self.pcsv("bits"), nl,
 	 	super(self.__class__, self).report(oneline)
 
 
@@ -239,7 +267,7 @@ class TrafficLength(type):
 class RandomTraffic(Traffic):
 
 	def __init__(self, topo, packets = 1000, seed = 65137):
-		self.prng = random.Random(seed)
+		self.prgn = random.Random(seed)
 		self.edges = topo.edge_nodes()
 		self.length = packets
 
@@ -247,8 +275,8 @@ class RandomTraffic(Traffic):
 		if self.n < self.length:
 			self.n += 1
 			return (
-				self.edges[self.prng.randint(0, len(self.edges)-1)],
-				self.edges[self.prng.randint(0, len(self.edges)-1)],
+				self.edges[self.prgn.randint(0, len(self.edges)-1)],
+				self.edges[self.prgn.randint(0, len(self.edges)-1)],
 			)
 		else:
 			raise StopIteration
@@ -257,15 +285,15 @@ class RandomTraffic(Traffic):
 class RandomGeneratedTraffic(Traffic):
 
 	def __init__(self, topo, packets = 1000, seed = 65137):
-		self.prng = random.Random(seed)
+		self.prgn = random.Random(seed)
 		self.edges = topo.edge_nodes()
 		self.length = packets
 		self.packets = []
 
 		for i in range(0, packets):
 			self.packets.append((
-				self.edges[self.prng.randint(0, len(self.edges)-1)],
-				self.edges[self.prng.randint(0, len(self.edges)-1)],
+				self.edges[self.prgn.randint(0, len(self.edges)-1)],
+				self.edges[self.prgn.randint(0, len(self.edges)-1)],
 			))
 
 	def next(self):
@@ -577,6 +605,30 @@ class Topology(nx.Graph):
 			print
 
 
+	@staticmethod
+	def simulate_loops(pstruct, loopstart, looplen, loopnum = 100, seed = 65137):
+		prng = random.Random(seed)
+		pathlen = loopstart + looplen
+		for i in xrange(loopnum):
+			path = prng.sample(xrange(2**32), pathlen)
+			context = {}
+			ret = True
+
+			for src_node in path[:loopstart]:
+				ret = pstruct.process_loops(src_node, path[-1], context)
+				if not ret: break
+
+			offset = 0
+			while ret and looplen > 0:
+				src_node = path[loopstart + offset % looplen]
+				ret = pstruct.process_loops(src_node, path[-1], context)
+				offset += 1
+
+
+	@staticmethod
+	def simulate_paths(pstruct, pathlen, pathnum = 100, seed = 65137):
+		Topology.simulate_loops(pstruct, pathlen, 0, pathnum, seed)
+
 
 if __name__ == "__main__":
 
@@ -587,34 +639,32 @@ if __name__ == "__main__":
 	#gml_file = 'topology-zoo/archive/Cesnet201006.gml'
 	#gml_file = 'topology-zoo/eu_nren_graphs/graphs/interconnect.gml'
 	#gml_file = 'topology-zoo/eu_nren_graphs/graphs/condensed.gml'
-	gml_file = 'topology-zoo/eu_nren_graphs/graphs/condensed_west_europe.gml'
-	topo = Topology.load_zoo(gml_file)
+	#gml_file = 'topology-zoo/eu_nren_graphs/graphs/condensed_west_europe.gml'
+	#topo = Topology.load_zoo(gml_file)
 
-	nodes_count = len(topo.nodes())
-	nodes_log2 = nodes_count.bit_length()
+	#nodes_count = len(topo.nodes())
+	#nodes_log2 = nodes_count.bit_length()
 
-	print "nodes = {} ({} bits)".format(nodes_count, nodes_log2)
-	print
+	#print "nodes = {} ({} bits)".format(nodes_count, nodes_log2)
+	#print
 
-	loopnum = 30
-	looplen = range(3, 20) # 10
-	topo.inject_loops(loopnum, looplen)
+	#loopnum = 30
+	#looplen = range(3, 20) # 10
+	#topo.inject_loops(loopnum, looplen)
 
-#	for i in range(37, 38):
-#		print i,
-#		topo.inject_loops(100, i, True)
-#
-#	sys.exit(1)
-#
-	packets = 10000
-	traffic = RandomGeneratedTraffic(topo, packets)
+	#for i in range(37, 38):
+	#	print i,
+	#	topo.inject_loops(100, i, True)
 
-#	#traffic = RandomMappedTraffic(topo, [
-#	#    [ip2int('192.168.1.1'), ip2int('10.1.0.1')],
-#	#    [ip2int('192.168.1.1'), ip2int('10.1.0.2')],
-#	#])
+	#sys.exit(1)
 
-	oneline = True
+	#packets = 10000
+	#traffic = RandomGeneratedTraffic(topo, packets)
+
+	#traffic = RandomMappedTraffic(topo, [
+	#    [ip2int('192.168.1.1'), ip2int('10.1.0.1')],
+	#    [ip2int('192.168.1.1'), ip2int('10.1.0.2')],
+	#])
 
 	# bf_capacity = 20 # nodes_count
 	# bf_error_rate = 0.05
@@ -623,15 +673,22 @@ if __name__ == "__main__":
 	# pstruct.report(oneline)
 	# print
 
-	brange = xrange(2, 5)
-	crange = xrange(1, 5)
+	brange = [4] # xrange(2, 5)
+	Brange = [5] # [0, 2, 3, 5, 7, 10]
+	cHrange = itertools.product([1], [1, 2, 3, 5, 6, 8]) # [(1,1)]
+	Lrange = xrange(3, 32)
+
+	packets = 20000
 
 	for b in brange:
-		for c in crange:
-			pstruct = PacketMinSketch(b = b, c = c)
-			topo.process_loops(pstruct, traffic)
-			pstruct.report(oneline)
-			print
+	 	for c, H in cHrange:
+	 		for B in Brange:
+		 		for l in Lrange:
+			 		pstruct = PacketMinSketch(b = b, c = c, H = H)
+					Topology.simulate_loops(pstruct, B, l, packets / 2)
+					Topology.simulate_paths(pstruct, l, packets / 2)
+					pstruct.csvrep()
+			 	print
 
 	sys.exit(1)
 
