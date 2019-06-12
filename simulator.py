@@ -109,6 +109,7 @@ class PacketMinSketch(PacketStruct):
 
 	def hash_node(self, node, seed):
 		if not self.hash: return node
+		#return hash((node,seed)) & (2**self.size-1)
 		prgn = random.Random(seed)
 		mask = prgn.getrandbits(32)
 		return (hash(node) ^ mask) & (2**self.size-1)
@@ -230,15 +231,15 @@ class PacketBloomFilter(PacketStruct):
 
 		return True
 
-	def report(self, csv = True, oneline = False):
-	 	nl = ";" if oneline else "\n"
+	def report(self, oneline = False):
+		nl = ";" if oneline else "\n"
 
-	 	bf = pb.BloomFilter(self.capacity, self.error_rate)
-	 	print self.__class__.__name__, nl,
-	 	print self.pcsv("Cap:"), self.capacity, nl,
-	 	print self.pcsv("Rate:"), self.error_rate, nl,
+		bf = pb.BloomFilter(self.capacity, self.error_rate)
+		print self.__class__.__name__, nl,
+		print self.pcsv("Cap:"), self.capacity, nl,
+		print self.pcsv("Rate:"), self.error_rate, nl,
 		print self.pcsv("Mem:"), bf.num_bits, self.pcsv("bits"), nl,
-	 	super(self.__class__, self).report(oneline)
+		super(self.__class__, self).report(oneline)
 
 
 
@@ -666,29 +667,45 @@ if __name__ == "__main__":
 	#    [ip2int('192.168.1.1'), ip2int('10.1.0.2')],
 	#])
 
-	# bf_capacity = 20 # nodes_count
-	# bf_error_rate = 0.05
-	# pstruct = PacketBloomFilter(bf_capacity, bf_error_rate)
+	packets = 10000
+
+	# Brange = [5] # [0, 2, 3, 5, 7, 10]
+	# Lrange = xrange(3, 32)
+	# bf_capacity = 32 # nodes_count
+	# bf_error_rates = [0.00001] # [0.01, 0.001, 0.0001]
+
+	# for bf_error_rate in bf_error_rates:
+	# 	for B in Brange:
+	# 		for l in Lrange:
+	# 			pstruct = PacketBloomFilter(bf_capacity, bf_error_rate)
+	# 			Topology.simulate_loops(pstruct, B, l, packets / 2)
+	# 			Topology.simulate_paths(pstruct, l, packets / 2)
+	# 			pstruct.csvrep()
+	# 		print
+
+	# sys.exit(1)
+
 	# topo.process_loops(pstruct, traffic)
 	# pstruct.report(oneline)
 	# print
 
 	brange = [4] # xrange(2, 5)
 	Brange = [5] # [0, 2, 3, 5, 7, 10]
-	cHrange = itertools.product([1], [1, 2, 3, 5, 6, 8]) # [(1,1)]
-	Lrange = xrange(3, 32)
-
-	packets = 20000
+	cHrange = itertools.product([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], [4]) # [(1,1),(2,1),(2,2),(4,4),(8,4),(8,8)] # [(1, 4), (4, 1), (2, 2), (4, 2), (2, 4), (4, 4)] #  [(1,1)]
+	cHrange = itertools.product([17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32], [1])
+	Lrange = [20] #xrange(3, 32)
+	zrange = [20] #xrange(15,32+1)
 
 	for b in brange:
-	 	for c, H in cHrange:
-	 		for B in Brange:
-		 		for l in Lrange:
-			 		pstruct = PacketMinSketch(b = b, c = c, H = H)
-					Topology.simulate_loops(pstruct, B, l, packets / 2)
-					Topology.simulate_paths(pstruct, l, packets / 2)
-					pstruct.csvrep()
-			 	print
+		for c, H in cHrange:
+			for B in Brange:
+				for l in Lrange:
+					for z in zrange:
+						pstruct = PacketMinSketch(b = b, c = c, H = H, size = z)
+						Topology.simulate_loops(pstruct, B, l, packets / 2)
+						Topology.simulate_paths(pstruct, l, packets / 2)
+						pstruct.csvrep()
+		print
 
 	sys.exit(1)
 
