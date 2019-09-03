@@ -28,11 +28,21 @@ def power2(num):
 
 class PacketStruct(object):
 
-	def __init(self):
+	def __init__(self):
 		self.csv = False
+		self.log = []
 
-	def process_loops(self, node, target, context):
+	def process_loops(self, node, context):
 		return False
+
+	def finalize(self, context):
+		self.log.append([
+			"loopstart" in context,	# is the path a loop?
+			context["loop?"],		# detection result
+			context["loopstart"] if "loopstart" in context else -1,	# B
+			context["loopsize"] if "loopstart" in context else -1,	# L
+			len(context["path"]),	# hops
+		])
 
 	def pcsv(self, value):
 		if not self.csv:
@@ -58,16 +68,21 @@ class PacketStruct(object):
 		minl = sys.maxint
 		maxl = 0
 
+		loops = 0
+		paths = 0
+
 		fpos = 0
 
 		for record in self.log:
-			B, L, hops = record
-			X = B + L
-			if L <= 0:
-				fpos += 1
+			loop, result, B, L, hops = record
+			if not loop:
+				paths += 1
+				if result:
+					fpos += 1
 				continue
 
-			time = float(hops) / X
+			loops += 1
+			time = float(hops) / (B + L)
 
 			sumt += time
 			mint = min(mint, time)
@@ -82,23 +97,22 @@ class PacketStruct(object):
 			maxl = max(maxl, L)
 
 		print self.pcsv("Num:"), len(self.log), nl,
-		print self.pcsv("Fp%:"), float(fpos) / len(self.log) * 100, self.pcsv("({})".format(fpos)), nl,
-		print self.pcsv("MinB:"), minb, self.pcsv("hops"), nl,
-		print self.pcsv("MaxB:"), maxb, self.pcsv("hops"), nl,
-		print self.pcsv("AvgB:"), float(sumb) / (len(self.log)-fpos) if len(self.log)-fpos != 0 else "--", self.pcsv("hops"), nl,
-		print self.pcsv("MinL:"), minl, self.pcsv("hops"), nl,
-		print self.pcsv("MaxL:"), maxl, self.pcsv("hops"), nl,
-		print self.pcsv("AvgL:"), float(suml) / (len(self.log)-fpos) if len(self.log)-fpos != 0 else "--", self.pcsv("hops"), nl,
-		print self.pcsv("MinTime:"), mint, self.pcsv("X"), nl,
-		print self.pcsv("MaxTime:"), maxt, self.pcsv("X"), nl,
-		print self.pcsv("AvgTime:"), float(sumt) / (len(self.log)-fpos) if len(self.log)-fpos != 0 else "--", self.pcsv("X"), nl,
+		print self.pcsv("Fp%:"), float(fpos) / paths * 100 if paths != 0 else 0.0, self.pcsv("({})".format(fpos)), nl,
+		print self.pcsv("MinB:"), minb if loops != 0 else "--", self.pcsv("hops"), nl,
+		print self.pcsv("MaxB:"), maxb if loops != 0 else "--", self.pcsv("hops"), nl,
+		print self.pcsv("AvgB:"), float(sumb) / loops if loops != 0 else "--", self.pcsv("hops"), nl,
+		print self.pcsv("MinL:"), minl if loops != 0 else "--", self.pcsv("hops"), nl,
+		print self.pcsv("MaxL:"), maxl if loops != 0 else "--", self.pcsv("hops"), nl,
+		print self.pcsv("AvgL:"), float(suml) / loops if loops != 0 else "--", self.pcsv("hops"), nl,
+		print self.pcsv("MinTime:"), mint if loops != 0 else "--", self.pcsv("X"), nl,
+		print self.pcsv("MaxTime:"), maxt if loops != 0 else "--", self.pcsv("X"), nl,
+		print self.pcsv("AvgTime:"), float(sumt) / loops if loops != 0 else "--", self.pcsv("X"), nl,
 		print
 
 
 class PacketMinSketch(PacketStruct):
 
 	def __init__(self, b = 4, c = 1, H = 1, size = 32, cceiling = False, seed = 65137):
-		self.log = []
 		self.hash = size < 32 or H > 1
 		self.cceiling = cceiling
 		self.b = b # reseting
@@ -109,6 +123,8 @@ class PacketMinSketch(PacketStruct):
 		self.size = size # z (in bits)
 		self.H = H # number of hashes
 
+		super(PacketMinSketch, self).__init__()
+
 	def hash_node(self, node, seed):
 		if not self.hash: return node
 		#return hash((node,seed)) & (2**self.size-1)
@@ -116,9 +132,12 @@ class PacketMinSketch(PacketStruct):
 		mask = prgn.getrandbits(32)
 		return (hash(node) ^ mask) & (2**self.size-1)
 
-	def process_loops(self, node, target, context):
+	def process_loops(self, node, context):
 		if "path" not in context:
 			context["path"] = []
+
+		if "loop?" not in context:
+			context["loop?"] = False
 
 		if "psize" not in context:
 			context["psize"] = 1 # phase size
@@ -152,12 +171,7 @@ class PacketMinSketch(PacketStruct):
 
 		# Loop detected, report it
 		if loop:
-			self.log.append([
-				context["loopstart"] if "loopstart" in context else -1,	# B
-				context["loopsize"] if "loopstart" in context else -1,	# L
-				len(context["path"]),	# hops
-			])
-
+			context["loop?"] = True
 			return False
 
 		# Add node into path
@@ -206,11 +220,15 @@ class PacketBloomFilter(PacketStruct):
 	def __init__(self, capacity, error_rate):
 		self.capacity = capacity
 		self.error_rate = error_rate
-		self.log = []
 
-	def process_loops(self, node, target, context):
+		super(PacketBloomFilter, self).__init__()
+
+	def process_loops(self, node, context):
 		if "path" not in context:
 			context["path"] = []
+
+		if "loop?" not in context:
+			context["loop?"] = False
 
 		if "bf" not in context:
 			context["bf"] = pb.BloomFilter(self.capacity, self.error_rate)
@@ -223,12 +241,7 @@ class PacketBloomFilter(PacketStruct):
 				pass
 
 		if (node in context["bf"]):
-			self.log.append([
-				context["loopstart"] if "loopstart" in context else -1,	# B
-				context["loopsize"] if "loopstart" in context else -1,	# L
-				len(context["path"]),	# hops
-			])
-
+			context["loop?"] = True
 			return False
 
 		context["path"].append(node)
@@ -589,7 +602,7 @@ class Topology(nx.Graph):
 
 			context = {}
 			while True:
-				ret = pstruct.process_loops(self.nodes[src_node]['id'], self.nodes[dst_node]['id'], context)
+				ret = pstruct.process_loops(self.nodes[src_node]['id'], context)
 				if not ret:
 					#print " ", "loop detected!"
 					break
@@ -603,6 +616,7 @@ class Topology(nx.Graph):
 				#print " ", self.nodes[src_node]['label'], "->", self.nodes[next_node]['label'], context
 				src_node = next_node
 
+			pstruct.finalize(context)
 			#print
 
 		if debug:
@@ -622,14 +636,16 @@ class Topology(nx.Graph):
 			ret = True
 
 			for src_node in path[:loopstart]:
-				ret = pstruct.process_loops(src_node, path[-1], context)
+				ret = pstruct.process_loops(src_node, context)
 				if not ret: break
 
 			offset = 0
 			while ret and looplen > 0:
 				src_node = path[loopstart + offset % looplen]
-				ret = pstruct.process_loops(src_node, path[-1], context)
+				ret = pstruct.process_loops(src_node, context)
 				offset += 1
+
+			pstruct.finalize(context)
 
 
 	@staticmethod
@@ -695,15 +711,15 @@ if __name__ == "__main__":
 	# pstruct.report(oneline)
 	# print
 
-	packets = 5000
+	packets = 100000
 
 	brange = [4] # xrange(2, 5)
 	Brange = [5] # [0, 2, 3, 5, 7, 10]
 	#cHrange = [(1,1)]
-	cHrange = itertools.product(range(1, 24), [2]) # [(1,1),(2,1),(2,2),(4,4),(8,4),(8,8)] # [(1, 4), (4, 1), (2, 2), (4, 2), (2, 4), (4, 4)] #  [(1,1)]
+	cHrange = [(2,1),(2,2),(4,4),(8,4),(8,8)] # [(1, 4), (4, 1), (2, 2), (4, 2), (2, 4), (4, 4)] #  [(1,1)]
 	#cHrange = itertools.product([1], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20])
 	Lrange = [20] #xrange(3, 32)
-	zrange = [20] #[32] #xrange(15,32+1)
+	zrange = xrange(2,32+1)
 
 	for b in brange:
 		for c, H in cHrange:
@@ -711,7 +727,7 @@ if __name__ == "__main__":
 				for L in Lrange:
 					for z in zrange:
 						pstruct = PacketMinSketch(b = b, c = c, H = H, size = z)
-						Topology.simulate_loops(pstruct, B, L, packets)
+						#Topology.simulate_loops(pstruct, B, L, packets)
 						Topology.simulate_paths(pstruct, L, packets)
 						pstruct.csvrep()
 
