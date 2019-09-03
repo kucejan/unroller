@@ -30,6 +30,7 @@ class PacketStruct(object):
 
 	def __init__(self):
 		self.csv = False
+		self.detections = 1
 		self.log = []
 
 	def process_loops(self, node, context):
@@ -97,6 +98,7 @@ class PacketStruct(object):
 			maxl = max(maxl, L)
 
 		print self.pcsv("Num:"), len(self.log), nl,
+		print self.pcsv("Dets:"), self.detections, nl,
 		print self.pcsv("Fp%:"), float(fpos) / paths * 100 if paths != 0 else 0.0, self.pcsv("({})".format(fpos)), nl,
 		print self.pcsv("MinB:"), minb if loops != 0 else "--", self.pcsv("hops"), nl,
 		print self.pcsv("MaxB:"), maxb if loops != 0 else "--", self.pcsv("hops"), nl,
@@ -112,9 +114,12 @@ class PacketStruct(object):
 
 class PacketMinSketch(PacketStruct):
 
-	def __init__(self, b = 4, c = 1, H = 1, size = 32, cceiling = False, seed = 65137):
+	def __init__(self, b = 4, c = 1, H = 1, size = 32, detections = 1, cceiling = False, seed = 65137):
+		super(PacketMinSketch, self).__init__()
+
 		self.hash = size < 32 or H > 1
 		self.cceiling = cceiling
+		self.detections = detections
 		self.b = b # reseting
 		self.c = c # chunks
 
@@ -122,8 +127,6 @@ class PacketMinSketch(PacketStruct):
 		self.seeds = [ prgn.getrandbits(32) for _ in range(H) ]
 		self.size = size # z (in bits)
 		self.H = H # number of hashes
-
-		super(PacketMinSketch, self).__init__()
 
 	def hash_node(self, node, seed):
 		if not self.hash: return node
@@ -138,6 +141,9 @@ class PacketMinSketch(PacketStruct):
 
 		if "loop?" not in context:
 			context["loop?"] = False
+
+		if "detection" not in context:
+			context["detection"] = 0
 
 		if "psize" not in context:
 			context["psize"] = 1 # phase size
@@ -171,8 +177,10 @@ class PacketMinSketch(PacketStruct):
 
 		# Loop detected, report it
 		if loop:
-			context["loop?"] = True
-			return False
+			context["detection"] += 1
+			if context["detection"] >= self.detections:
+				context["loop?"] = True
+				return False
 
 		# Add node into path
 		context["path"].append(node)
@@ -211,17 +219,18 @@ class PacketMinSketch(PacketStruct):
 		print self.pcsv("b:"), self.b, nl,
 		print self.pcsv("c:"), self.c, nl,
 		print self.pcsv("H:"), self.H, nl,
-		print self.pcsv("Mem:"), self.size * self.c * self.H, self.pcsv("bits"), nl,
+		print self.pcsv("Mem:"), self.size * self.c * self.H + math.log(self.detections, 2), self.pcsv("bits"), nl,
 		super(self.__class__, self).report(oneline)
 
 
 class PacketBloomFilter(PacketStruct):
 
-	def __init__(self, capacity, error_rate):
+	def __init__(self, capacity, error_rate, detections = 1):
+		super(PacketBloomFilter, self).__init__()
+
+		self.detections = detections
 		self.capacity = capacity
 		self.error_rate = error_rate
-
-		super(PacketBloomFilter, self).__init__()
 
 	def process_loops(self, node, context):
 		if "path" not in context:
@@ -229,6 +238,9 @@ class PacketBloomFilter(PacketStruct):
 
 		if "loop?" not in context:
 			context["loop?"] = False
+
+		if "detection" not in context:
+			context["detection"] = 0
 
 		if "bf" not in context:
 			context["bf"] = pb.BloomFilter(self.capacity, self.error_rate)
@@ -241,8 +253,10 @@ class PacketBloomFilter(PacketStruct):
 				pass
 
 		if (node in context["bf"]):
-			context["loop?"] = True
-			return False
+			context["detection"] += 1
+			if context["detection"] >= self.detections:
+				context["loop?"] = True
+				return False
 
 		context["path"].append(node)
 		context["bf"].add(node)
@@ -256,7 +270,7 @@ class PacketBloomFilter(PacketStruct):
 		print self.__class__.__name__, nl,
 		print self.pcsv("Cap:"), self.capacity, nl,
 		print self.pcsv("Rate:"), self.error_rate, nl,
-		print self.pcsv("Mem:"), bf.num_bits, self.pcsv("bits"), nl,
+		print self.pcsv("Mem:"), bf.num_bits + math.log(self.detections, 2), self.pcsv("bits"), nl,
 		print self.pcsv("Hashes:"), bf.num_slices, nl,
 		super(self.__class__, self).report(oneline)
 
