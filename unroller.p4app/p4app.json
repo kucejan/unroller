@@ -1,0 +1,24 @@
+{
+    "program": "unroller.p4",
+    "language": "p4-16",
+    "default-target": "mininet",
+    "targets": {
+        "build": {
+            "use": "compile-bmv2"
+        },
+        "mininet": {
+            "use": "multiswitch",
+            "procrunner_module": "customization",
+            "controller_module": "customization",
+            "bmv2_log" : true,
+            "links": [
+                ["h1", "s1"]
+            ],
+		  	"switches": {
+		    	"s1": {
+		      		"commands": "unroller.config"
+		    	}
+		    }
+        }
+    }
+}
