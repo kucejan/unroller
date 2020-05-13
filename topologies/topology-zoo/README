@@ -1,0 +1,8 @@
+
+# Download topology zoo archives
+wget http://www.topology-zoo.org/files/archive.zip
+wget http://www.topology-zoo.org/files/eu_nren_graphs.zip
+
+# Unpack them
+unzip archive.zip -d archive
+unzip eu_nren_graphs.zip -d eu_nren_graphs
