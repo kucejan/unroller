@@ -6,3 +6,10 @@ wget http://www.topology-zoo.org/files/eu_nren_graphs.zip
 # Unpack them
 unzip archive.zip -d archive
 unzip eu_nren_graphs.zip -d eu_nren_graphs
+
+# Selected ZOO topologies are available in this repo:
+ * ATT North America (AttMpls.gml)
+ * Bell South (Bellsouth.gml)
+ * GEANT (Geant2012.gml)
+ * Kentucky Datalink (Kdl.gml)
+ * US Carrier (UsCarrier.gml)
