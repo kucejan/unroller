@@ -1,5 +1,6 @@
 
 import random
+import progressbar
 import networkx as nx
 
 from packetstructs import *
@@ -7,8 +8,12 @@ from packetstructs import *
 
 class Topology(nx.Graph):
 
-	def __init__(self, topox, create_hosts = False, seed = 65137):
+	def __init__(self, topox, create_hosts = False, seed = None, verbose = False):
 		super(self.__class__, self).__init__(topox)
+
+		# Check if the graph is fully connected
+		if not nx.is_connected(self):
+			raise nx.exception.NetworkXError("Graph is not fully connected!")
 
 		# Mark all nodes as internal/edge and label them
 		for n in self.nodes():
@@ -22,13 +27,64 @@ class Topology(nx.Graph):
 				self.add_edge(offset + i, i)
 
 		# Generate node IDs
-		prng = random.Random(seed)
-		ids = prng.sample(xrange(2**32), len(self.node))
+		self.prng = random.Random(seed)
+		ids = self.prng.sample(xrange(2**32), len(self.node))
 		for i, n in enumerate(self.nodes()):
 			self.node[n]['id'] = ids[i]
 
+		# Enable/disable verbose mode
+		self.verbose = verbose
+
+		nodes_count = len(self.nodes())
+		nodes_log2 = nodes_count.bit_length()
+		if self.verbose:
+			print " -> nodes = {} ({} bits)".format(nodes_count, nodes_log2)
+
+		self.cyclesets = [set(c) for c in self.find_all_cycles()]
+		if self.verbose:
+			print " -> cycles = {}".format(len(self.cyclesets))
+
 	@staticmethod
-	def load_zoo(gml_file, create_hosts = True, seed = 65137):
+	def load(topo_file, parser = 'zoo', create_hosts = True, seed = None, verbose = False):
+		if parser == 'stanford':
+			func = Topology.load_stanford
+		elif parser == 'zoo':
+			func = Topology.load_zoo
+		elif parser == 'rocket':
+			func = Topology.load_rocket
+		else:
+			return None
+
+		return func(topo_file, create_hosts, seed, verbose)
+
+	@staticmethod
+	def load_rocket(topo_file, create_hosts = True, seed = None, verbose = False):
+
+		if verbose:
+			print "Loading {}".format(topo_file)
+
+		nodes = {}
+		topox = nx.Graph()
+
+		f = open(topo_file, 'r')
+		for line in f:
+			tokens = line.strip().rsplit(' ', 1)
+			tokens = tokens[0].split(' -> ')
+			for i in [0, 1]:
+				node = tokens[i]
+				if node not in nodes:
+					nodeid = len(nodes)+1
+					nodes[node] = nodeid
+					topox.add_node(nodeid, label = node)
+			topox.add_edge(nodes[tokens[0]], nodes[tokens[1]])
+
+		return Topology(topox, create_hosts, seed, verbose)
+
+	@staticmethod
+	def load_zoo(gml_file, create_hosts = True, seed = None, verbose = False):
+
+		if verbose:
+			print "Loading {}".format(gml_file)
 
 		# Load topology from file
 		topox = nx.read_gml(gml_file, label = 'id')
@@ -42,13 +98,15 @@ class Topology(nx.Graph):
 		# Relabel nodes to integeres, names available as 'name' attribute
 		topox = nx.relabel.convert_node_labels_to_integers(topox, first_label = 1)
 
-		return Topology(topox, create_hosts, seed)
+		return Topology(topox, create_hosts, seed, verbose)
 
 	@staticmethod
-	def load_stanford(port_file, topo_file, create_hosts = True, seed = 65137):
+	def load_stanford(topo_file, create_hosts = True, seed = None, verbose = False):
 
 		PORT_TYPE_MULTIPLIER = 10000
 		SWITCH_ID_MULTIPLIER = 100000
+
+		port_file, topo_file = topo_file
 
 		def load_ports(filename):
 			ports = {}
@@ -87,6 +145,10 @@ class Topology(nx.Graph):
 			f.close()
 			return links
 
+		if verbose:
+			print "Loading {}".format(port_file)
+			print "Loading {}".format(topo_file)
+
 		# Read Stanford topology files
 		ports, labels = load_ports(port_file)
 		links = load_topology(topo_file)
@@ -103,18 +165,20 @@ class Topology(nx.Graph):
 			dst_dpid = dst_port_flat / SWITCH_ID_MULTIPLIER
 			topox.add_edge(src_dpid, dst_dpid)
 
-		return Topology(topox, create_hosts, seed)
+		return Topology(topox, create_hosts, seed, verbose)
 
 	def get_stpaths(self):
-		shortest_paths = {}
-		edge_nodes = [n for n in self.nodes() if self.node[n]["edge"]]
-		for u in edge_nodes:
-			shortest_paths[u] = {}
-			paths = nx.single_source_shortest_path(self, u)
-			for v in edge_nodes:
-				shortest_paths[u][v] = paths[v]
-				# print u, v, paths[v]
-		return shortest_paths
+		if not hasattr(self, 'stpaths'):
+			self.stpaths = {}
+			edge_nodes = [n for n in self.nodes() if self.node[n]["edge"]]
+			for u in edge_nodes:
+				self.stpaths[u] = {}
+				paths = nx.single_source_shortest_path(self, u)
+				for v in edge_nodes:
+					#if v not in paths: continue
+					self.stpaths[u][v] = paths[v]
+					# print u, v, paths[v]
+		return self.stpaths
 
 	def get_stpaths_routing(self):
 		routing = {}
@@ -128,10 +192,14 @@ class Topology(nx.Graph):
 					# print u, v, paths[v]
 		return routing
 
-	def get_random_cycle(self):
-		cycle = []
+	def get_random_edge_path(self):
+		edge_nodes = self.edge_nodes()
+		src_node = edge_nodes[self.prng.randint(0, len(edge_nodes)-1)]
+		dst_node = edge_nodes[self.prng.randint(0, len(edge_nodes)-1)]
+		return self.get_stpaths()[src_node][dst_node]
 
-		return cycle
+	def get_random_cycleset(self):
+		return self.cyclesets[self.prng.randint(0, len(self.cyclesets)-1)]
 
 	def find_all_cycles_old(self, source = None):
 		"""forked from networkx dfs_edges function. Assumes nodes are integers, or at least
@@ -196,6 +264,58 @@ class Topology(nx.Graph):
 
 	def edge_nodes(self):
 		return [n for n in self.nodes() if self.node[n]["edge"]]
+
+	def generate_loops(self, loops):
+		BL = []
+
+		if (self.verbose):
+			bar = progressbar.ProgressBar(maxval = loops,
+				widgets = [progressbar.Bar('=', '[', ']'), ' ', progressbar.Percentage()])
+			print
+			bar.start()
+
+		while len(BL) < loops:
+			cycle = self.get_random_cycleset()
+			path = self.get_random_edge_path()
+
+			intersect = set(path) & set(cycle)
+			if len(intersect) == 0:
+				continue
+
+			for B, node in enumerate(path):
+				if node in intersect:
+					break
+
+			BL.append((B, len(cycle)))
+			if self.verbose:
+				bar.update(len(BL))
+
+		if self.verbose:
+			bar.finish()
+			print
+
+		return BL
+
+	def analyze_loops(self, loops, prefix = '', csv = False):
+		BL = self.generate_loops(loops)
+		if csv:
+			for (B, L) in BL:
+				print '#', B, L
+
+		def average(lst, index):
+			suma = 0
+			for item in lst:
+				suma += item[index]
+			return float(suma) / len(lst)
+
+		if len(prefix):
+			if isinstance(prefix, list):
+				for item in prefix:
+					print item,
+			else:
+				print prefix,
+		print average(BL, 0), average(BL, 1)
+
 
 	def inject_loops(self, loopnum = 0, looplen = 0, debug = False):
 		if not hasattr(self, 'routing'):
