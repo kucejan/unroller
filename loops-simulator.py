@@ -8,13 +8,14 @@ import itertools
 sys.path.insert(0, 'python-bloomfilter/')
 import pybloom as pb
 
+from topology import *
 from packetstructs import *
 
 #
 ## Common settings
 
 # Number of generated packets (iterations)
-packets = 100
+packets = 10000
 
 # Number of hops before entering the loop (list)
 Brange = [5] # [0, 2, 3, 5, 7, 10]
@@ -29,12 +30,28 @@ detections = [1, 2, 4]
 # Generate loops and/or loop-free paths
 #   When generating loop-free paths, the paths
 #   has the length of X = B + X
-genloops = True
+genloops = False
 genpaths = False
+
+# Generate loops using a topology
+topoloops = True
+
+# Topology file parser
+topoparser = 'zoo' # 'stanford', 'rocket'
+
+# File with topology
+# topofile = (
+# 	"topologies/stanford-backbone/port_map.txt",
+# 	"topologies/stanford-backbone/backbone_topology.tf")
+topofile = 'topologies/topology-zoo/archive/Cesnet201006.gml'
+# topofile = 'topologies/topology-zoo/eu_nren_graphs/graphs/interconnect.gml'
+# topofile = 'topologies/topology-zoo/eu_nren_graphs/graphs/condensed.gml'
+# topofile = 'topologies/topology-zoo/eu_nren_graphs/graphs/condensed_west_europe.gml'
+# topofile = 'topologies/rocketfuel/maps-n-paths/101\:101/edges'
 
 # Enable Unroller and/or BF simulator
 enunroller = True
-enbloomfilter = True
+enbloomfilter = False
 
 
 #
@@ -74,22 +91,36 @@ bf_error_rates = [0.01] # [0.01, 0.001, 0.0001, 0.00001]
 
 
 #
+## Create topology if necessary
+
+if topoloops:
+	topo = Topology.load(topofile, parser=topoparser)
+	BL = topo.generate_loops(packets)
+
+
+#
 ## Simulate Unroller structure
 
 if enunroller:
 	for dets in detections:
 		for b in brange:
 			for c, H in cHrange:
-				for B in Brange:
-					for L in Lrange:
-						for z in zrange:
-							pstruct = PacketMinSketch(b = b, c = c, H = H, size = z, detections = dets)
-							if genloops: simulate_loops(pstruct, B, L, packets)
-							if genpaths: simulate_paths(pstruct, L+B, packets)
-							pstruct.csvrep()
-						if len(zrange) > 1: print
-					if len(Lrange) > 1: print
-				if len(Brange) > 1: print
+				for z in zrange:
+					if genloops or genpaths:
+						for B in Brange:
+							for L in Lrange:
+								pstruct = PacketMinSketch(b = b, c = c, H = H, size = z, detections = dets)
+								if genloops: simulate_loops(pstruct, B, L, packets)
+								if genpaths: simulate_paths(pstruct, L+B, packets)
+								pstruct.csvrep()
+							if len(Lrange) > 1: print
+						if len(Brange) > 1: print
+					if topoloops:
+						pstruct = PacketMinSketch(b = b, c = c, H = H, size = z, detections = dets)
+						for B, L in BL:
+							simulate_loops(pstruct, B, L, 1)
+						pstruct.csvrep()
+				if len(zrange) > 1: print
 			if len(cHrange) > 1: print
 		if len(brange) > 1: print
 	if len(detections) > 1: print
@@ -102,14 +133,20 @@ if enunroller:
 if enbloomfilter:
 	for dets in detections:
 		for bf_error_rate in bf_error_rates:
-			for B in Brange:
-				for L in Lrange:
-					pstruct = PacketBloomFilter(bf_capacity, bf_error_rate, detections = dets)
-					if genloops: simulate_loops(pstruct, B, L, packets)
-					if genpaths: simulate_paths(pstruct, B+L, packets)
-					pstruct.csvrep()
-				if len(Lrange) > 1: print
-			if len(Brange) > 1: print
+			if genloops or genpaths:
+				for B in Brange:
+					for L in Lrange:
+						pstruct = PacketBloomFilter(bf_capacity, bf_error_rate, detections = dets)
+						if genloops: simulate_loops(pstruct, B, L, packets)
+						if genpaths: simulate_paths(pstruct, B+L, packets)
+						pstruct.csvrep()
+					if len(Lrange) > 1: print
+				if len(Brange) > 1: print
+			if topoloops:
+				pstruct = PacketBloomFilter(bf_capacity, bf_error_rate, detections = dets)
+				for B, L in BL:
+					simulate_loops(pstruct, B, L, 1)
+				pstruct.csvrep()
 		if len(bf_error_rates) > 1: print
 	if len(detections) > 1: print
 	print
