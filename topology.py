@@ -15,9 +15,10 @@ class Topology(nx.Graph):
 		if not nx.is_connected(self):
 			raise nx.exception.NetworkXError("Graph is not fully connected!")
 
-		# Mark all nodes as internal/edge and label them
+		# Mark all nodes as internal/edge and label them if note labeled
 		for n in self.nodes():
-			self.node[n]['edge'] = not create_hosts
+			if 'edge' not in self.node[n]:
+				self.node[n]['edge'] = not create_hosts
 
 		# Add and wire up hosts
 		if create_hosts:
@@ -52,10 +53,78 @@ class Topology(nx.Graph):
 			func = Topology.load_zoo
 		elif parser == 'rocket':
 			func = Topology.load_rocket
+		elif parser == 'fattree':
+			func = Topology.load_fattree
 		else:
 			return None
 
 		return func(topo_file, create_hosts, seed, verbose)
+
+	@staticmethod
+	def load_fattree(topo_file, create_hosts = True, seed = None, verbose = False):
+
+		K = int(topo_file)
+
+		if verbose:
+			print "Creating FatTree, K = {}".format(K)
+
+		nodeid = 0
+		topox = nx.Graph()
+
+		# credits:
+		# https://github.com/howar31/MiniNet/blob/master/topo-fat-tree.py
+
+		# topology settings
+		podNum = K                      # pods in FatTree
+		coreSwitchNum = pow((K/2),2)    # core switches
+		aggrSwitchNum = ((K/2)*K)       # aggregation switches
+		edgeSwitchNum = ((K/2)*K)       # edge switches
+		hostNum = (K*pow((K/2),2))      # hosts in K-ary FatTree
+
+		coreSwitches = []
+		aggrSwitches = []
+		edgeSwitches = []
+
+		# Core
+		for core in range(0, coreSwitchNum):
+			nodeid = nodeid+1
+			topox.add_node(nodeid, label = "cs_"+str(core), edge = False)
+			coreSwitches.append(nodeid)
+
+		# Pod
+		for pod in range(0, podNum):
+
+			# Aggregate
+			for aggr in range(0, aggrSwitchNum/podNum):
+				nodeid = nodeid+1
+				topox.add_node(nodeid, label = "as_"+str(pod)+"_"+str(aggr), edge = False)
+				aggrSwitches.append(nodeid)
+				for x in range((K/2)*aggr, (K/2)*(aggr+1)):
+					topox.add_edge(nodeid, coreSwitches[x])
+
+			# Edge
+			for edge in range(0, edgeSwitchNum/podNum):
+				nodeid = nodeid+1
+				edgeid = nodeid
+				topox.add_node(edgeid, label = "es_"+str(pod)+"_"+str(edge), edge = not create_hosts)
+				edgeSwitches.append(edgeid)
+				for x in range((edgeSwitchNum/podNum)*pod, ((edgeSwitchNum/podNum)*(pod+1))):
+					topox.add_edge(edgeid, aggrSwitches[x])
+
+				# Host
+				if create_hosts:
+
+					# One host per edge
+					nodeid = nodeid+1
+					topox.add_node(nodeid, label = "es_"+str(pod)+"_"+str(edge)+"-host", edge = True)
+					topox.add_edge(nodeid, edgeid)
+
+					# More hosts per edge
+					# for x in range(0, (hostNum/podNum/(edgeSwitchNum/podNum))):
+					# 	topox.add_node(nodeid, label = "es_"+str(pod)+"_"+str(edge)+"-host_"+str(x), edge = True)
+					# 	topox.add_edge(nodeid, edgeSwitches[edge])
+
+		return Topology(topox, False, seed, verbose)
 
 	@staticmethod
 	def load_rocket(topo_file, create_hosts = True, seed = None, verbose = False):

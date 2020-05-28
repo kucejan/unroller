@@ -15,7 +15,7 @@ from packetstructs import *
 ## Common settings
 
 # Number of generated packets (iterations)
-packets = 10000
+packets = 100000
 
 # Number of hops before entering the loop (list)
 Brange = [5] # [0, 2, 3, 5, 7, 10]
@@ -25,7 +25,7 @@ Lrange = [20] # xrange(15, 25)
 
 # Number of success loop detection before
 # reporting it (called Th in the paper)
-detections = [1, 2, 4]
+detections = [1] # [1, 2, 4]
 
 # Generate loops and/or loop-free paths
 #   When generating loop-free paths, the paths
@@ -37,17 +37,23 @@ genpaths = False
 topoloops = True
 
 # Topology file parser
-topoparser = 'zoo' # 'stanford', 'rocket'
+topoparser = 'zoo' # 'stanford', 'rocket', 'fattree'
 
 # File with topology
 # topofile = (
 # 	"topologies/stanford-backbone/port_map.txt",
 # 	"topologies/stanford-backbone/backbone_topology.tf")
-topofile = 'topologies/topology-zoo/archive/Cesnet201006.gml'
+topofile = 'topologies/topology-zoo/UsCarrier.gml'
+# topofile = 'topologies/topology-zoo/archive/Geant2012.gml'
+# topofile = 'topologies/topology-zoo/archive/Bellsouth.gml'
+# topofile = 'topologies/topology-zoo/AttMpls.gml'
+# topofile = 'topologies/topology-zoo/archive/Cesnet201006.gml'
 # topofile = 'topologies/topology-zoo/eu_nren_graphs/graphs/interconnect.gml'
 # topofile = 'topologies/topology-zoo/eu_nren_graphs/graphs/condensed.gml'
 # topofile = 'topologies/topology-zoo/eu_nren_graphs/graphs/condensed_west_europe.gml'
 # topofile = 'topologies/rocketfuel/maps-n-paths/101\:101/edges'
+# topofile = '4'
+# topofile = '2'
 
 # Enable Unroller and/or BF simulator
 enunroller = True
@@ -67,7 +73,7 @@ brange = [4] # xrange(2, 5)
 cHrange = [(1,1)] # [(1,1), (2,2), (4,4), (8,4), (8,8), (1,4), (4,1), (4,2), (2,4)]
 # cHrange = itertools.product([1], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20])
 
-zrange = [14] # xrange(2, 32+1)
+zrange = [32] # xrange(2, 32+1)
 
 
 #

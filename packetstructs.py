@@ -42,6 +42,10 @@ class PacketStruct(object):
 		mint = float("inf")
 		maxt = 0
 
+		sumh = 0
+		minh = sys.maxint
+		maxh = 0
+
 		sumb = 0
 		minb = sys.maxint
 		maxb = 0
@@ -70,6 +74,10 @@ class PacketStruct(object):
 			mint = min(mint, time)
 			maxt = max(maxt, time)
 
+			sumh += hops
+			minh = min(minh, hops)
+			maxh = max(maxh, hops)
+
 			sumb += B
 			minb = min(minb, B)
 			maxb = max(maxb, B)
@@ -90,6 +98,9 @@ class PacketStruct(object):
 		print self.pcsv("MinTime:"), mint if loops != 0 else "--", self.pcsv("X"), nl,
 		print self.pcsv("MaxTime:"), maxt if loops != 0 else "--", self.pcsv("X"), nl,
 		print self.pcsv("AvgTime:"), float(sumt) / loops if loops != 0 else "--", self.pcsv("X"), nl,
+		print self.pcsv("MinHops:"), minh if loops != 0 else "--", self.pcsv("X"), nl,
+		print self.pcsv("MaxHops:"), maxh if loops != 0 else "--", self.pcsv("X"), nl,
+		print self.pcsv("AvgHops:"), float(sumh) / loops if loops != 0 else "--", self.pcsv("X"), nl,
 		print
 
 

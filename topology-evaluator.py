@@ -18,17 +18,21 @@ parser.add_argument('-v', '--verbose', action='store_true',
 parser.add_argument('-s', '--seed', type=int, default=None,
 	help='seed for PRNG to have consistend results')
 parser.add_argument('-p', '--parser', type=str, default='zoo',
-	choices=['zoo', 'rocket', 'stanford'],
-	help='topology file parser')
+	choices=['zoo', 'rocket', 'stanford', 'fattree'],
+	help='topology file / arguments parser')
 parser.add_argument('-l', '--loops', type=int, default=1000,
 	help='number of iterations')
 parser.add_argument('-t', '--timeout', type=int, default=60,
 	help='timeout in seconds for processing one file')
-parser.add_argument('files', metavar='FILE', type=str, nargs='+',
-	help='topology file')
+parser.add_argument('files', metavar='FILEorARG', type=str, nargs='+',
+	help='topology file / argument')
 
 
 args = parser.parse_args()
+
+if len(args.files) == 0:
+	parser.print_help()
+	sys.exit(1)
 
 print "File", "AVG-B", "AVG-L"
 if args.verbose:
@@ -39,8 +43,9 @@ while len(args.files) > 0:
 	topo = None
 
 	# Test if file exists, otherwise skip it
-	if not os.path.exists(args.files[0]):
-		args.files.pop(0)
+	topo_file = args.files.pop(0)
+	if args.parser != 'fattree' and not os.path.exists(topo_file):
+		print "No file", topo_file
 		continue
 
 	try:
@@ -49,13 +54,13 @@ while len(args.files) > 0:
 		with ic.timeout(args.timeout, exception=RuntimeError):
 
 			if args.parser == 'stanford':
-				topo_file = (args.files.pop(0), args.files.pop(0))
-			else:
-				topo_file = args.files.pop(0)
+				topo_file = (topo_file, args.files.pop(0))
 
 			# Load topology from file
 			topo = Topology.load(topo_file, parser=args.parser,
 				seed=args.seed, verbose=args.verbose)
+
+			nx.write_graphml(topo, "test.graphml")
 
 			if args.parser == 'stanford':
 				topo_file = topo_file[-1]
