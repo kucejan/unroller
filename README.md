@@ -74,7 +74,6 @@ topopaths = True
 # Generate paths based on the loops length
 lbasedpaths = True
 
-
 # Topology parser and source file (stanford)
 topoparser = 'stanford'
 topofile = (
@@ -117,7 +116,6 @@ brange = [4] # xrange(2, 5)
 # (c, H) pairs, where
 # c: number of chunks the phase is partitioned to
 # H: number of hash functions
-#
 cHrange = [(1,1)] # [(1,1), (2,2), (4,4), (8,4), (8,8), (1,4), (4,1), (4,2), (2,4)]
 # cHrange = itertools.product([1], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20])
 
