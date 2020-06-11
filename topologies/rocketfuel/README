@@ -1,9 +1,0 @@
-
-# download rocketfuel topology archive
-wget http://www.cs.washington.edu/research/networking/rocketfuel/maps/policy-dist.tar.gz
-
-# unpack the archive
-tar -xzf policy-dist.tar.gz
-
-# optionally convert rocketfuel dataset into zoo format (probably not working)
-rocketfuel2zoo -d maps-n-paths/

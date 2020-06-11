@@ -1,6 +1,0 @@
-https://bitbucket.org/peymank/hassel-public/src/master/mininet/data/
-
-https://bitbucket.org/peymank/hassel-public/raw/697b35c9f17ec74ceae05fa7e9e7937f1cf36878/mininet/data/backbone_topology.tf
-https://bitbucket.org/peymank/hassel-public/raw/697b35c9f17ec74ceae05fa7e9e7937f1cf36878/mininet/data/port_map.txt
-
-https://raw.githubusercontent.com/frenetic-lang/pyretic/master/pyretic/examples/stanford_shortest_path.py
