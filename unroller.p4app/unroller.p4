@@ -4,6 +4,9 @@
 #include "includes/parser.p4"
 #include "includes/deparser.p4"
 
+#define UNROLLER_ID_MAX 64w4294967296
+#define UNROLLER_HASH0_SALT 32w883 // prime number
+
 /*/
 |*| UNROLLER digest type
 /*/
@@ -21,6 +24,10 @@ struct unroller_metadata_t {
     bit<UNROLLER_SIZE> match;
     bit<32> swid;
     bit<8> thcnt;
+
+    bit<32> swid0;	// hashed identifier 0
+    // for using more switch IDs 1, 2, ...
+    // ... the code needs to be copied
 }
 
 /*/
@@ -42,13 +49,25 @@ control process_unroller(inout headers hdr, inout metadata meta, inout standard_
         cfg_swid_reg.read(unroller.swid, 0);
         cfg_thcnt_reg.read(unroller.thcnt, 0);
 
+        // Hash the switch ID to get hashed identifier 0 ...
+        hash(unroller.swid0, HashAlgorithm.crc32, UNROLLER_HASH0_SALT, {unroller.swid}, UNROLLER_ID_MAX);
+        // ... or use it in its direct way
+        //unroller.swid0 = unroller.swid;
+
+        // Hash the switch ID to get hashed identifier 1, 2, ...
+        // ... or use it in its direct way
+        // ... the code needs to be copied
+
         // Update hop counter
         hdr.unroller_head.hopid = hdr.unroller_head.hopid + 1;
 
-        // Test if we match the identifier
-        if (hdr.unroller_list[0].swid == unroller.swid) {
+        // Test if we match the identifier 0
+        if (hdr.unroller_list[0].swid == unroller.swid0) {
             unroller.match[0:0] = 1w1;
         }
+
+        // Test if we match the identifier 1, 2, ...
+        // ... the code needs to be copied
 
         // Test if we are reseting, if hopid is power of 4
         if (hdr.unroller_head.hopid & (hdr.unroller_head.hopid-1) == 0x0) {
@@ -64,23 +83,22 @@ control process_unroller(inout headers hdr, inout metadata meta, inout standard_
                 // Inform controller
                 digest<unroller_digest_t>(0, {
                     standard_metadata.ingress_global_timestamp,
-                    unroller.swid,
+                    unroller.swid,	// the original SW identifier
                     hdr.unroller_head.hopid
                 });
 
-                // Drop packet
+                // For example, drop the packet
                 mark_to_drop(standard_metadata);
-            }
-
-        // Update packet only
-        } else {
-
-            // Update switch identifier, if smaller of we are reseting
-            if (unroller.swid < hdr.unroller_list[0].swid || unroller.reset[0:0] == 1) {
-                hdr.unroller_list[0].swid = unroller.swid;
             }
         }
 
+        // Update switch identifier 0, if smaller of we are reseting
+        if (unroller.swid0 < hdr.unroller_list[0].swid || unroller.reset[0:0] == 1) {
+            hdr.unroller_list[0].swid = unroller.swid0;
+        }
+
+        // Update switch identifier 1, 2, ..., if smaller of we are reseting
+        // ... the code needs to be copied
     }
 }
 
