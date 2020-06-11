@@ -15,7 +15,7 @@ from packetstructs import *
 ## Common settings
 
 # Number of generated packets (iterations)
-packets = 100000
+packets = 3000000
 
 # Number of hops before entering the loop (list)
 Brange = [5] # [0, 2, 3, 5, 7, 10]
@@ -34,16 +34,27 @@ genloops = False
 genpaths = False
 
 # Generate loops using a topology
-topoloops = True
+topoloops = False
 
-# Topology file parser
-topoparser = 'zoo' # 'stanford', 'rocket', 'fattree'
+# Generate paths using a topology
+topopaths = True
 
-# File with topology
-# topofile = (
-# 	"topologies/stanford-backbone/port_map.txt",
-# 	"topologies/stanford-backbone/backbone_topology.tf")
-topofile = 'topologies/topology-zoo/UsCarrier.gml'
+# Generate paths based on the loops length
+lbasedpaths = True
+
+#
+ # 'stanford', 'rocket', 'fattree'
+
+
+# Topology parser and source file (stanford)
+topoparser = 'stanford'
+topofile = (
+	"topologies/stanford-backbone/port_map.txt",
+	"topologies/stanford-backbone/backbone_topology.tf")
+
+# Topology parser and source file (zoo)
+# topoparser = 'zoo'
+# topofile = 'topologies/topology-zoo/UsCarrier.gml'
 # topofile = 'topologies/topology-zoo/archive/Geant2012.gml'
 # topofile = 'topologies/topology-zoo/archive/Bellsouth.gml'
 # topofile = 'topologies/topology-zoo/AttMpls.gml'
@@ -51,13 +62,19 @@ topofile = 'topologies/topology-zoo/UsCarrier.gml'
 # topofile = 'topologies/topology-zoo/eu_nren_graphs/graphs/interconnect.gml'
 # topofile = 'topologies/topology-zoo/eu_nren_graphs/graphs/condensed.gml'
 # topofile = 'topologies/topology-zoo/eu_nren_graphs/graphs/condensed_west_europe.gml'
+
+# Topology parser and source file (rocket)
+# topoparser = 'rocket'
 # topofile = 'topologies/rocketfuel/maps-n-paths/101\:101/edges'
+
+# Topology parser and source file (fattree)
+# topoparser = 'fattree'
 # topofile = '4'
 # topofile = '2'
 
 # Enable Unroller and/or BF simulator
-enunroller = True
-enbloomfilter = False
+enunroller = False
+enbloomfilter = True
 
 
 #
@@ -73,7 +90,8 @@ brange = [4] # xrange(2, 5)
 cHrange = [(1,1)] # [(1,1), (2,2), (4,4), (8,4), (8,8), (1,4), (4,1), (4,2), (2,4)]
 # cHrange = itertools.product([1], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20])
 
-zrange = [32] # xrange(2, 32+1)
+# z: stored number of bits of the switch identifier
+zrange = xrange(17, 32+1) # xrange(2, 32+1)
 
 
 #
@@ -83,7 +101,7 @@ zrange = [32] # xrange(2, 32+1)
 bf_capacity = 20
 
 # Expected error rates of the BF (affects number of hash functions)
-bf_error_rates = [0.01] # [0.01, 0.001, 0.0001, 0.00001]
+# bf_error_rates = [0.01, 0.001, 0.0001, 0.00001]
 # bf_error_rates = [0.00153, 0.00194, 0.00235, 0.00292, 0.00362, 0.00391, 0.00461, 0.00558, 0.00677,
 # 	0.00782, 0.00902, 0.01068, 0.01263, 0.01494, 0.01563, 0.01768, 0.02042, 0.02358, 0.02724, 0.03125,
 # 	0.03463, 0.03905, 0.04403, 0.04965, 0.05599, 0.0625, 0.06785, 0.07469, 0.08223, 0.09052, 0.09965,
@@ -92,16 +110,29 @@ bf_error_rates = [0.01] # [0.01, 0.001, 0.0001, 0.00001]
 # 	0.42113, 0.44186, 0.46361, 0.48643, 0.5, 0.51037, 0.52278, 0.53549, 0.54851, 0.56184, 0.5755, 0.58949,
 # 	0.60383, 0.61851, 0.63355, 0.64895, 0.66473, 0.68089, 0.69744, 0.7144, 0.73177, 0.74956, 0.76779,
 # 	0.78645, 0.80558, 0.82516, 0.84522, 0.86578, 0.88682, 0.90839, 0.93047, 0.9531, 0.97627]
-# bf_num_bits_pairs = [(pb.BloomFilter(bf_capacity, p).num_bits, p) for p in [(z+1)/1000000. for z in xrange(999999)]]
-# bf_error_rates = [w for (i,(q,w)) in enumerate(bf_num_bits_pairs) if q < bf_num_bits_pairs[i-1][0]]
+bf_num_bits_pairs = [(pb.BloomFilter(bf_capacity, p).num_bits, p) for p in [(z+1)/1000000. for z in xrange(999999)]]
+bf_error_rates = [w for (i,(q,w)) in enumerate(bf_num_bits_pairs) if q < bf_num_bits_pairs[i-1][0]]
 
 
 #
 ## Create topology if necessary
 
-if topoloops:
+if topoloops or topopaths:
 	topo = Topology.load(topofile, parser=topoparser)
-	BL = topo.generate_loops(packets)
+
+	BLs = []
+	if topoloops:
+		BLs = topo.generate_loops(packets)
+
+	Xs = []
+	if topopaths:
+		if lbasedpaths:
+			if len(BLs) > 0:
+				Xs = [B+L for B, L in BLs]
+			else:
+				Xs = [B+L for B, L in topo.generate_loops(packets)]
+		else:
+			Xs = topo.generate_paths(packets)
 
 
 #
@@ -116,15 +147,15 @@ if enunroller:
 						for B in Brange:
 							for L in Lrange:
 								pstruct = PacketMinSketch(b = b, c = c, H = H, size = z, detections = dets)
-								if genloops: simulate_loops(pstruct, B, L, packets)
-								if genpaths: simulate_paths(pstruct, L+B, packets)
+								if genloops: simulate_loops(pstruct, (B,L), packets)
+								if genpaths: simulate_paths(pstruct, B+L, packets)
 								pstruct.csvrep()
 							if len(Lrange) > 1: print
 						if len(Brange) > 1: print
-					if topoloops:
+					if topoloops or topopaths:
 						pstruct = PacketMinSketch(b = b, c = c, H = H, size = z, detections = dets)
-						for B, L in BL:
-							simulate_loops(pstruct, B, L, 1)
+						simulate_loops(pstruct, BLs)
+						simulate_paths(pstruct, Xs)
 						pstruct.csvrep()
 				if len(zrange) > 1: print
 			if len(cHrange) > 1: print
@@ -143,15 +174,15 @@ if enbloomfilter:
 				for B in Brange:
 					for L in Lrange:
 						pstruct = PacketBloomFilter(bf_capacity, bf_error_rate, detections = dets)
-						if genloops: simulate_loops(pstruct, B, L, packets)
+						if genloops: simulate_loops(pstruct, (B,L), packets)
 						if genpaths: simulate_paths(pstruct, B+L, packets)
 						pstruct.csvrep()
 					if len(Lrange) > 1: print
 				if len(Brange) > 1: print
-			if topoloops:
+			if topoloops or topopaths:
 				pstruct = PacketBloomFilter(bf_capacity, bf_error_rate, detections = dets)
-				for B, L in BL:
-					simulate_loops(pstruct, B, L, 1)
+				simulate_loops(pstruct, BLs)
+				simulate_paths(pstruct, Xs)
 				pstruct.csvrep()
 		if len(bf_error_rates) > 1: print
 	if len(detections) > 1: print

@@ -41,9 +41,9 @@ class Topology(nx.Graph):
 		if self.verbose:
 			print " -> nodes = {} ({} bits)".format(nodes_count, nodes_log2)
 
-		self.cyclesets = [set(c) for c in self.find_all_cycles()]
 		if self.verbose:
-			print " -> cycles = {}".format(len(self.cyclesets))
+			cyclesets = self.get_cyclesets()
+			print " -> cycles = {}".format(len(cyclesets))
 
 	@staticmethod
 	def load(topo_file, parser = 'zoo', create_hosts = True, seed = None, verbose = False):
@@ -267,8 +267,13 @@ class Topology(nx.Graph):
 		dst_node = edge_nodes[self.prng.randint(0, len(edge_nodes)-1)]
 		return self.get_stpaths()[src_node][dst_node]
 
+	def get_cyclesets(self):
+		if not hasattr(self, 'cyclesets'):
+			self.cyclesets = [set(c) for c in self.find_all_cycles()]
+		return self.cyclesets
+
 	def get_random_cycleset(self):
-		return self.cyclesets[self.prng.randint(0, len(self.cyclesets)-1)]
+		return self.get_cyclesets()[self.prng.randint(0, len(self.cyclesets)-1)]
 
 	def find_all_cycles_old(self, source = None):
 		"""forked from networkx dfs_edges function. Assumes nodes are integers, or at least
@@ -333,6 +338,15 @@ class Topology(nx.Graph):
 
 	def edge_nodes(self):
 		return [n for n in self.nodes() if self.node[n]["edge"]]
+
+	def generate_paths(self, paths):
+		Xs = []
+
+		while len(Xs) < paths:
+			path = self.get_random_edge_path()
+			Xs.append(len(path))
+
+		return Xs
 
 	def generate_loops(self, loops):
 		BL = []

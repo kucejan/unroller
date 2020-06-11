@@ -267,26 +267,35 @@ class PacketBloomFilter(PacketStruct):
 		super(self.__class__, self).report(oneline)
 
 
-def simulate_loops(pstruct, loopstart, looplen, loopnum = 100, seed = 65137):
+def simulate_loops(pstruct, loopsorpaths, loopnum = 1, seed = 65137):
 	prng = random.Random(seed)
-	pathlen = loopstart + looplen
-	for i in xrange(loopnum):
-		path = prng.sample(xrange(2**32), pathlen)
-		context = {}
-		ret = True
+	if not type(loopsorpaths) is list:
+		loopsorpaths = [loopsorpaths]
 
-		for src_node in path[:loopstart]:
-			ret = pstruct.process_loops(src_node, context)
-			if not ret: break
+	for looporpath in loopsorpaths:
+		looplen = 0
+		loopstart = looporpath
+		if type(looporpath) is tuple:
+			loopstart, looplen = looporpath
 
-		offset = 0
-		while ret and looplen > 0:
-			src_node = path[loopstart + offset % looplen]
-			ret = pstruct.process_loops(src_node, context)
-			offset += 1
+		pathlen = loopstart + looplen
+		for i in xrange(loopnum):
+			path = prng.sample(xrange(2**32), pathlen)
+			context = {}
+			ret = True
 
-		pstruct.finalize(context)
+			for src_node in path[:loopstart]:
+				ret = pstruct.process_loops(src_node, context)
+				if not ret: break
+
+			offset = 0
+			while ret and looplen > 0:
+				src_node = path[loopstart + offset % looplen]
+				ret = pstruct.process_loops(src_node, context)
+				offset += 1
+
+			pstruct.finalize(context)
 
 
-def simulate_paths(pstruct, pathlen, pathnum = 100, seed = 65137):
-	Topology.simulate_loops(pstruct, pathlen, 0, pathnum, seed)
+def simulate_paths(pstruct, pathlen, pathnum = 1, seed = 65137):
+	simulate_loops(pstruct, pathlen, pathnum, seed)
