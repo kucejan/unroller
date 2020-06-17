@@ -260,10 +260,11 @@ class PacketBloomFilter(PacketStruct):
 
 		bf = pb.BloomFilter(self.capacity, self.error_rate)
 		print self.__class__.__name__, nl,
+		print self.pcsv("Null:"), "--", nl,
 		print self.pcsv("Cap:"), self.capacity, nl,
 		print self.pcsv("Rate:"), self.error_rate, nl,
-		print self.pcsv("Mem:"), bf.num_bits + math.log(self.detections, 2), self.pcsv("bits"), nl,
 		print self.pcsv("Hashes:"), bf.num_slices, nl,
+		print self.pcsv("Mem:"), bf.num_bits + math.log(self.detections, 2), self.pcsv("bits"), nl,
 		super(self.__class__, self).report(oneline)
 
 
