@@ -15,7 +15,7 @@ from packetstructs import *
 ## Common settings
 
 # Number of generated packets (iterations)
-packets = 3000000
+packets = 100000
 
 # Number of hops before entering the loop (list)
 Brange = [5] # [0, 2, 3, 5, 7, 10]
@@ -34,16 +34,13 @@ genloops = False
 genpaths = False
 
 # Generate loops using a topology
-topoloops = False
+topoloops = True
 
 # Generate paths using a topology
-topopaths = True
+topopaths = False
 
 # Generate paths based on the loops length
 lbasedpaths = True
-
-#
- # 'stanford', 'rocket', 'fattree'
 
 
 # Topology parser and source file (stanford)
@@ -73,8 +70,8 @@ topofile = (
 # topofile = '2'
 
 # Enable Unroller and/or BF simulator
-enunroller = False
-enbloomfilter = True
+enunroller = True
+enbloomfilter = False
 
 
 #
@@ -91,14 +88,14 @@ cHrange = [(1,1)] # [(1,1), (2,2), (4,4), (8,4), (8,8), (1,4), (4,1), (4,2), (2,
 # cHrange = itertools.product([1], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20])
 
 # z: stored number of bits of the switch identifier
-zrange = xrange(17, 32+1) # xrange(2, 32+1)
+zrange = [32] # xrange(2, 32+1) # xrange(2, 32+1)
 
 
 #
 ## Bloomfilter simulator settings
 
 # Expected capacity of the BF (# of hops)
-bf_capacity = 20
+bf_capacity = 7
 
 # Expected error rates of the BF (affects number of hash functions)
 # bf_error_rates = [0.01, 0.001, 0.0001, 0.00001]
@@ -122,14 +119,11 @@ if topoloops or topopaths:
 
 	BLs = []
 	if topoloops:
-		BLs = topo.generate_loops(packets)
+		BLs = topo.generate_loops(packets, pathbased=True)
 
 	Xs = []
 	if topopaths:
 		if lbasedpaths:
-			if len(BLs) > 0:
-				Xs = [B+L for B, L in BLs]
-			else:
 				Xs = [B+L for B, L in topo.generate_loops(packets)]
 		else:
 			Xs = topo.generate_paths(packets)
@@ -187,3 +181,5 @@ if enbloomfilter:
 		if len(bf_error_rates) > 1: print
 	if len(detections) > 1: print
 	print
+
+	## TODO set capacity according the generated loops

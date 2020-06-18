@@ -1,4 +1,5 @@
 
+import sys
 import random
 import progressbar
 import networkx as nx
@@ -8,7 +9,7 @@ from packetstructs import *
 
 class Topology(nx.Graph):
 
-	def __init__(self, topox, create_hosts = False, seed = None, verbose = False):
+	def __init__(self, topox, create_hosts = False, seed = None, verbose = False, allcycles = False, directed = False):
 		super(self.__class__, self).__init__(topox)
 
 		# Check if the graph is fully connected
@@ -36,17 +37,39 @@ class Topology(nx.Graph):
 		# Enable/disable verbose mode
 		self.verbose = verbose
 
+		# Enable/disable all cycles generator
+		self.allcycles = allcycles
+
+		# Enable/disable directed based cycles
+		self.directed = directed
+
 		nodes_count = len(self.nodes())
 		nodes_log2 = nodes_count.bit_length()
 		if self.verbose:
 			print " -> nodes = {} ({} bits)".format(nodes_count, nodes_log2)
 
+		# Get diameter
 		if self.verbose:
-			cyclesets = self.get_cyclesets()
-			print " -> cycles = {}".format(len(cyclesets))
+			diameter = nx.diameter(self)
+			print " -> diameter = {} hops".format(diameter)
+
+		# Get number of cycles (too hard to find all cycles)
+		if self.verbose:
+			basissets = self.get_basissets()
+			print " -> cycle basis = {}".format(len(basissets))
+			if self.allcycles:
+
+				def average(lst):
+					suma = 0
+					for item in lst:
+						suma += len(item)
+					return float(suma) / len(lst)
+
+				cyclesets = self.get_cyclesets()
+				print " -> cycles = {} (~ {} hops)".format(len(cyclesets), average(cyclesets))
 
 	@staticmethod
-	def load(topo_file, parser = 'zoo', create_hosts = True, seed = None, verbose = False):
+	def load(topo_file, parser = 'zoo', create_hosts = False, seed = None, verbose = False, allcycles = False, directed = False):
 		if parser == 'stanford':
 			func = Topology.load_stanford
 		elif parser == 'zoo':
@@ -58,10 +81,10 @@ class Topology(nx.Graph):
 		else:
 			return None
 
-		return func(topo_file, create_hosts, seed, verbose)
+		return func(topo_file, create_hosts, seed, verbose, allcycles, directed)
 
 	@staticmethod
-	def load_fattree(topo_file, create_hosts = True, seed = None, verbose = False):
+	def load_fattree(topo_file, create_hosts = False, seed = None, verbose = False, allcycles = False, directed = False):
 
 		K = int(topo_file)
 
@@ -124,10 +147,10 @@ class Topology(nx.Graph):
 					# 	topox.add_node(nodeid, label = "es_"+str(pod)+"_"+str(edge)+"-host_"+str(x), edge = True)
 					# 	topox.add_edge(nodeid, edgeSwitches[edge])
 
-		return Topology(topox, False, seed, verbose)
+		return Topology(topox, False, seed, verbose, allcycles, directed)
 
 	@staticmethod
-	def load_rocket(topo_file, create_hosts = True, seed = None, verbose = False):
+	def load_rocket(topo_file, create_hosts = False, seed = None, verbose = False, allcycles = False, directed = False):
 
 		if verbose:
 			print "Loading {}".format(topo_file)
@@ -147,10 +170,10 @@ class Topology(nx.Graph):
 					topox.add_node(nodeid, label = node)
 			topox.add_edge(nodes[tokens[0]], nodes[tokens[1]])
 
-		return Topology(topox, create_hosts, seed, verbose)
+		return Topology(topox, create_hosts, seed, verbose, allcycles, directed)
 
 	@staticmethod
-	def load_zoo(gml_file, create_hosts = True, seed = None, verbose = False):
+	def load_zoo(gml_file, create_hosts = False, seed = None, verbose = False, allcycles = False, directed = False):
 
 		if verbose:
 			print "Loading {}".format(gml_file)
@@ -167,10 +190,10 @@ class Topology(nx.Graph):
 		# Relabel nodes to integeres, names available as 'name' attribute
 		topox = nx.relabel.convert_node_labels_to_integers(topox, first_label = 1)
 
-		return Topology(topox, create_hosts, seed, verbose)
+		return Topology(topox, create_hosts, seed, verbose, allcycles, directed)
 
 	@staticmethod
-	def load_stanford(topo_file, create_hosts = True, seed = None, verbose = False):
+	def load_stanford(topo_file, create_hosts = False, seed = None, verbose = False, allcycles = False, directed = False):
 
 		PORT_TYPE_MULTIPLIER = 10000
 		SWITCH_ID_MULTIPLIER = 100000
@@ -234,7 +257,7 @@ class Topology(nx.Graph):
 			dst_dpid = dst_port_flat / SWITCH_ID_MULTIPLIER
 			topox.add_edge(src_dpid, dst_dpid)
 
-		return Topology(topox, create_hosts, seed, verbose)
+		return Topology(topox, create_hosts, seed, verbose, allcycles, directed)
 
 	def get_stpaths(self):
 		if not hasattr(self, 'stpaths'):
@@ -267,71 +290,67 @@ class Topology(nx.Graph):
 		dst_node = edge_nodes[self.prng.randint(0, len(edge_nodes)-1)]
 		return self.get_stpaths()[src_node][dst_node]
 
+	def get_basissets(self):
+		if not hasattr(self, 'basissets'):
+
+			def sortpairs(lst):
+				i = iter(lst)
+				first = prev = item = i.next()
+				for item in i:
+					if prev > item: yield item, prev
+					else: yield prev, item
+					prev = item
+				if first > item: yield item, first
+				else: yield first, item
+
+			self.basissets = []
+			for base in nx.cycle_basis(self):
+				edgeset = set()
+
+				pairs = sortpairs(base)
+				for pair in pairs:
+					edgeset.add(pair)
+
+				self.basissets.append(edgeset)
+
+		return self.basissets
+
 	def get_cyclesets(self):
 		if not hasattr(self, 'cyclesets'):
-			self.cyclesets = [set(c) for c in self.find_all_cycles()]
+			self.cyclesets = list(set(self.find_all_cycles()))
 		return self.cyclesets
 
 	def get_random_cycleset(self):
-		return self.get_cyclesets()[self.prng.randint(0, len(self.cyclesets)-1)]
+		if self.allcycles:
+			return self.get_cyclesets()[self.prng.randint(0, len(self.cyclesets)-1)]
 
-	def find_all_cycles_old(self, source = None):
-		"""forked from networkx dfs_edges function. Assumes nodes are integers, or at least
-		types which work with min() and > ."""
+		# credits:
+		# https://stackoverflow.com/questions/12367801/finding-all-cycles-in-undirected-graphs/18388696#18388696
 
-		if source is None:
-			# produce edges for all components
-			nodes = self.nodes()
-		else:
-			# produce edges for components with source
-			nodes = [source]
+		basissets = self.get_basissets()
+		basislen = len(basissets)
 
-		# extra variables for cycle detection:
-		cycle_stack = []
-		output_cycles = set()
+		while True:
+			edgeset = set()
 
-		def get_hashable_cycle(cycle):
-			"""cycle as a tuple in a deterministic order."""
-			m = min(cycle)
-			mi = cycle.index(m)
-			mi_plus_1 = mi + 1 if mi < len(cycle) - 1 else 0
-			if cycle[mi-1] > cycle[mi_plus_1]:
-				result = cycle[mi:] + cycle[:mi]
-			else:
-				result = list(reversed(cycle[:mi_plus_1])) + list(reversed(cycle[mi_plus_1:]))
-			return tuple(result)
+			basismask = random.getrandbits(basislen)
+			if basismask == 0: continue
+			for i, b in enumerate(bin(basismask)[:1:-1]):
+				if b != '1': continue
+				edgeset = edgeset ^ basissets[i]
 
-		for start in nodes:
-			if start in cycle_stack:
-				continue
-			cycle_stack.append(start)
+			cycles = nx.Graph()
+			cycles.add_edges_from(list(edgeset))
 
-			stack = [(start, iter(self[start]))]
-			while stack:
-				parent,children = stack[-1]
-				try:
-					child = next(children)
-
-					if child not in cycle_stack:
-						cycle_stack.append(child)
-						stack.append((child, iter(self[child])))
-					else:
-						i = cycle_stack.index(child)
-						if i < len(cycle_stack) - 2:
-						  output_cycles.add(get_hashable_cycle(cycle_stack[i:]))
-
-				except StopIteration:
-					stack.pop()
-					cycle_stack.pop()
-
-		return [list(i) for i in output_cycles]
-
-	def find_all_n_cycles_old(self, N, source = None):
-		return [c for c in self.find_all_cycles_old(source) if len(c) == N]
+			comps = list(nx.connected_components(cycles))
+			crand = random.randint(0, len(comps)-1)
+			return comps[crand]
 
 	def find_all_cycles(self):
 		dg = self.to_directed()
-		return nx.simple_cycles(dg)
+		if self.directed:
+			return [tuple(c) for c in nx.simple_cycles(dg)]
+		return [frozenset(c) for c in nx.simple_cycles(dg)]
 
 	def find_all_n_cycles(self, N):
 		return [c for c in self.find_all_cycles() if len(c) == N]
@@ -348,7 +367,7 @@ class Topology(nx.Graph):
 
 		return Xs
 
-	def generate_loops(self, loops):
+	def generate_loops(self, loops, pathbased = False, B = 0):
 		BL = []
 
 		if (self.verbose):
@@ -359,15 +378,17 @@ class Topology(nx.Graph):
 
 		while len(BL) < loops:
 			cycle = self.get_random_cycleset()
-			path = self.get_random_edge_path()
 
-			intersect = set(path) & set(cycle)
-			if len(intersect) == 0:
-				continue
+			if pathbased:
+				path = self.get_random_edge_path()
 
-			for B, node in enumerate(path):
-				if node in intersect:
-					break
+				intersect = set(path) & set(cycle)
+				if len(intersect) == 0:
+					continue
+
+				for B, node in enumerate(path):
+					if node in intersect:
+						break
 
 			BL.append((B, len(cycle)))
 			if self.verbose:
@@ -379,8 +400,9 @@ class Topology(nx.Graph):
 
 		return BL
 
-	def analyze_loops(self, loops, prefix = '', csv = False):
-		BL = self.generate_loops(loops)
+	def analyze_loops(self, loops, prefix = '', csv = False, pathbased = False):
+		BL = self.generate_loops(loops, pathbased)
+
 		if csv:
 			for (B, L) in BL:
 				print '#', B, L
@@ -391,14 +413,33 @@ class Topology(nx.Graph):
 				suma += item[index]
 			return float(suma) / len(lst)
 
+		def minimum(lst, index):
+			mina = sys.maxint
+			for item in lst:
+				mina = min(mina, item[index])
+			return mina
+
+		def maximum(lst, index):
+			maxa = 0
+			for item in lst:
+				maxa = max(maxa, item[index])
+			return maxa
+
 		if len(prefix):
 			if isinstance(prefix, list):
 				for item in prefix:
 					print item,
 			else:
 				print prefix,
-		print average(BL, 0), average(BL, 1)
 
+		# "File", "AVG-B", "AVG-L", "MIN-B", "MIN-L", "MAX-B", "MAX-L", "Nodes", "Diameter", "Basis"
+		print average(BL, 0), average(BL, 1),
+		print minimum(BL, 0), minimum(BL, 1),
+		print maximum(BL, 0), maximum(BL, 1),
+		print len(self.nodes()),
+		print nx.diameter(self),
+		print len(self.get_basissets()),
+		print
 
 	def inject_loops(self, loopnum = 0, looplen = 0, debug = False):
 		if not hasattr(self, 'routing'):

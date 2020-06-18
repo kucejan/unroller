@@ -12,7 +12,15 @@ from traffic import *
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-c', '--csv', action='store_true',
-	help='full CSV output')
+	help='full CSV output', default=False)
+parser.add_argument('-a', '--allcycles', action='store_true',
+	help='use all cycles generator', default=False)
+parser.add_argument('-H', '--hosts', action='store_true',
+	help='create hosts in the topology', default=False)
+parser.add_argument('-P', '--pathbased', action='store_true',
+	help='use path-based loops', default=False)
+parser.add_argument('-d', '--directed', action='store_true',
+	help='use directed based cycles', default=False)
 parser.add_argument('-v', '--verbose', action='store_true',
 	help='verbose', default=False)
 parser.add_argument('-s', '--seed', type=int, default=None,
@@ -34,7 +42,7 @@ if len(args.files) == 0:
 	parser.print_help()
 	sys.exit(1)
 
-print "File", "AVG-B", "AVG-L"
+print "File", "AVG-B", "AVG-L", "MIN-B", "MIN-L", "MAX-B", "MAX-L", "Nodes", "Diameter", "Basis"
 if args.verbose:
 	print
 
@@ -57,16 +65,14 @@ while len(args.files) > 0:
 				topo_file = (topo_file, args.files.pop(0))
 
 			# Load topology from file
-			topo = Topology.load(topo_file, parser=args.parser,
-				seed=args.seed, verbose=args.verbose)
-
-			nx.write_graphml(topo, "test.graphml")
+			topo = Topology.load(topo_file, parser=args.parser, seed=args.seed, create_hosts=args.hosts,
+				verbose=args.verbose, allcycles=args.allcycles, directed=args.directed)
 
 			if args.parser == 'stanford':
 				topo_file = topo_file[-1]
 
 			# Analyze loops
-			topo.analyze_loops(args.loops, prefix=topo_file, csv=args.csv)
+			topo.analyze_loops(args.loops, prefix=topo_file, csv=args.csv, pathbased=args.pathbased)
 			if args.verbose:
 				print
 
@@ -81,54 +87,3 @@ while len(args.files) > 0:
 			print err
     		print "Timeouted", topo_file
     	continue
-
-
-
-# for cycle in cycles:
-# 	print sorted(cycle)
-
-# basis = nx.cycle_basis(topo)
-# print basis
-# print
-
-# cycle_edges = set()
-# while len(cycle_edges) == 0:
-# 	basis_ids = []
-# 	basis_mask = random.getrandbits(len(basis))
-# 	for i, b in enumerate(bin(basis_mask)[:1:-1]):
-# 	    if b == '1': basis_ids.append(i)
-# 	print basis_ids
-# 	# for basis_id in basis_ids:
-# 	# 	basis_nodes = basis[basis_id]
-# 	# 	print zip(basis_nodes, basis_nodes[1:]+basis_nodes[:1])
-# 	for basis_id in basis_ids:
-# 		basis_nodes = basis[basis_id]
-# 		basis_edges = zip(basis_nodes, basis_nodes[1:]+basis_nodes[:1])
-# 		basis_edges = set([frozenset(edge) for edge in basis_edges])
-# 		print basis_edges
-# 		print cycle_edges
-# 		cycle_edges = basis_edges ^ cycle_edges
-# 		print cycle_edges
-# 		print
-
-
-# 	cycle = nx.Graph()
-# 	cycle.add_edges_from(cycle_edges)
-# 	if len(list(nx.connected_components(cycle))) > 1:
-# 		cycle_edges.clear()
-
-# print cycle.nodes()
-
-# cycle_set = set()
-# for edge in cycle_edges:
-# 	for node in edge:
-# 		cycle_set.add(node)
-
-# print cycle_set
-
-# for cycle in cycles:
-# 	if cycle == cycle_set:
-# 		print "OK"
-# 		break
-
-# print "FAIL"
