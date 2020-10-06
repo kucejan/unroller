@@ -407,22 +407,29 @@ class Topology(nx.Graph):
 			for (B, L) in BL:
 				print '#', B, L
 
-		def average(lst, index):
+		def average(lst, indexlst):
 			suma = 0
 			for item in lst:
-				suma += item[index]
+				for index in indexlst:
+					suma += item[index]
 			return float(suma) / len(lst)
 
-		def minimum(lst, index):
+		def minimum(lst, indexlst):
 			mina = sys.maxint
 			for item in lst:
-				mina = min(mina, item[index])
+				newm = 0
+				for index in indexlst:
+					newm += item[index]
+				mina = min(mina, newm)
 			return mina
 
-		def maximum(lst, index):
+		def maximum(lst, indexlst):
 			maxa = 0
 			for item in lst:
-				maxa = max(maxa, item[index])
+				newm = 0
+				for index in indexlst:
+					newm += item[index]
+				maxa = max(maxa, newm)
 			return maxa
 
 		if len(prefix):
@@ -432,10 +439,10 @@ class Topology(nx.Graph):
 			else:
 				print prefix,
 
-		# "File", "AVG-B", "AVG-L", "MIN-B", "MIN-L", "MAX-B", "MAX-L", "Nodes", "Diameter", "Basis"
-		print average(BL, 0), average(BL, 1),
-		print minimum(BL, 0), minimum(BL, 1),
-		print maximum(BL, 0), maximum(BL, 1),
+		# "File", "AVG-B", "AVG-L", "AVG-X", "MIN-B", "MIN-L", "MIN-X", "MAX-B", "MAX-L", "MAX-X", "Nodes", "Diameter", "Basis"
+		print average(BL, [0]), average(BL, [1]), average(BL, [0,1]),
+		print minimum(BL, [0]), minimum(BL, [1]), minimum(BL, [0,1]),
+		print maximum(BL, [0]), maximum(BL, [1]), maximum(BL, [0,1]),
 		print len(self.nodes()),
 		print nx.diameter(self),
 		print len(self.get_basissets()),

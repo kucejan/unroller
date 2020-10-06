@@ -42,7 +42,7 @@ if len(args.files) == 0:
 	parser.print_help()
 	sys.exit(1)
 
-print "File", "AVG-B", "AVG-L", "MIN-B", "MIN-L", "MAX-B", "MAX-L", "Nodes", "Diameter", "Basis"
+print "File", "AVG-B", "AVG-L", "AVG-X", "MIN-B", "MIN-L", "MIN-X", "MAX-B", "MAX-L", "MAX-X", "Nodes", "Diameter", "Basis"
 if args.verbose:
 	print
 
