@@ -134,3 +134,77 @@ bf_capacity = 20
 bf_error_rates = [0.01, 0.001, 0.0001, 0.00001]
 
 ```
+
+#### Loading the configuration from a file
+
+You can also save your configuration from the beginning of `loops-simulator.py` into a separate .py file and run the simulator loading the configuration, e.g., using:
+
+```bash
+./loops-simulator.py paper/table4-bloomfilter-stanford.py
+```
+
+The evaluation of the default number of runs (3M) for all the example configurations we used in the paper can be very time consuming. To override the number of runs of the configuration you can specify `-r RUNS` parameter, e.g., using:
+
+```bash
+./loops-simulator.py -r 10000 paper/table4-bloomfilter-stanford.py
+```
+
+## How to reproduce paper results?
+
+To reproduce the results presented in the paper we prepared a set of commands which enables to rerun our loop simulator with the same configuration we used.
+
+#### Table 4: Comparing Unroller to state-of-the-art solutions
+
+To get the basic information about the topologies, e.g., number of nodes or diameter run:
+
+```shell
+./topology-evaluator.py -p stanford topologies/stanford-backbone/port_map.txt topologies/stanford-backbone/backbone_topology.tf
+./topology-evaluator.py -p zoo topologies/topology-zoo/Bellsouth.gml
+./topology-evaluator.py -p zoo topologies/topology-zoo/Geant2012.gml
+./topology-evaluator.py -p zoo topologies/topology-zoo/AttMpls.gml
+./topology-evaluator.py -p zoo topologies/topology-zoo/UsCarrier.gml
+./topology-evaluator.py -p fattree 4
+```
+
+To get the expected memory consumption (number of bits needed) for detection of loops using Bloom filter or Unroller on the specific topology run:
+
+```shell
+./loops-simulator.py paper/table4-bloomfilter-bits-[topology].py
+./loops-simulator.py paper/table4-unroller-bits-[topology].py
+```
+
+For example, to simulate Unroller on Stanford topology run:
+
+```
+./loops-simulator.py paper/table4-unroller-bits-stanford.py
+```
+
+Each line of the output for every topology represents 3M runs of the simulator (generated paths/loops) for the specified number of bits in the column *Mem*. To find the minimum memory overhead you need to find the line where *FP%* (false positive rate) is zero and *Mem* column is minimal.
+
+To get the average detection time in case of using Unroller also run:
+
+```shell
+./loops-simulator.py paper/table4-unroller-time-[topology].py
+```
+
+For example, to simulate Unroller on Stanford topology run:
+
+```
+./loops-simulator.py paper/table4-unroller-time-stanford.py
+```
+
+You can then find the averate detection for Unroller time as *AvgTime* column.
+
+#### Figures 2-7: Sensitivity analysis
+
+To get the data to plot any of the figures, run:
+
+```
+./loops-simulator.py paper/figureX.py
+```
+
+For example to run simulator to generate data for figure 6a data, run:
+
+```
+./loops-simulator.py paper/figure6a.py
+```
