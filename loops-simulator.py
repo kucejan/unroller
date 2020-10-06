@@ -133,6 +133,7 @@ if topoloops or topopaths:
 ## Simulate Unroller structure
 
 if enunroller:
+	PacketMinSketch.print_header()
 	for dets in detections:
 		for b in brange:
 			for c, H in cHrange:
@@ -162,6 +163,7 @@ if enunroller:
 ## Simulate BloomFilter structure
 
 if enbloomfilter:
+	PacketBloomFilter.print_header()
 	for dets in detections:
 		for bf_error_rate in bf_error_rates:
 			if genloops or genpaths:

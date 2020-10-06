@@ -86,9 +86,9 @@ class PacketStruct(object):
 			minl = min(minl, L)
 			maxl = max(maxl, L)
 
-		print self.pcsv("Num:"), len(self.log), nl,
-		print self.pcsv("Dets:"), self.detections, nl,
-		print self.pcsv("Fp%:"), float(fpos) / paths * 100 if paths != 0 else 0.0, self.pcsv("({})".format(fpos)), nl,
+		print self.pcsv("Runs:"), len(self.log), nl,
+		print self.pcsv("Th:"), self.detections, nl,
+		print self.pcsv("FP%:"), float(fpos) / paths * 100 if paths != 0 else 0.0, self.pcsv("({})".format(fpos)), nl,
 		print self.pcsv("MinB:"), minb if loops != 0 else "--", self.pcsv("hops"), nl,
 		print self.pcsv("MaxB:"), maxb if loops != 0 else "--", self.pcsv("hops"), nl,
 		print self.pcsv("AvgB:"), float(sumb) / loops if loops != 0 else "--", self.pcsv("hops"), nl,
@@ -103,6 +103,12 @@ class PacketStruct(object):
 		print self.pcsv("AvgHops:"), float(sumh) / loops if loops != 0 else "--", self.pcsv("X"), nl,
 		print
 
+	@staticmethod
+	def print_header(extra=[]):
+		labels = extra + ["Runs", "Th", "FP%", "MinB", "MaxB", "AvgB", "MinL", "MaxL", "AvgL", "MinTime", "MaxTime", "AvgTime", "MinHops", "MaxHops", "AvgHops"]
+		for label in labels:
+			print label, ",",
+		print
 
 class PacketMinSketch(PacketStruct):
 
@@ -214,6 +220,11 @@ class PacketMinSketch(PacketStruct):
 		print self.pcsv("Mem:"), self.size * self.c * self.H + math.log(self.detections, 2), self.pcsv("bits"), nl,
 		super(self.__class__, self).report(oneline)
 
+	@staticmethod
+	def print_header(extra=[]):
+		extra = extra + ["Class", "z", "b", "c", "H", "Mem"]
+		super(PacketMinSketch, PacketMinSketch).print_header(extra)
+
 
 class PacketBloomFilter(PacketStruct):
 
@@ -266,6 +277,11 @@ class PacketBloomFilter(PacketStruct):
 		print self.pcsv("Hashes:"), bf.num_slices, nl,
 		print self.pcsv("Mem:"), bf.num_bits + math.log(self.detections, 2), self.pcsv("bits"), nl,
 		super(self.__class__, self).report(oneline)
+
+	@staticmethod
+	def print_header(extra=[]):
+		extra = extra + ["Class", "Null", "Capacity", "Errrate", "H", "Mem"]
+		super(PacketBloomFilter, PacketBloomFilter).print_header(extra)
 
 
 def simulate_loops(pstruct, loopsorpaths, loopnum = 1, seed = 65137):
