@@ -193,7 +193,7 @@ For example, to simulate Unroller on Stanford topology run:
 ./loops-simulator.py paper/table4-unroller-time-stanford.py
 ```
 
-You can then find the averate detection for Unroller time as *AvgTime* column.
+You can then find the average detection time for Unroller as *AvgTime* column.
 
 #### Figures 2-7: Sensitivity analysis
 
