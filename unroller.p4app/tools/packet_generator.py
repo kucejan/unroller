@@ -42,7 +42,7 @@ if answer is not None:
     answer.show()
     wrpcap(pcapfile, answer)
 else:
-    print "TIMEOUT: Receiving the response timeouted! The packet probably dropped by the switch."
+    print "TIMEOUT: Receiving the response timeouted! The packet dropped by the switch."
     sys.exit(1)
 
 sys.exit(0)

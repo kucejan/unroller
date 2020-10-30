@@ -11,11 +11,50 @@ Follow the instructions on https://github.com/p4lang/p4app to install `p4app` to
 p4app run unroller.p4app
 ```
 
-## Real-life topologies
+It runs an Unroller detection of the loop shown in Figure 1 of the original paper, i.e., a generated packet visits a single switch before the loop (B = 1) and then enters the loop compound of four switches (L = 4). The switches have IDs 1, 6, 3, 2 and 7. The P4 code implements the Unroller algorithm using b = 4 and using a single switch ID stored inside the packet header (c = H = 1). The P4 application simulation outputs Unroller packet header after each of the hop on its path in the loop, for example:
+
+```
+###[ Unroller ]###
+     etherType = 0x0
+     hopid     = 5
+     thcnt     = 0
+     swids     = 1
+     listids   = [3206565426]
+```
+
+In the Unroller header, we can see the number of currently visited hops (hopid), the current value of the threshold counter (thcnt), the number of stored switch IDs (swids) and a list of stored switch hashes (listids). For this specific example of the loop, after 11 hops, at switch with ID = 3, the loop is detected. The switch generates a digest message for the controller. The P4 app environment simulates the controller, outputs the digest and also prints a message, that the packet has been dropped by that switch.
+
+```
+LOOP DETECTED: digest received, see details:
+switch_id: 0, cxt_id: 0, list_id: 1, buffer_id: 0, num_samples: 1
+	timestamp: 3584898, swid: 0x00000003, hopid: 11
+
+Received 0 packets, got 0 answers, remaining 1 packets
+TIMEOUT: Receiving the response timeouted! The packet dropped by the switch.
+```
+
+In the report, we can see current time of the loop detection (timestamp), ID of the switch where the loop has been detected (swid) and the number of hops it takes to detect the loop (hopid).
+
+The environment also enables to set the loop or algorithm parameters, e.g., B hops before entering the loop, L hops of the loop, IDs of involved switches or the detection threshold (Th). Go to `unroller.p4app/` to see further details.
+
+## Python routing loops simulator
+
+### Required packages
+
+Install all required packages using the following commands:
+
+```bash
+sudo apt install build-essential python2 python2-dev
+curl https://bootstrap.pypa.io/get-pip.py --output get-pip.py
+sudo python2 get-pip.py
+sudo pip2 install -r requirements.txt
+```
+
+### Real-life topologies
 
 Go to `topologies/topology-zoo` or `topologies/rocketfuel` to see instructions to download some real-life topologies.
 
-## Topology Evaluator tool
+### Topology Evaluator tool
 
 Print help using:
 
@@ -32,7 +71,7 @@ Print help using:
 ./topology-evaluator.py -p fattree 4
 ```
 
-## Loops Simulator tool
+### Loops Simulator tool
 
 Edit the configuration at the beginning of `loops-simulator.py` file using your favourite text editor, e.g. `vim`.
 

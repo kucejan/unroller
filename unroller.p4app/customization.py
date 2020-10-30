@@ -10,8 +10,14 @@ from appprocrunner import AppProcRunner, AppProcess
 CONSOLE = 'bash'
 SWITCH_CLI = 'simple_switch_CLI'
 
+# List of switch IDs visited before the loop
 UNROLLER_B = [1]
+
+# List of switch IDs making the loop
 UNROLLER_L = [6, 3, 2, 7]
+
+# The threshold for reporting a loop
+UNROLLER_TH = 1
 
 class CustomAppController(AppController):
 
@@ -28,6 +34,7 @@ class CustomAppController(AppController):
 
     def nexthopSwitch(self, swid):
         self.writeRegister("cfg_swid_reg", 0, swid)
+        self.writeRegister("cfg_thcnt_reg", 0, UNROLLER_TH)
 
         host = self.net.get('h1')
         generator = host.popen('./tools/packet_generator.py')
