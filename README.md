@@ -1,7 +1,12 @@
 
 # Unroller
 
-*"Detecting Routing Loops in the Data Plane"*
+**Detecting Routing Loops in the Data Plane**: _Jan Kučera (CESNET); Ran Ben Basat (Harvard University); Mário Kuka (CESNET); Gianni Antichi (Queen Mary University of London); Minlan Yu and Michael Mitzenmacher (Harvard University)._<br/>
+**CoNEXT '20: Proceedings of the 16th International Conference on emerging Networking EXperiments and Technologies.**
+
+* Paper: https://dl.acm.org/doi/pdf/10.1145/3386367.3431303
+* Slides: https://drive.google.com/file/d/1wbyt6jkqUYKoe9sPMg1GQjySGVYwqJbe/view?usp=sharing
+
 
 ## P4 implementation
 
